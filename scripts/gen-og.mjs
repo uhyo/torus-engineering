@@ -94,8 +94,8 @@ const jobs = [
       figureWidth: 440,
       title: "Fractal Engineering",
       titleSize: 60,
-      catchline: "&ldquo;Don&rsquo;t decompose.<br>Recurse.&rdquo;",
-      sub: "Appendix B: agent hierarchies<br>in non-integer dimensions.",
+      catchline: "&ldquo;Divide,<br>and let divide.&rdquo;",
+      sub: "AI-driven development finally<br>abandons integer dimensions.",
     }),
   },
 ];

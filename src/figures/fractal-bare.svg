@@ -1,9 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 470" role="img" aria-label="Line drawing of a Sierpinski triangle.">
   <style>
     .f-solid path { stroke: #1a1a1a; stroke-linecap: round; stroke-linejoin: round; }
-    .f-zoom { stroke: #b9b9b9; stroke-width: 0.9; stroke-dasharray: 3 4; stroke-linecap: round; }
-    .f-label text { font-family: inherit; font-style: italic; font-size: 16px; fill: #333; }
-    .f-label .f-sub { font-size: 13px; fill: #777; font-style: normal; }
   </style>
     <g class="f-solid" fill="none">
       <path d="M260 24L20 439.69L500 439.69Z" stroke-width="1.15"/>

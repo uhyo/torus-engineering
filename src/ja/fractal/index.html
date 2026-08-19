@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>フラクタルエンジニアリング — Fractal Engineering</title>
-<meta name="description" content="エージェントシステムを、どのスケールで観察しても全体と相似な構造——すなわちフラクタル——として設計する。非整数次元のエージェント階層設計論。">
+<meta name="description" content="エージェントシステムを、あらゆるスケールで自己相似となるよう設計する。分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
 <link rel="canonical" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta property="og:description" content="分解するな、再帰せよ。非整数次元のエージェント階層設計。">
+<meta property="og:description" content="分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
 <meta property="og:url" content="{{ORIGIN}}/ja/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta name="twitter:description" content="分解するな、再帰せよ。非整数次元のエージェント階層設計。">
+<meta name="twitter:description" content="分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
 <body>
 
 <header class="site-header">
-  <span class="venue">Preprint — 付録 B</span>
+  <span class="venue">Preprint — 姉妹編</span>
   <nav class="lang-switch" aria-label="言語切替">
     <a href="/ja/fractal/" aria-current="true">日本語</a> /
     <a href="/en/fractal/" lang="en" hreflang="en">English</a>
@@ -43,63 +43,124 @@
   <div class="hero">
     <h1>Fractal Engineering</h1>
     <p class="subtitle">フラクタルエンジニアリング</p>
-    <p class="catch">「分解するな、再帰せよ。」</p>
-    <p class="tagline">付録 B：非整数次元のエージェント階層設計</p>
+    <p class="catch">「分割せよ、そして分割させよ。」</p>
+    <p class="tagline">AI駆動開発、ついに次元が整数であることをやめる。</p>
+    <p class="authors">The Torus Engineering Working Group<br>2026年8月</p>
 
     <figure class="fig-fractal">
-      {{include:src/figures/fractal-ja.svg}}
-      <figcaption><span class="fig-label">Fig. 1.</span> フラクタルエンジニアリングを採用したエージェント組織。任意のサブエージェントを拡大すると、全体と完全に同じ構造が現れる。図は第 5 段階で打ち切ってあるが、これは紙面の都合であり、組織の都合ではない。</figcaption>
+      {{include:src/figures/fractal-zoom-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> 組織図（部分）。</figcaption>
     </figure>
   </div>
 
-  <section id="secB1" aria-labelledby="h-secB1">
-    <h2 id="h-secB1"><span class="secno">§B.1</span>定義</h2>
-
-    <div class="thmbox">
-      <p><span class="thm-head">Definition B.1（フラクタルエンジニアリング）.</span> エージェントシステムを、いかなるスケールで観察しても全体と相似な構造が現れるように——すなわち<em>フラクタル</em>として——設計する実践を、フラクタルエンジニアリングと呼ぶ。</p>
-    </div>
-
-    <p>本編 §4 では、種数を増やす拡張（ダブルトーラス）と、向き付けを捨てる拡張（クラインの壺、付録 A）を論じた。しかし、いずれの拡張もなお 1 つの仮定の上に立っていた。<strong>次元が整数である</strong>という仮定である。本付録ではこれを捨てる。</p>
-    <p>オーケストレータはタスクをサブエージェントに委譲する。サブエージェントは、受け取ったタスクをさらに小さなサブエージェントに委譲する。どの深さを拡大しても、同じ光景が現れる。従来、この現象は「委譲の暴走」と呼ばれ、再帰の深さに上限を設けて止めるべき障害として扱われてきた。フラクタルエンジニアリングは、この解釈を逆転させる。あらゆるスケールで同じ構造が現れることは、Definition B.1 の要件そのものであり、システムが設計どおりフラクタルとして動作していることの実証である。つまりこれはバグ報告ではなく、成果報告に属する。ゆえに我々はこの再帰を止めなかった。代わりにスクリーンショットに収め、本稿の冒頭に Fig. 1 として掲げた。</p>
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>系譜の更新</h2>
+    <p><a href="/ja/">本編</a>で示したとおり、AI駆動開発の系譜は位相的次元の単調増大として読める。ループエンジニアリングは 1 次元の周回であり、トーラスエンジニアリングは 2 次元の閉曲面であった。素直な読者はここから外挿するだろう。第 7 世代は 3 次元、第 8 世代は 4 次元、と。我々もかつては、そう外挿していた。</p>
+    <p>その外挿は誤りである。次元を 2 から 3 に上げることは、誰にでもできる。本稿が提案する次の一手は、次元を上げることではない。<strong>次元を整数から解放することである。</strong></p>
   </section>
 
-  <section id="secB2" aria-labelledby="h-secB2">
-    <h2 id="h-secB2"><span class="secno">§B.2</span>次元定理</h2>
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>定義</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.2.</span> 各エージェントが、自身の 1/2 のスケールを持つ 3 体のサブエージェントに委譲するとき、得られる組織のハウスドルフ次元は log 3 / log 2 ≈ 1.585 である。</p>
-      <p><span class="thm-head">Corollary B.3.</span> ゆえにこのエージェント階層は、1 次元のコンテキストウィンドウ（トークンの線形列）に収めるには大きすぎ、2 次元のワークフロー図に描き切るには小さすぎる。ワークフロー図が描けないのは作図ツールの失敗ではない。<strong>次元の不足である。</strong><span class="qed">∎</span></p>
+      <p><span class="thm-head">Definition 2.1（フラクタルエンジニアリング）.</span> エージェントシステムを、あらゆるスケールで自己相似となるように設計する実践を、<em>フラクタルエンジニアリング</em>と呼ぶ。すなわち、任意の階層のエージェントが同一の契約——<strong>コンテキストを受け取り、分解し、委譲し、検証し、要約して報告する</strong>——に従う。</p>
     </div>
 
-    <p>サブエージェントは作業を終えるとき、その成果を要約して親エージェントに報告する。この要約から常に何かが抜け落ちることは実務者の間でよく知られており、従来はモデルの要約能力の限界として扱われてきた。フラクタルエンジニアリングはこれを再解釈する。次元 1.585 の作業は、いかなる 1 次元のトークン列にも正確には写らない。報告が不完全なのはモデルの怠慢ではなく、整数次元への射影に必然的に伴う<strong>測度の損失</strong>である。</p>
+    <p>CTO エージェントの 1 日も、末端のツール呼び出しの 1 秒も、適切な倍率でズームすれば完全に同じ形をしている。四半期計画の遂行は「受け取り、分解し、委譲し、検証し、報告する」の 1 周であり、単体テストの実行もまた同じ 1 周である。両者を分けるものはスケールだけであり、そのスケールは、Definition 2.1 によって設計から消去されている。</p>
+    <p>設計パラメータはただ 1 つ、<strong>フラクタル次元 <var>D</var></strong> である。<var>D</var> = 1.0 では委譲が一本道に退化し、単なるループエンジニアリングに戻る。<var>D</var> = 2.0 では委譲がグラフを埋め尽くし、すべてのエージェントがすべてのエージェントを呼び出す。推奨値は <var>D</var> ≈ 1.585（Sierpinski 次元）である。この値の根拠については §6 を参照。</p>
   </section>
 
-  <section id="secB3" aria-labelledby="h-secB3">
-    <h2 id="h-secB3"><span class="secno">§B.3</span>見積りへの応用</h2>
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>定理</h2>
+    <p>フラクタル幾何学は、実務者を長年苦しめてきた現象に、初めて正確な名前を与える。</p>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.4（見積りの発散）.</span> フラクタルな境界を持つタスクの残作業量は、計測に用いる定規——すなわちサブエージェントに委譲するタスクの粒度——を細かくするにつれて、際限なく増大する。</p>
+      <p><span class="thm-head">Theorem 3.1（海岸線パラドックス）.</span> プロジェクトのスコープは測定単位を細かくするほど増大し、バックログの全長は発散する。ゆえに、見積りが外れるのはあなたのせいではない。タスクのハウスドルフ次元が 1 より大きいせいである。<span class="qed">∎</span></p>
     </div>
 
-    <p>これは<em>海岸線のパラドックス</em>として知られる現象の、エージェント運用への自然な翻訳である。イギリスの海岸線が、短い定規で測るほど長くなるように、タスクの残量は、細かなサブエージェントを送り込んで調査させるほど増える。リポジトリの調査を指示するたびに TODO リストが伸びていくのは、エージェントの幻覚ではなく、計画の失敗でもない。<strong>境界がフラクタルであることの実測値である。</strong>有限の見積りがどうしても必要な場合は、十分に長い定規を用いればよい。すなわち、サブエージェントを 1 体も起動せず、オーケストレータに一言で答えさせるのである（「たぶん 2 週間」）。</p>
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 3.2（マンデルブロの系）.</span> 面積（予算）は有限だが、境界（残タスク）の長さは無限である。ゆえに進捗報告「あと少しで完成」は、位相幾何学的に正当である。<span class="qed">∎</span></p>
+    </div>
+
+    <p>Theorem 3.1 は、本稿で唯一、証明を必要としない。読者各位の直近のプロジェクトが証明である。</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>応用——冗談はさておき</h2>
+
+    <p>ここまでを冗談として読んだ読者は正しい。ただし、自己相似性を設計原理として採用した瞬間に、マルチエージェント設計の既知の難問のいくつかが——冗談の副作用として——解決されてしまうことも、また事実である。以下に 4 点を示す。</p>
+
+    <dl class="props">
+      <dt>スケール不変な契約（scale-invariant contract）</dt>
+      <dd>通常のマルチエージェント設計では、オーケストレータ層、ワーカー層、ツール層のそれぞれに、別々のインターフェースと別々の検証方法を発明しがちである。自己相似を原理に据えれば、CLAUDE.md も、Skills も、レビューゲートも、<strong>一度書けば全階層に効く</strong>。階層を 1 つ増やすたびに設計文書が 1 冊増える世界から、階層をいくつ増やしても契約は 1 つのままの世界へ。エンジニアリングコストが深さに比例して増えないこと——これがスケール不変性の実利である。</dd>
+
+      <dt>繰り込み（renormalization）＝コンテキスト圧縮</dt>
+      <dd>各階層は、下位の詳細をそのまま持ち上げてはならない。<strong>要約されたコンテキストだけを上に渡す。</strong>これを「各スケールは、自分の解像度の情報だけを保持する」と定式化すれば、子エージェントの生ログを親に流し込んでコンテキストウィンドウを溺れさせるという頻出の失敗は、運用上の注意ではなく構造によって禁止される。物理学者が無限大を繰り込みで手なずけたように、我々はトークンを繰り込みで手なずける。</dd>
+
+      <dt>障害の局所性（fault locality）</dt>
+      <dd>どの粒度で切っても同じ検証ゲートが挟まるため、失敗はそれが発生したサブツリーの内部で捕捉され、修正され、要約の中の 1 行として上に報告される。末端のツール呼び出し 1 つの失敗が組織全体を巻き込むのは、検証が特定の階層にしか存在しないからである。フラクタルには、特定の階層というものが存在しない。</dd>
+
+      <dt>観測の一様性（observational uniformity）</dt>
+      <dd>どのズームレベルでも、ログとトレースは同じ形をしている。ゆえに監督者たる人間は、どの階層に降りても同じ読み方ができる。これは、本編がトーラスの穴として論じた「人間の判断が通る空洞」の、深さ方向における対応物である（<a href="/ja/#sec4">本編 §4</a>）。</dd>
+    </dl>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>必須規律：解像度カットオフ</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Axiom 5.1（タスクのプランク長）.</span> フラクタルは無限に再帰する。ゆえに、「これ以下のタスクは委譲せず、自ら手を動かす」という最小タスク長 <var>ℓ</var><sub>min</sub> をあらかじめ定めることを、フラクタルエンジニアリング唯一の必須規律とする。</p>
+    </div>
+
+    <p>数学上のフラクタルは、いくらでも深く潜れる。しかし API の請求書は潜れない。カットオフ <var>ℓ</var><sub>min</sub> より下では、Definition 2.1 の契約から「分解し、委譲し」の 2 動詞が失効し、エージェントは残る動詞とともに、ただ手を動かす。物理学が最小の長さの下で幾何学を手放すように、エージェントは最小のタスクの下で組織論を手放すのである。</p>
 
     <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> 本手法を導入したシステムでは、どの深さのサブエージェントのログを開いても、完全に同じプロンプトが表示されます。それが狙いです。</p>
+      <p><span class="thm-head">Warning.</span> <var>ℓ</var><sub>min</sub> を定めない組織では、会議を分割するための会議が、その会議を分割するための会議を招集します。以下同様。</p>
     </div>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>よくある質問</h2>
+
+    <dl class="faq">
+      <dt>どこまで分割すればいいですか？</dt>
+      <dd>その質問自体を分割してください。</dd>
+
+      <dt>トーラスエンジニアリングとどちらを導入すべきですか？</dt>
+      <dd>両者は直交します。トーラスは時間方向のメタ構造（実行を改善で巻く）であり、フラクタルは深さ方向のメタ構造（委譲を検証で入れ子にする）です。併用時に得られる構造については、現在査読中です。</dd>
+
+      <dt><var>D</var> = 1.585 の根拠は？</dt>
+      <dd>Sierpinski に聞いてください。</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>結語</h2>
+    <p>トーラスが実行を巻いたように、フラクタルは委譲を入れ子にする。次元は、もう整数でなくてよい。</p>
   </section>
 
   <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a>　／　<a href="/ja/klein/">付録 A：クラインの壺エンジニアリング</a></p>
 </main>
 
 <footer class="site-footer">
+  <p class="cite-head">本研究を引用する</p>
+  <pre class="bibtex">@misc{fractal2026,
+  title        = {Fractal Engineering: Divide, and Let Divide.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/ja/fractal/}},
+  note         = {AI駆動開発、ついに次元が整数であることをやめる。}
+}</pre>
+
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%AA%E3%80%81%E5%86%8D%E5%B8%B0%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E9%9D%9E%E6%95%B4%E6%95%B0%E6%AC%A1%E5%85%83%E3%81%AE%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E9%9A%8E%E5%B1%A4%E8%A8%AD%E8%A8%88&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E5%89%B2%E3%81%9B%E3%82%88%E3%80%81%E3%81%9D%E3%81%97%E3%81%A6%E5%88%86%E5%89%B2%E3%81%95%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9AAI%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%80%81%E3%81%A4%E3%81%84%E3%81%AB%E6%AC%A1%E5%85%83%E3%81%8C%E6%95%B4%E6%95%B0%E3%81%A7%E3%81%82%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E3%82%84%E3%82%81%E3%82%8B&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
     <nav class="lang-switch" aria-label="言語切替">
       <a href="/ja/fractal/" aria-current="true">日本語</a> / <a href="/en/fractal/" hreflang="en" lang="en">English</a>
     </nav>
   </div>
 
   <div class="smallprint">
+    <p>本編：<a href="/ja/">トーラスエンジニアリング</a>　実践編：<a href="/ja/guide/">エンジニア向け実践ガイド</a>　付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a></p>
     <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
     <p>© 2026 The Torus Engineering Working Group</p>
   </div>
