@@ -182,6 +182,10 @@ figure.fig-klein svg {
   max-width: 22rem;
 }
 
+figure.fig-fractal svg {
+  max-width: 34rem;
+}
+
 figcaption {
   font-size: 0.88rem;
   color: var(--ink-soft);

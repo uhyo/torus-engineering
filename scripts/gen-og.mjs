@@ -1,4 +1,4 @@
-// Renders the two 1200x630 OGP images (src/og/torus.png, src/og/klein.png)
+// Renders the 1200x630 OGP images (src/og/torus.png, klein.png, fractal.png)
 // from the generated SVG figures, using headless Chromium.
 // Usage: CHROME=/path/to/chrome node scripts/gen-og.mjs
 import { execFileSync } from "node:child_process";
@@ -62,6 +62,7 @@ h1 { font-size: ${titleSize}px; font-weight: 600; line-height: 1.1; letter-spaci
 
 const torusSvg = readFileSync(join(root, "src/figures/torus-bare.svg"), "utf8");
 const kleinSvg = readFileSync(join(root, "src/figures/klein-bare.svg"), "utf8");
+const fractalSvg = readFileSync(join(root, "src/figures/fractal-bare.svg"), "utf8");
 
 const jobs = [
   {
@@ -84,6 +85,17 @@ const jobs = [
       titleSize: 56,
       catchline: "&ldquo;No inside. No outside.<br>No DevOps divide.&rdquo;",
       sub: "Appendix A: the ultimate form of DevOps.",
+    }),
+  },
+  {
+    out: "fractal.png",
+    html: card({
+      figure: fractalSvg,
+      figureWidth: 440,
+      title: "Fractal Engineering",
+      titleSize: 60,
+      catchline: "&ldquo;Don&rsquo;t decompose.<br>Recurse.&rdquo;",
+      sub: "Appendix B: organizational design<br>in non-integer dimensions.",
     }),
   },
 ];

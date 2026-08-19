@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "figures": "node scripts/gen-torus.mjs && node scripts/gen-klein.mjs",
+    "figures": "node scripts/gen-torus.mjs && node scripts/gen-klein.mjs && node scripts/gen-fractal.mjs",
     "build": "node build.mjs",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"
