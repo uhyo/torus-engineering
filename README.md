@@ -42,11 +42,11 @@ node scripts/gen-og.mjs    # OGP画像（1200×630 PNG）を再生成（要 Chro
 
 ## デプロイ
 
-1. `npm run deploy`（ビルドして `wrangler deploy`）
-2. 発行された URL（例: `https://torus-engineering.xxx.workers.dev`）またはカスタムドメインを `site.config.json` の `origin` に設定
-3. もう一度 `npm run deploy`
+`master` ブランチへの push で Cloudflare が自動的にビルド・デプロイする。通常は master にマージするだけでよく、手動デプロイは不要。
 
-`origin` は OGP画像 (`og:image`)・`og:url`・canonical・hreflang の絶対URLに使われるため、正しく設定しないと X などでカードが展開されない。
+手動でデプロイしたい場合は `npm run deploy`（ビルドして `wrangler deploy`）も使える。
+
+公開 URL を変更する場合（カスタムドメインへの移行など）は、`site.config.json` の `origin` を新しい URL に更新して master に push する。`origin` は OGP画像 (`og:image`)・`og:url`・canonical・hreflang の絶対URLに使われるため、正しく設定しないと X などでカードが展開されない。
 
 ## クレジット
 
