@@ -95,7 +95,7 @@ const jobs = [
       title: "Fractal Engineering",
       titleSize: 60,
       catchline: "&ldquo;Don&rsquo;t decompose.<br>Recurse.&rdquo;",
-      sub: "Appendix B: organizational design<br>in non-integer dimensions.",
+      sub: "Appendix B: agent hierarchies<br>in non-integer dimensions.",
     }),
   },
 ];
