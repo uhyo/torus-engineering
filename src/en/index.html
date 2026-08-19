@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torus Engineering</title>
+<meta name="description" content="We propose designing agentic systems as the product of two independent circles, S¹ × S¹ — that is, as a torus. The 6th-generation paradigm of AI-driven development. (Probably.)">
+<link rel="canonical" href="{{ORIGIN}}/en/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="Torus Engineering">
+<meta property="og:description" content="Don't run the loop. Wind it. The 6th-generation paradigm of AI-driven development. (Probably.)">
+<meta property="og:url" content="{{ORIGIN}}/en/">
+<meta property="og:image" content="{{ORIGIN}}/og/torus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Torus Engineering">
+<meta name="twitter:description" content="Don't run the loop. Wind it. The 6th-generation paradigm of AI-driven development. (Probably.)">
+<meta name="twitter:image" content="{{ORIGIN}}/og/torus.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — under review at no venue</span>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/ja/" lang="ja" hreflang="ja">日本語</a> /
+    <a href="/en/" aria-current="true">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Torus Engineering</h1>
+    <p class="catch" lang="en">“Don’t run the loop. Wind it.”</p>
+    <p class="tagline">The 6th-generation paradigm of AI-driven development. (Probably.)<sup><a href="#fn1" id="ref1" aria-label="Footnote 1">1</a></sup></p>
+    <p class="authors">The Torus Engineering Working Group<br>August 2026</p>
+
+    <div class="abstract">
+      <span class="abstract-head">Abstract</span>
+      Prompt, context, harness, loop, graph — the genealogy of “X engineering” admits a uniform reading as a monotone increase in topological dimension. As its natural continuation, we propose <em>torus engineering</em>: the practice of designing an agentic system as the product of two independent circles, <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> — that is, as a torus. We further give a migration criterion from graph engineering (Corollary 3.2) and introduce a new design parameter, the <em>winding ratio</em>.
+    </div>
+
+    <figure class="fig-hero">
+      {{include:src/figures/torus-en.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> The torus <var>T</var><sup>2</sup> = <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup>. The meridian circle carries the execution loop; the longitude carries the improvement loop.</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>Background: A Genealogy of Engineering</h2>
+    <p>The history of AI-driven development is a history of buzzwords, and the history of buzzwords is a history of topological spaces. As Table 1 shows, our community has consistently migrated its attention toward spaces of higher topological complexity.</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">Table 1.</span> The genealogy of “X engineering” and the corresponding topological types.</caption>
+      <thead>
+        <tr><th scope="col">Gen.</th><th scope="col">Era</th><th scope="col">Paradigm</th><th scope="col">Topological type</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1st</td><td>2022</td><td>Prompt engineering</td><td>Point (dim. 0)</td></tr>
+        <tr><td>2nd</td><td>2023</td><td>Context engineering</td><td>Interval [0, 1]</td></tr>
+        <tr><td>3rd</td><td>2024</td><td>Harness engineering</td><td>Manifold with boundary</td></tr>
+        <tr><td>4th</td><td>2025</td><td>Loop engineering</td><td>Circle <var>S</var><sup>1</sup></td></tr>
+        <tr><td>5th</td><td>2025</td><td>Graph engineering</td><td>1-complex</td></tr>
+        <tr class="now"><td>6th</td><td>2026–</td><td>Torus engineering</td><td><var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> (closed surface of genus 1)</td></tr>
+      </tbody>
+    </table>
+
+    <p>A careful reading of the genealogy reveals that the two most recent generations are complementary. A loop is <strong>iteration in the time direction</strong>; a graph is <strong>structure in the space direction</strong>. Nowhere in topology is it written that one must choose.</p>
+    <p>It follows that the next step is their product.</p>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>Definition</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 1.1 (Torus engineering).</span> The practice of designing an agentic system as the product of two independent circles, <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> — that is, as a torus — is called <em>torus engineering</em>.</p>
+    </div>
+
+    <p>The two circles are interpreted as follows.</p>
+
+    <dl class="props">
+      <dt>The first circle (meridian) — the execution loop</dt>
+      <dd>The daily revolutions: repairing CI, processing issues, opening pull requests. Classical loop engineering is recovered as the degenerate special case in which only this circle exists (a projection to genus 0).</dd>
+      <dt>The second circle (longitude) — the improvement loop</dt>
+      <dd>A meta-loop that periodically revisits the execution loop <em>itself</em>: revising CLAUDE.md, pruning underperforming Skills, accumulating failure patterns. The execution loop turns the work; the improvement loop turns the way the work is turned.</dd>
+    </dl>
+
+    <p>A trajectory on the torus is characterized by how many times it winds around each circle. The operating policy “one revolution of the improvement loop per hundred revolutions of the execution loop,” for instance, corresponds to a trajectory of winding numbers (100, 1). We call this ratio the <strong>winding ratio</strong>, and we contend that it is a first-class design parameter of torus engineering, to be chosen with the same care as checkpoint frequency or model selection. If the winding ratio is rational, the trajectory closes and the project settles into a periodic orbit. If it is irrational, the trajectory is dense in the torus — which is, in its own way, thorough.</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>A Theorem on Migration</h2>
+    <p>When should a practitioner of graph engineering migrate to the torus? The criterion follows at once from a classical result.</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 3.1.</span> The complete graph <var>K</var><sub>5</sub> and the complete bipartite graph <var>K</var><sub>3,3</sub> admit no embedding in the plane, yet both embed in the torus (genus 1).</p>
+      <p><em>Proof.</em> The first claim is Kuratowski’s theorem. The second is left as an exercise; it may also be verified by drawing <var>K</var><sub>5</sub> on a doughnut with a permanent marker.<span class="qed">∎</span></p>
+    </div>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 3.2 (Migration signal).</span> When the edges of your graph-engineered workflow cross and the diagram degenerates into spaghetti, this is not a failure of your design. It is a failure of the <em>ambient space</em>. It follows that edge crossings are precisely the migration signal toward torus engineering.<span class="qed">∎</span></p>
+    </div>
+
+    <p>The practical import of this corollary is considerable. When our workflow diagrams became unreadable, we used to blame our own architecture. We should have blamed planarity. A crossing edge is merely healthy evidence that a surface of higher genus is required.</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>Properties</h2>
+
+    <dl class="props">
+      <dt>Periodic boundary conditions</dt>
+      <dd>The state space of a torus has no edge. From whatever context one begins to read, the context closes up and returns (colloquially: the <em>Pac-Man principle</em>). Whatever exits the right side of the screen re-enters from the left. If a session dies mid-incident, nothing is lost — topologically speaking.</dd>
+      <dt>The meaning of the hole</dt>
+      <dd>A torus must have its hole (genus 1). The hole is a metaphor for <strong>the cavity through which human judgment passes</strong>. The moment everything is filled in with automation, the surface degenerates to a sphere (genus 0), and we regress to the 4th generation. Do not fill the hole. This is the design philosophy of torus engineering.</dd>
+      <dt>Extensibility</dt>
+      <dd>The paradigm extends naturally. Increase the genus and one obtains <em>double-torus engineering</em> (genus 2: an improvement loop for the improvement loop). Abandon orientability and one obtains <a href="/en/klein/"><em>Klein bottle engineering</em></a> (see the appendix) — widely held to be the ultimate form of DevOps, though its implementation in a three-dimensional org chart is known to require self-intersection.</dd>
+    </dl>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>Frequently Asked Questions</h2>
+
+    <dl class="faq">
+      <dt>Is this a joke?</dt>
+      <dd>The torus is a closed surface of genus 1.</dd>
+
+      <dt>What does adoption cost?</dt>
+      <dd>A coffee mug and a doughnut are homeomorphic; the cost is therefore one doughnut. Organizations already in possession of a coffee mug incur no additional expense.</dd>
+
+      <dt>Will this still be in use next year?</dt>
+      <dd>No point of the torus is an endpoint named “next year” (see §4, periodic boundary conditions).</dd>
+
+      <dt>Do our existing graph-engineering assets become worthless?</dt>
+      <dd>They do not. The torus accepts every planar graph, and moreover <var>K</var><sub>5</sub> and <var>K</var><sub>3,3</sub> (Theorem 3.1). One merely lifts the existing embedding one genus upward.</dd>
+    </dl>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> This claim has not been peer-reviewed, as the review process on a torus admits no terminal point. <a href="#ref1" aria-label="Back to text">↩</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">Cite this work</p>
+  <pre class="bibtex">@misc{torus2026,
+  title        = {Torus Engineering: Don't Run the Loop. Wind It.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/en/}},
+  note         = {The 6th-generation paradigm of AI-driven development. (Probably.)}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDon%27t%20run%20the%20loop.%20Wind%20it.%E2%80%9D%20%E2%80%94%20Torus%20Engineering%2C%20the%206th-generation%20paradigm%20of%20AI-driven%20development.%20(Probably.)&amp;url={{ORIGIN_ENC}}%2Fen%2F">Share on X</a>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="/ja/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/" aria-current="true">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>Appendix: <a href="/en/klein/">Klein Bottle Engineering</a></p>
+    <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+/* Torus Engineering — paper-style stylesheet */
+
+:root {
+  --paper: #fdfdfc;
+  --ink: #111111;
+  --ink-soft: #444444;
+  --ink-faint: #595959;
+  --rule: #cccccc;
+  --rule-dark: #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "STIX Two Text", "Noto Serif JP", "Times New Roman", "Yu Mincho", serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  -webkit-text-size-adjust: 100%;
+}
+
+:lang(ja) {
+  text-align: justify;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: #888888;
+}
+
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+var,
+.math {
+  font-style: italic;
+  font-family: "STIX Two Text", "Times New Roman", serif;
+}
+
+sup,
+sub {
+  line-height: 0;
+  font-size: 0.72em;
+}
+
+/* ---- header ---- */
+
+.site-header {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header .venue {
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.lang-switch a {
+  color: var(--ink);
+}
+
+.lang-switch [aria-current="true"] {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ---- layout ---- */
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+/* ---- hero ---- */
+
+.hero {
+  text-align: center;
+  padding-top: 2.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 7vw, 3.2rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.hero .subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.25em;
+}
+
+.hero .catch {
+  font-size: clamp(1.2rem, 4vw, 1.55rem);
+  font-weight: 600;
+  margin: 1.9rem 0 0.4rem;
+}
+
+.hero .catch:lang(en) {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero .tagline {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--ink-faint);
+}
+
+.hero .authors {
+  margin: 1.8rem 0 0;
+  font-size: 0.95rem;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* ---- abstract ---- */
+
+.abstract {
+  margin: 2.2rem auto 0;
+  max-width: 36rem;
+  font-size: 0.94rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.abstract .abstract-head {
+  display: block;
+  text-align: center;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* ---- figures ---- */
+
+figure {
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+figure svg {
+  max-width: 100%;
+  height: auto;
+}
+
+figure.fig-hero svg {
+  max-width: 34rem;
+}
+
+figure.fig-klein svg {
+  max-width: 22rem;
+}
+
+figcaption {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  max-width: 32rem;
+  margin: 0.6rem auto 0;
+  line-height: 1.7;
+  text-align: center;
+}
+
+figcaption .fig-label {
+  font-weight: 600;
+}
+
+/* ---- sections ---- */
+
+section {
+  margin-top: 3rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+h2 .secno {
+  margin-right: 0.6em;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.6rem 0 0.5rem;
+}
+
+p {
+  margin: 0.9rem 0;
+}
+
+/* ---- genealogy table ---- */
+
+.genealogy {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin: 1.4rem 0;
+  line-height: 1.6;
+}
+
+.genealogy caption {
+  caption-side: bottom;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  padding-top: 0.6rem;
+  text-align: center;
+}
+
+.genealogy caption .fig-label {
+  font-weight: 600;
+}
+
+.genealogy th,
+.genealogy td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.genealogy thead th {
+  border-top: 2px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+  font-weight: 600;
+}
+
+.genealogy tbody tr:last-child td {
+  border-bottom: 2px solid var(--rule-dark);
+}
+
+.genealogy .now td {
+  font-weight: 600;
+}
+
+/* ---- theorem / definition boxes ---- */
+
+.thmbox {
+  border: 1px solid var(--rule-dark);
+  padding: 1rem 1.3rem;
+  margin: 1.6rem 0;
+  line-height: 1.85;
+}
+
+.thmbox p {
+  margin: 0.55rem 0;
+}
+
+.thmbox p:first-child {
+  margin-top: 0;
+}
+
+.thmbox p:last-child {
+  margin-bottom: 0;
+}
+
+.thm-head {
+  font-weight: 700;
+}
+
+.thmbox .qed {
+  float: right;
+}
+
+.thmbox + .thmbox {
+  margin-top: 1rem;
+}
+
+.warnbox {
+  border: 1px solid var(--rule-dark);
+  border-left-width: 4px;
+  padding: 1rem 1.3rem;
+  margin: 1.6rem 0;
+}
+
+.warnbox .thm-head {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+}
+
+/* ---- property list (§4) ---- */
+
+.props {
+  margin: 1.2rem 0;
+  padding: 0;
+}
+
+.props dt {
+  font-weight: 600;
+  margin-top: 1.2rem;
+}
+
+.props dd {
+  margin: 0.2rem 0 0 0;
+}
+
+/* ---- FAQ ---- */
+
+.faq {
+  margin: 1.2rem 0;
+  padding: 0;
+}
+
+.faq dt {
+  font-weight: 600;
+  margin-top: 1.4rem;
+}
+
+.faq dt::before {
+  content: "Q. ";
+}
+
+.faq dd {
+  margin: 0.3rem 0 0 0;
+}
+
+.faq dd::before {
+  content: "A. ";
+  font-weight: 600;
+}
+
+/* ---- footnotes ---- */
+
+.footnotes {
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+.footnotes p {
+  margin: 0.4rem 0;
+}
+
+/* ---- footer ---- */
+
+.site-footer {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.6rem 1.25rem 3rem;
+  border-top: 2px solid var(--rule-dark);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.cite-head {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.bibtex {
+  border: 1px solid var(--rule);
+  background: #f7f7f5;
+  padding: 0.9rem 1.1rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 0 0 1.4rem;
+  color: var(--ink);
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0 1.6rem;
+}
+
+.share-button {
+  display: inline-block;
+  border: 1px solid var(--ink);
+  padding: 0.35rem 0.95rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.share-button:hover {
+  background: #f0f0ee;
+}
+
+.site-footer .smallprint {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-top: 1.6rem;
+  line-height: 1.7;
+}
+
+.site-footer .smallprint p {
+  margin: 0.3rem 0;
+}
+
+/* ---- back link (klein page) ---- */
+
+.backlink {
+  margin-top: 2.6rem;
+  font-size: 0.95rem;
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .genealogy {
+    font-size: 0.84rem;
+  }
+
+  .genealogy th,
+  .genealogy td {
+    padding: 0.4rem 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

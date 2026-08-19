@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>トーラスエンジニアリング — Torus Engineering</title>
+<meta name="description" content="エージェントシステムを2つの独立な円環の直積 S¹ × S¹、すなわちトーラスとして設計する。AI駆動開発・第6世代パラダイム（たぶん）。">
+<link rel="canonical" href="{{ORIGIN}}/ja/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="トーラスエンジニアリング — Torus Engineering">
+<meta property="og:description" content="ループを回すな、ループを巻け。AI駆動開発・第6世代パラダイム（たぶん）。">
+<meta property="og:url" content="{{ORIGIN}}/ja/">
+<meta property="og:image" content="{{ORIGIN}}/og/torus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="トーラスエンジニアリング — Torus Engineering">
+<meta name="twitter:description" content="ループを回すな、ループを巻け。AI駆動開発・第6世代パラダイム（たぶん）。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/torus.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — いかなる学会にも投稿されていない</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/" lang="ja" aria-current="true">日本語</a> /
+    <a href="/en/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Torus Engineering</h1>
+    <p class="subtitle">トーラスエンジニアリング</p>
+    <p class="catch">「ループを回すな、ループを巻け。」</p>
+    <p class="tagline">AI駆動開発・第6世代パラダイム（たぶん）<sup><a href="#fn1" id="ref1" aria-label="脚注1">1</a></sup></p>
+    <p class="authors">The Torus Engineering Working Group<br>2026年8月</p>
+
+    <div class="abstract" lang="ja">
+      <span class="abstract-head">概要</span>
+      プロンプト、コンテキスト、ハーネス、ループ、グラフ——「◯◯エンジニアリング」の系譜は、いずれも位相的次元の単調な増大として理解できる。本稿では、その自然な帰結として、エージェントシステムを2つの独立な円環の直積 <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup>、すなわちトーラスとして設計する実践「トーラスエンジニアリング」を提唱する。あわせて、グラフエンジニアリングからの移行判断基準（系 3.2）、および周期比 (winding ratio) と呼ばれる新しい設計パラメータを与える。
+    </div>
+
+    <figure class="fig-hero">
+      {{include:src/figures/torus-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> トーラス <var>T</var><sup>2</sup> = <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> の概念図。子午線方向の円環が実行ループ、経線方向の円環が改善ループに対応する。</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>背景：エンジニアリングの系譜</h2>
+    <p>AI駆動開発の歴史は、バズワードの歴史である。そしてバズワードの歴史は、位相空間の歴史である。表 1 に示すように、我々のコミュニティは一貫して、より高次の位相構造へと関心を移してきた。</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">表 1.</span> 「◯◯エンジニアリング」の系譜と、対応する位相型。</caption>
+      <thead>
+        <tr><th scope="col">世代</th><th scope="col">年代</th><th scope="col">パラダイム</th><th scope="col">位相型</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>第1</td><td>2022</td><td>プロンプトエンジニアリング</td><td>点（0次元）</td></tr>
+        <tr><td>第2</td><td>2023</td><td>コンテキストエンジニアリング</td><td>区間 [0, 1]</td></tr>
+        <tr><td>第3</td><td>2024</td><td>ハーネスエンジニアリング</td><td>境界付き多様体</td></tr>
+        <tr><td>第4</td><td>2025</td><td>ループエンジニアリング</td><td>円環 <var>S</var><sup>1</sup></td></tr>
+        <tr><td>第5</td><td>2025</td><td>グラフエンジニアリング</td><td>1次元複体</td></tr>
+        <tr class="now"><td>第6</td><td>2026–</td><td>トーラスエンジニアリング</td><td><var>S</var><sup>1</sup> × <var>S</var><sup>1</sup>（種数1の閉曲面）</td></tr>
+      </tbody>
+    </table>
+
+    <p>ここで系譜を注意深く観察すると、直近の2世代が相補的であることに気づく。ループとは<strong>時間方向の反復</strong>であり、グラフとは<strong>空間方向の構造</strong>である。片方だけを選ぶ理由は、位相幾何学のどこにも書かれていない。</p>
+    <p>ならば次は、その直積である。</p>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>定義</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 1.1（トーラスエンジニアリング）.</span> エージェントシステムを 2 つの独立な円環の直積 <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup>、すなわちトーラスとして設計する実践を、<em>トーラスエンジニアリング</em>と呼ぶ。</p>
+    </div>
+
+    <p>2 つの円環は、それぞれ次のように解釈される。</p>
+
+    <dl class="props">
+      <dt>第1の円環（子午線）＝実行ループ</dt>
+      <dd>CI 修復、Issue 処理、PR 作成といった日々の周回である。従来のループエンジニアリングは、この円環のみを扱う退化した特殊例（種数 0 への射影）とみなせる。</dd>
+      <dt>第2の円環（経線）＝改善ループ</dt>
+      <dd>実行ループ<em>そのもの</em>を周期的に見直すメタループである。CLAUDE.md の改訂、Skills の淘汰、失敗パターンの蓄積がここに属する。実行ループが仕事を回し、改善ループが「仕事の回し方」を回す。</dd>
+    </dl>
+
+    <p>トーラス上の軌道は、2 つの円環をそれぞれ何周するかで特徴づけられる。たとえば「実行ループ 100 周につき改善ループ 1 周」という運用は、巻き数 (100, 1) の軌道に対応する。この比を<strong>周期比 (winding ratio)</strong> と呼ぶ。周期比はトーラスエンジニアリングにおける第一級の設計パラメータであり、チェックポイントの頻度やモデルの選定と同格に扱われるべきものである。周期比が有理数であれば軌道は閉じ、プロジェクトは周期的に安定する。無理数であれば軌道はトーラス全体を稠密に埋め尽くすが、それはそれで網羅的である。</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>定理：移行判断</h2>
+    <p>グラフエンジニアリングの実務者は、いつトーラスへ移行すべきか。判断基準は、古典的な結果から直ちに導かれる。</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 3.1.</span> 完全グラフ <var>K</var><sub>5</sub> および完全2部グラフ <var>K</var><sub>3,3</sub> は平面には埋め込めないが、トーラス（種数 1）には埋め込める。</p>
+      <p><em>Proof.</em> 前半はクラトフスキーの定理として知られる。後半は読者の演習とするが、ドーナツに油性ペンで <var>K</var><sub>5</sub> を描けば確認できる。<span class="qed">∎</span></p>
+    </div>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 3.2（移行シグナル）.</span> グラフエンジニアリングでエッジが交差しスパゲッティ化したとき、それは設計の失敗ではない。平面という<em>台となる空間</em>の失敗である。すなわちそれは、トーラスエンジニアリングへの移行シグナルである。<span class="qed">∎</span></p>
+    </div>
+
+    <p>この系の実務上の含意は大きい。ワークフロー図が読めなくなったとき、我々はこれまで自らの設計を責めてきた。しかし責めるべきは平面性である。エッジの交差は、より高い種数の曲面が必要であることを示す、健全な兆候にすぎない。</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>諸性質</h2>
+
+    <dl class="props">
+      <dt>周期境界条件</dt>
+      <dd>トーラス上の状態空間には「端」が存在しない。どのコンテキストから読み始めても、文脈は必ず閉じて元に戻る（通称：<em>パックマン原理</em>）。画面の右端から出たものは、左端から戻ってくる。障害対応の途中でセッションが切れても、位相的には何も失われていない。</dd>
+      <dt>穴の存在意義</dt>
+      <dd>トーラスがトーラスであるためには、穴がなければならない（種数 1）。この穴は<strong>人間の判断が通る空洞</strong>のメタファーである。すべてを自動化で埋め尽くした瞬間、曲面は球面（種数 0）に退化し、我々は第4世代に逆戻りする。穴を埋めないこと。それがトーラスエンジニアリングの設計思想である。</dd>
+      <dt>拡張性</dt>
+      <dd>本パラダイムは自然に拡張される。種数を増やせば<em>ダブルトーラスエンジニアリング</em>（種数 2、改善ループの改善ループ）。向き付けを捨てれば<a href="/ja/klein/"><em>クラインの壺エンジニアリング</em></a>（付録参照）。後者は DevOps の究極形とされるが、3 次元の組織図では実装に自己交差を伴うことが知られている。</dd>
+    </dl>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>よくある質問</h2>
+
+    <dl class="faq">
+      <dt>これは冗談ですか？</dt>
+      <dd>トーラスは種数 1 の閉曲面です。</dd>
+
+      <dt>導入コストはどのくらいですか？</dt>
+      <dd>コーヒーカップとドーナツは位相同型なので、ドーナツ 1 個分です。すでにコーヒーカップをお持ちの組織では追加費用は発生しません。</dd>
+
+      <dt>来年も使われていますか？</dt>
+      <dd>トーラス上に「来年」という端点は存在しません（§4、周期境界条件）。</dd>
+
+      <dt>既存のグラフエンジニアリング資産は無駄になりますか？</dt>
+      <dd>なりません。トーラスはあらゆる平面グラフに加えて <var>K</var><sub>5</sub> と <var>K</var><sub>3,3</sub> を受け入れます（Theorem 3.1）。既存の埋め込みを 1 つ上の種数へ持ち上げるだけです。</dd>
+    </dl>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> 本主張は査読を受けていない。トーラス上では査読プロセスに終点が存在しないためである。 <a href="#ref1" aria-label="本文へ戻る">↩</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">本研究を引用する</p>
+  <pre class="bibtex">@misc{torus2026,
+  title        = {Torus Engineering: Don't Run the Loop. Wind It.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/ja/}},
+  note         = {AI駆動開発・第6世代パラダイム（たぶん）}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E5%9B%9E%E3%81%99%E3%81%AA%E3%80%81%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E5%B7%BB%E3%81%91%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%88%E3%83%BC%E3%83%A9%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9AAI%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%83%BB%E7%AC%AC6%E4%B8%96%E4%BB%A3%E3%83%91%E3%83%A9%E3%83%80%E3%82%A4%E3%83%A0%EF%BC%88%E3%81%9F%E3%81%B6%E3%82%93%EF%BC%89&amp;url={{ORIGIN_ENC}}%2Fja%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/" aria-current="true">日本語</a> / <a href="/en/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a></p>
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
