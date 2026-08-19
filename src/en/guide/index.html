@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torus Engineering in Practice — The Engineer’s Guide</title>
+<meta name="description" content="A practical guide for engineers who want to adopt torus engineering today. Copy-paste-ready CLAUDE.md and improvement-loop.yml, a winding-ratio cheat sheet, and troubleshooting. Reading the theory is optional.">
+<link rel="canonical" href="{{ORIGIN}}/en/guide/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/guide/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/guide/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="Torus Engineering in Practice — The Engineer’s Guide">
+<meta property="og:description" content="“Spare me the theory. Give me the snippet.” Just the actionable conclusions. Installation takes three minutes (a topological estimate).">
+<meta property="og:url" content="{{ORIGIN}}/en/guide/">
+<meta property="og:image" content="{{ORIGIN}}/og/torus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Torus Engineering in Practice — The Engineer’s Guide">
+<meta name="twitter:description" content="“Spare me the theory. Give me the snippet.” Just the actionable conclusions. Installation takes three minutes (a topological estimate).">
+<meta name="twitter:image" content="{{ORIGIN}}/og/torus.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Technical Report — verified to run, in lieu of peer review</span>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/ja/guide/" lang="ja" hreflang="ja">日本語</a> /
+    <a href="/en/guide/" aria-current="true">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Torus Engineering in Practice</h1>
+    <p class="catch" lang="en">“Spare me the theory. Give me the snippet.”</p>
+    <p class="tagline">The engineer’s guide — official documentation for adopting the paradigm without reading the paper</p>
+
+    <div class="tldr">
+      <span class="tldr-head">TL;DR</span>
+      Keep two loops. The first <strong>turns the work</strong> (you already have this one). The second <strong>periodically revisits how the work is turned</strong> (put it on a calendar). If the two wind independently, the product takes care of itself. That’s all — if you have read this far, installation is essentially complete.
+    </div>
+  </div>
+
+  <section id="quickstart" aria-labelledby="h-quickstart">
+    <h2 id="h-quickstart"><span class="secno">§1</span>Quick Start (3 minutes)<sup><a href="#gfn1" id="gref1" aria-label="Footnote 1">1</a></sup></h2>
+
+    <ol class="steps">
+      <li><span class="step-name">Locate your execution loop.</span> You already have one: fixing CI, handling issues, opening PRs — the thing you go around every day is the first circle (the meridian). Additional work required: none.</li>
+      <li><span class="step-name">Install an improvement loop.</span> Create one recurring calendar event titled “Review how the agents are run (30 min).” That is your second circle (the longitude). It is topologically essential that this exists <strong>as a calendar event</strong>, not as good intentions.</li>
+      <li><span class="step-name">Take the product.</span> Do nothing. As long as the two loops wind independently, the product <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> forms on its own. This step is handled by topology; no additional dependency is required.</li>
+    </ol>
+
+    <p>That is the entire installation. Everything below is for reading after it works.</p>
+  </section>
+
+  <section id="files" aria-labelledby="h-files">
+    <h2 id="h-files"><span class="secno">§2</span>Copy-Paste Files</h2>
+    <p>For readers who want only the conclusions, here are two files you can paste as-is. The first appends to <code>CLAUDE.md</code>; the second winds the longitude. Adjust the numbers to taste, but <strong>do not change the structure (two loops, mutually independent)</strong>.</p>
+
+    <figure class="code-sample">
+      <figcaption class="code-title"><code>CLAUDE.md</code> (append)</figcaption>
+      <pre class="codeblock"><code>## Torus Operating Rules
+
+### Execution loop (meridian)
+- If CI is red, fix it. If an issue arrives, handle it. If you open a PR,
+  see it through.
+- After each revolution, increment the number in `.torus/revolutions`.
+
+### Improvement loop (longitude)
+- Whenever `.torus/revolutions` reaches a multiple of 100, stop fixing the
+  loop's work and fix the loop **itself**:
+  1. Name three failure patterns from the last 100 revolutions
+  2. Revise at least one thing in this CLAUDE.md
+  3. Delete one Skill nobody uses (a brief eulogy is optional)
+- Do not improve the improvement loop from inside the improvement loop
+  (genus 2 ships in the next major version).
+
+### Forbidden
+- Do not fill the hole. The moment everything is automated, the torus
+  degenerates to a sphere and you are back in the 4th generation (§4 of
+  the paper). Always keep one cavity through which human judgment passes.</code></pre>
+    </figure>
+
+    <figure class="code-sample">
+      <figcaption class="code-title"><code>.github/workflows/improvement-loop.yml</code></figcaption>
+      <pre class="codeblock"><code># The longitudinal circle. Winds independently of the meridian (your usual CI).
+name: improvement-loop
+on:
+  schedule:
+    - cron: "0 9 * * 1"   # tune your winding ratio here (see Table 1)
+  workflow_dispatch:        # the hole through which human judgment passes. Do not seal.
+jobs:
+  wind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revise the execution loop itself
+        run: |
+          echo "Aggregate recent failure patterns; open a PR revising CLAUDE.md"
+          # Put your favorite agent CLI here. There is one rule:
+          # this job must not touch product code. The moment it does, it is
+          # the execution loop, the longitude collapses onto the meridian,
+          # and your genus drops to 0.</code></pre>
+    </figure>
+  </section>
+
+  <section id="ratio" aria-labelledby="h-ratio">
+    <h2 id="h-ratio"><span class="secno">§3</span>Choosing a Winding Ratio (Cheat Sheet)</h2>
+    <p>The winding ratio — how many revolutions of the execution loop per revolution of the improvement loop — is the only tuning parameter in torus engineering. When in doubt, use 100 : 1.</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">Table 1.</span> Recommended winding ratios.</caption>
+      <thead>
+        <tr><th scope="col">Ratio</th><th scope="col">Name</th><th scope="col">Use case</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nw">10 : 1</td><td>Aggressive</td><td>Early days, when nothing is understood yet.</td></tr>
+        <tr class="now"><td class="nw">100 : 1</td><td>Standard</td><td>When in doubt, this. The recommended default.</td></tr>
+        <tr><td class="nw">1000 : 1</td><td>Enterprise</td><td>For organizations where improvement requires sign-off.</td></tr>
+        <tr><td class="nw">1 : 1</td><td>The diagonal</td><td>A retrospective after every revolution. Nothing but retrospectives. Not recommended.</td></tr>
+        <tr><td class="nw"><var>n</var> : 0</td><td>4th generation</td><td>No improvement loop. That is just a loop.</td></tr>
+        <tr><td class="nw"><var>φ</var> : 1</td><td>Golden</td><td>The orbit fills the torus densely. Everything will be improved eventually; “eventually” carries no timestamp.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="troubleshooting" aria-labelledby="h-troubleshooting">
+    <h2 id="h-troubleshooting"><span class="secno">§4</span>Troubleshooting</h2>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">Table 2.</span> Common symptoms and their topological diagnoses.</caption>
+      <thead>
+        <tr><th scope="col">Symptom</th><th scope="col">Topological diagnosis</th><th scope="col">Remedy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Cannot remember the last time the improvement loop ran</td><td>Degeneration to a sphere (genus 0)</td><td>Eat one doughnut, reflect on the purpose of the hole, and return to Step 2 of §1.</td></tr>
+        <tr><td>Nothing but retrospectives; no work gets done</td><td>An orbit of winding numbers (0, <var>n</var>)</td><td>Your winding ratio is upside down. Swap numerator and denominator.</td></tr>
+        <tr><td>The workflow diagram has become spaghetti</td><td>Failure of the ambient space (the plane)</td><td>Not your fault. Raise the genus (paper, Corollary 3.2).</td></tr>
+        <tr><td>The session died mid-task</td><td>Normal</td><td>By periodic boundary conditions, whatever exits the right edge re-enters from the left. Topologically, nothing was lost.</td></tr>
+        <tr><td>Can no longer tell Dev from Ops</td><td>Early-stage Klein-bottling</td><td>Working as intended. Congratulations (<a href="/en/klein/">Appendix A</a>).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="checklist" aria-labelledby="h-checklist">
+    <h2 id="h-checklist"><span class="secno">§5</span>Adoption Checklist</h2>
+
+    <ul class="checklist">
+      <li>The execution loop is running (i.e., you are doing your job)</li>
+      <li>The improvement loop exists on a calendar (as an event, not as hope)</li>
+      <li>You have chosen one winding ratio and can say it out loud (“we run 100 to 1”)</li>
+      <li>The improvement loop changes the execution loop, and does not do the execution loop’s work</li>
+      <li>There is a hole (a human exercises judgment in at least one place)</li>
+      <li>A doughnut has been procured (optional; recommended)</li>
+    </ul>
+
+    <p>Four checks out of six and your system is topologically a torus. The remaining two will be improved on the next trip around the longitude. That is the nice thing about this method.</p>
+  </section>
+
+  <section id="glossary" aria-labelledby="h-glossary">
+    <h2 id="h-glossary"><span class="secno">§6</span>Glossary</h2>
+    <p>Provided in case you must converse with the authors of the paper.</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">Table 3.</span> Paper terminology → engineer’s terminology.</caption>
+      <thead>
+        <tr><th scope="col">In the paper</th><th scope="col">In engineering</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Meridian circle</td><td>Your everyday work loop</td></tr>
+        <tr><td>Longitudinal circle</td><td>The recurring retrospective</td></tr>
+        <tr><td>Winding ratio</td><td>How many revolutions per retrospective</td></tr>
+        <tr><td>Genus</td><td>The number of holes; loosely, the number of places a human still fits</td></tr>
+        <tr><td>Dense orbit</td><td>The backlog will all get done (date TBD)</td></tr>
+        <tr><td>Degeneration to the sphere</td><td>Fully automated, and nobody is watching</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="faq" aria-labelledby="h-faq">
+    <h2 id="h-faq"><span class="secno">§7</span>Frequently Asked Questions (Practical)</h2>
+
+    <dl class="faq">
+      <dt>Do I need to read the paper?</dt>
+      <dd>No. That is what this page is for. Note, however, that on a torus the state “hasn’t read it” eventually winds back around to “has read it.”</dd>
+
+      <dt>Does it work if I just copy-paste?</dt>
+      <dd>The act of copy-pasting was one revolution of the execution loop. It is already working.</dd>
+
+      <dt>How do I explain this to my manager?</dt>
+      <dd>Try “it is the product of a loop and a graph.” If that fails, “the adoption cost is one doughnut” (paper, §5) will succeed.</dd>
+    </dl>
+  </section>
+
+  <div class="footnotes">
+    <p id="gfn1"><sup>1</sup> “Three minutes” is a topological estimate and may be continuously deformed into an interval of arbitrary length. <a href="#gref1" aria-label="Back to text">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/en/">Theory: Torus Engineering (the paper)</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CSpare%20me%20the%20theory.%20Give%20me%20the%20snippet.%E2%80%9D%20%E2%80%94%20Torus%20Engineering%20in%20Practice%3A%20The%20Engineer%E2%80%99s%20Guide&amp;url={{ORIGIN_ENC}}%2Fen%2Fguide%2F">Share on X</a>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="/ja/guide/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/guide/" aria-current="true">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>Theory: <a href="/en/">Torus Engineering (the paper)</a> · Appendix: <a href="/en/klein/">Klein Bottle Engineering</a></p>
+    <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+<script>
+for (const sample of document.querySelectorAll(".code-sample")) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "copy-btn";
+  btn.textContent = "Copy";
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(sample.querySelector("code").textContent);
+      btn.textContent = "Wound it.";
+    } catch {
+      btn.textContent = "Wind it by hand";
+    }
+    setTimeout(() => { btn.textContent = "Copy"; }, 2000);
+  });
+  sample.querySelector(".code-title").appendChild(btn);
+}
+</script>
+
+</body>
+</html>
