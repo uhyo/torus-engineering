@@ -8,7 +8,8 @@
 |---|---|
 | `/` | Accept-Language を見て `/ja/` または `/en/` へ 302 リダイレクト（Worker が処理） |
 | `/ja/` `/en/` | トップページ（日英） |
-| `/ja/klein/` `/en/klein/` | 付録：クラインの壺エンジニアリング（日英） |
+| `/ja/klein/` `/en/klein/` | 付録A：クラインの壺エンジニアリング（日英） |
+| `/ja/fractal/` `/en/fractal/` | 付録B：フラクタルエンジニアリング（日英） |
 
 ## リポジトリ構成
 
@@ -35,7 +36,7 @@ npm run preview      # ビルドして wrangler dev（http://localhost:8787）
 図を作り直す場合:
 
 ```sh
-npm run figures            # トーラス・クラインの壺の SVG を再生成
+npm run figures            # トーラス・クラインの壺・フラクタルの SVG を再生成
 node scripts/gen-og.mjs    # OGP画像（1200×630 PNG）を再生成（要 Chromium。CHROME=/path で指定可）
 ```
 
