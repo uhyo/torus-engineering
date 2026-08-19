@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fractal Engineering</title>
-<meta name="description" content="Designing agentic systems so that observation at any scale reveals a structure similar to the whole — that is, as a fractal. Organizational design in non-integer dimensions.">
+<meta name="description" content="Designing agentic systems so that observation at any scale reveals a structure similar to the whole — that is, as a fractal. Agent hierarchies in non-integer dimensions.">
 <link rel="canonical" href="{{ORIGIN}}/en/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="Fractal Engineering">
-<meta property="og:description" content="Don't decompose. Recurse. Organizational design in non-integer dimensions.">
+<meta property="og:description" content="Don't decompose. Recurse. Agent hierarchies in non-integer dimensions.">
 <meta property="og:url" content="{{ORIGIN}}/en/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fractal Engineering">
-<meta name="twitter:description" content="Don't decompose. Recurse. Organizational design in non-integer dimensions.">
+<meta name="twitter:description" content="Don't decompose. Recurse. Agent hierarchies in non-integer dimensions.">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +43,7 @@
   <div class="hero">
     <h1>Fractal Engineering</h1>
     <p class="catch" lang="en">“Don’t decompose. Recurse.”</p>
-    <p class="tagline">Appendix B: Organizational design in non-integer dimensions</p>
+    <p class="tagline">Appendix B: Agent hierarchies in non-integer dimensions</p>
 
     <figure class="fig-fractal">
       {{include:src/figures/fractal-en.svg}}
@@ -59,7 +59,7 @@
     </div>
 
     <p>Section 4 of the main text considered two extensions of the paradigm: raising the genus (the double torus) and abandoning orientability (the Klein bottle, Appendix A). Both, however, rested on one remaining assumption: <strong>that the dimension is an integer</strong>. In this appendix we abandon it.</p>
-    <p>An orchestrator delegates its task to subagents. Each subagent delegates its portion to further subagents. Some observers call this “runaway delegation” and propose a cap on the depth of the hierarchy. They are mistaken. It is the manifestation of self-similarity, and the strongest available evidence that the system is correctly fractal. It is not to be stopped; it is to be published as Fig. 1.</p>
+    <p>An orchestrator delegates its task to subagents. Each subagent delegates its portion to still smaller subagents, and magnification at any depth reveals the same scene. This phenomenon has traditionally been called “runaway delegation” and treated as a failure mode, to be suppressed by a cap on the recursion depth. Fractal engineering inverts the interpretation. That the same structure appears at every scale is precisely the requirement of Definition B.1 — empirical confirmation that the system is operating, as designed, as a fractal. In other words, this belongs not in a bug report but in a results section. We therefore did not stop the recursion. We took a screenshot instead, and placed it at the head of this paper as Fig. 1.</p>
   </section>
 
   <section id="secB2" aria-labelledby="h-secB2">
@@ -67,23 +67,23 @@
 
     <div class="thmbox">
       <p><span class="thm-head">Theorem B.2.</span> When every agent delegates to three subagents at half its own scale, the resulting organization has Hausdorff dimension log 3 / log 2 ≈ 1.585.</p>
-      <p><span class="thm-head">Corollary B.3.</span> Such an organization is therefore too large to fit into a one-dimensional reporting line, and too small to fill a two-dimensional org chart. That the org chart cannot be drawn is not a failure of the illustrator. <strong>It is a shortage of dimensions.</strong><span class="qed">∎</span></p>
+      <p><span class="thm-head">Corollary B.3.</span> Such an agent hierarchy is therefore too large to fit into a one-dimensional context window (a linear sequence of tokens), and too small to fill a two-dimensional workflow diagram. That the workflow diagram cannot be drawn is not a failure of the diagramming tool. <strong>It is a shortage of dimensions.</strong><span class="qed">∎</span></p>
     </div>
 
-    <p>Work that “does not appear on the org chart” has traditionally been treated as a defect of the performance-review process. Fractal engineering reinterprets it. An entity of dimension 1.585 cannot be rendered faithfully on any form of integer dimension. When you struggle to explain your contribution in a performance review, the difficulty is not one of articulation; it is the loss of measure that necessarily accompanies projection onto an integer dimension.</p>
+    <p>When a subagent finishes its work, it reports back to its parent as a summary. That something is always missing from this summary is well known to practitioners, and has traditionally been attributed to the limits of the model’s summarization ability. Fractal engineering reinterprets it. Work of dimension 1.585 cannot be rendered faithfully in any one-dimensional sequence of tokens. The report is incomplete not through any negligence of the model, but because of the <strong>loss of measure</strong> that necessarily accompanies projection onto an integer dimension.</p>
   </section>
 
   <section id="secB3" aria-labelledby="h-secB3">
     <h2 id="h-secB3"><span class="secno">§B.3</span>An Application to Estimation</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.4 (Divergence of estimates).</span> The remaining work of a task with fractal boundary grows without bound as the measuring stick — that is, the ticket granularity — is refined.</p>
+      <p><span class="thm-head">Theorem B.4 (Divergence of estimates).</span> The remaining work of a task with fractal boundary grows without bound as the measuring stick — that is, the granularity of the tasks delegated to subagents — is refined.</p>
     </div>
 
-    <p>This is the natural translation, into project management, of the phenomenon known as the <em>coastline paradox</em>. Just as the coastline of Britain grows longer the shorter the ruler used to measure it, the remaining work of a task grows the more finely it is broken down. That every sprint planning uncovers more work is neither negligence nor oversight on the part of the team. <strong>It is an empirical measurement of the boundary’s fractality.</strong> Should a finite estimate be strictly required, it suffices to use a sufficiently long ruler (“two weeks, probably”).</p>
+    <p>This is the natural translation, into agent operations, of the phenomenon known as the <em>coastline paradox</em>. Just as the coastline of Britain grows longer the shorter the ruler used to measure it, the remaining work of a task grows the more finely subagents are dispatched to survey it. That every survey of the repository makes the TODO list longer is neither a hallucination nor a planning failure. <strong>It is an empirical measurement of the boundary’s fractality.</strong> Should a finite estimate be strictly required, it suffices to use a sufficiently long ruler: launch no subagents at all, and let the orchestrator answer in a single line (“two weeks, probably”).</p>
 
     <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> In organizations that adopt this practice, every recurring meeting, at every level of the hierarchy, discusses exactly the same agenda. That is the point.</p>
+      <p><span class="thm-head">Warning.</span> In systems that adopt this practice, opening the log of any subagent, at any depth, displays exactly the same prompt. That is the point.</p>
     </div>
   </section>
 
@@ -92,7 +92,7 @@
 
 <footer class="site-footer">
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDon%E2%80%99t%20decompose.%20Recurse.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20organizational%20design%20in%20non-integer%20dimensions.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDon%E2%80%99t%20decompose.%20Recurse.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20agent%20hierarchies%20in%20non-integer%20dimensions.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
     <nav class="lang-switch" aria-label="Language">
       <a href="/ja/fractal/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/fractal/" aria-current="true">English</a>
     </nav>

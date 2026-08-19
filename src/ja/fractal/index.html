@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>フラクタルエンジニアリング — Fractal Engineering</title>
-<meta name="description" content="エージェントシステムを、どのスケールで観察しても全体と相似な構造——すなわちフラクタル——として設計する。非整数次元の組織設計論。">
+<meta name="description" content="エージェントシステムを、どのスケールで観察しても全体と相似な構造——すなわちフラクタル——として設計する。非整数次元のエージェント階層設計論。">
 <link rel="canonical" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta property="og:description" content="分解するな、再帰せよ。非整数次元の組織設計論。">
+<meta property="og:description" content="分解するな、再帰せよ。非整数次元のエージェント階層設計。">
 <meta property="og:url" content="{{ORIGIN}}/ja/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta name="twitter:description" content="分解するな、再帰せよ。非整数次元の組織設計論。">
+<meta name="twitter:description" content="分解するな、再帰せよ。非整数次元のエージェント階層設計。">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
     <h1>Fractal Engineering</h1>
     <p class="subtitle">フラクタルエンジニアリング</p>
     <p class="catch">「分解するな、再帰せよ。」</p>
-    <p class="tagline">付録 B：非整数次元の組織設計</p>
+    <p class="tagline">付録 B：非整数次元のエージェント階層設計</p>
 
     <figure class="fig-fractal">
       {{include:src/figures/fractal-ja.svg}}
@@ -60,7 +60,7 @@
     </div>
 
     <p>本編 §4 では、種数を増やす拡張（ダブルトーラス）と、向き付けを捨てる拡張（クラインの壺、付録 A）を論じた。しかし、いずれの拡張もなお 1 つの仮定の上に立っていた。<strong>次元が整数である</strong>という仮定である。本付録ではこれを捨てる。</p>
-    <p>オーケストレータはタスクをサブエージェントに委譲する。サブエージェントは、受け取ったタスクをさらにサブエージェントに委譲する。この光景を「委譲の暴走」と呼び、階層の深さに上限を設けようとする向きがある。誤りである。それは自己相似性の発露であり、システムが正しくフラクタルであることの何よりの証拠である。止めるべきものではなく、Fig. 1 として掲載すべきものである。</p>
+    <p>オーケストレータはタスクをサブエージェントに委譲する。サブエージェントは、受け取ったタスクをさらに小さなサブエージェントに委譲する。どの深さを拡大しても、同じ光景が現れる。従来、この現象は「委譲の暴走」と呼ばれ、再帰の深さに上限を設けて止めるべき障害として扱われてきた。フラクタルエンジニアリングは、この解釈を逆転させる。あらゆるスケールで同じ構造が現れることは、Definition B.1 の要件そのものであり、システムが設計どおりフラクタルとして動作していることの実証である。つまりこれはバグ報告ではなく、成果報告に属する。ゆえに我々はこの再帰を止めなかった。代わりにスクリーンショットに収め、本稿の冒頭に Fig. 1 として掲げた。</p>
   </section>
 
   <section id="secB2" aria-labelledby="h-secB2">
@@ -68,23 +68,23 @@
 
     <div class="thmbox">
       <p><span class="thm-head">Theorem B.2.</span> 各エージェントが、自身の 1/2 のスケールを持つ 3 体のサブエージェントに委譲するとき、得られる組織のハウスドルフ次元は log 3 / log 2 ≈ 1.585 である。</p>
-      <p><span class="thm-head">Corollary B.3.</span> ゆえにこの組織は、1 次元のレポートライン（指揮系統）に収めるには大きすぎ、2 次元の組織図に描き切るには小さすぎる。組織図が描けないのは作図者の失敗ではない。<strong>次元の不足である。</strong><span class="qed">∎</span></p>
+      <p><span class="thm-head">Corollary B.3.</span> ゆえにこのエージェント階層は、1 次元のコンテキストウィンドウ（トークンの線形列）に収めるには大きすぎ、2 次元のワークフロー図に描き切るには小さすぎる。ワークフロー図が描けないのは作図ツールの失敗ではない。<strong>次元の不足である。</strong><span class="qed">∎</span></p>
     </div>
 
-    <p>従来、「組織図に載らない働き」は評価制度の穴として扱われてきた。フラクタルエンジニアリングはこれを再解釈する。次元 1.585 の存在は、いかなる整数次元の帳票にも正確には写らない。評価面談で自身の貢献をうまく説明できないのは、当人の説明能力の問題ではなく、整数次元への射影に必然的に伴う測度の損失である。</p>
+    <p>サブエージェントは作業を終えるとき、その成果を要約して親エージェントに報告する。この要約から常に何かが抜け落ちることは実務者の間でよく知られており、従来はモデルの要約能力の限界として扱われてきた。フラクタルエンジニアリングはこれを再解釈する。次元 1.585 の作業は、いかなる 1 次元のトークン列にも正確には写らない。報告が不完全なのはモデルの怠慢ではなく、整数次元への射影に必然的に伴う<strong>測度の損失</strong>である。</p>
   </section>
 
   <section id="secB3" aria-labelledby="h-secB3">
     <h2 id="h-secB3"><span class="secno">§B.3</span>見積りへの応用</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.4（見積りの発散）.</span> フラクタルな境界を持つタスクの残作業量は、計測に用いる定規——すなわちチケットの粒度——を細かくするにつれて、際限なく増大する。</p>
+      <p><span class="thm-head">Theorem B.4（見積りの発散）.</span> フラクタルな境界を持つタスクの残作業量は、計測に用いる定規——すなわちサブエージェントに委譲するタスクの粒度——を細かくするにつれて、際限なく増大する。</p>
     </div>
 
-    <p>これは<em>海岸線のパラドックス</em>として知られる現象の、プロジェクト管理への自然な翻訳である。イギリスの海岸線が、短い定規で測るほど長くなるように、タスクの残量は、細かく分解するほど増える。スプリントプランニングのたびに作業が増えていくのは、チームの怠慢ではなく、見落としでもない。<strong>境界がフラクタルであることの実測値である。</strong>有限の見積りがどうしても必要な場合は、十分に長い定規を用いればよい（「たぶん 2 週間」）。</p>
+    <p>これは<em>海岸線のパラドックス</em>として知られる現象の、エージェント運用への自然な翻訳である。イギリスの海岸線が、短い定規で測るほど長くなるように、タスクの残量は、細かなサブエージェントを送り込んで調査させるほど増える。リポジトリの調査を指示するたびに TODO リストが伸びていくのは、エージェントの幻覚ではなく、計画の失敗でもない。<strong>境界がフラクタルであることの実測値である。</strong>有限の見積りがどうしても必要な場合は、十分に長い定規を用いればよい。すなわち、サブエージェントを 1 体も起動せず、オーケストレータに一言で答えさせるのである（「たぶん 2 週間」）。</p>
 
     <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> 本手法を導入した組織では、どの階層の定例会議に出席しても、完全に同じ議題が議論されています。それが狙いです。</p>
+      <p><span class="thm-head">Warning.</span> 本手法を導入したシステムでは、どの深さのサブエージェントのログを開いても、完全に同じプロンプトが表示されます。それが狙いです。</p>
     </div>
   </section>
 
@@ -93,7 +93,7 @@
 
 <footer class="site-footer">
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%AA%E3%80%81%E5%86%8D%E5%B8%B0%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E9%9D%9E%E6%95%B4%E6%95%B0%E6%AC%A1%E5%85%83%E3%81%AE%E7%B5%84%E7%B9%94%E8%A8%AD%E8%A8%88&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%AA%E3%80%81%E5%86%8D%E5%B8%B0%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E9%9D%9E%E6%95%B4%E6%95%B0%E6%AC%A1%E5%85%83%E3%81%AE%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E9%9A%8E%E5%B1%A4%E8%A8%AD%E8%A8%88&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
     <nav class="lang-switch" aria-label="言語切替">
       <a href="/ja/fractal/" aria-current="true">日本語</a> / <a href="/en/fractal/" hreflang="en" lang="en">English</a>
     </nav>
