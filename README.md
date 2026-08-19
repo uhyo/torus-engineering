@@ -9,7 +9,7 @@
 | `/` | Accept-Language を見て `/ja/` または `/en/` へ 302 リダイレクト（Worker が処理） |
 | `/ja/` `/en/` | トップページ（日英） |
 | `/ja/klein/` `/en/klein/` | 付録A：クラインの壺エンジニアリング（日英） |
-| `/ja/fractal/` `/en/fractal/` | 付録B：フラクタルエンジニアリング（日英） |
+| `/ja/fractal/` `/en/fractal/` | 姉妹編：フラクタルエンジニアリング（日英） |
 
 ## リポジトリ構成
 

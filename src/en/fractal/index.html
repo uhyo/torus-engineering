@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fractal Engineering</title>
-<meta name="description" content="Designing agentic systems so that observation at any scale reveals a structure similar to the whole — that is, as a fractal. Agent hierarchies in non-integer dimensions.">
+<meta name="description" content="Designing agentic systems to be self-similar at every scale. Divide, and let divide. AI-driven development finally abandons integer dimensions.">
 <link rel="canonical" href="{{ORIGIN}}/en/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="Fractal Engineering">
-<meta property="og:description" content="Don't decompose. Recurse. Agent hierarchies in non-integer dimensions.">
+<meta property="og:description" content="Divide, and let divide. AI-driven development finally abandons integer dimensions.">
 <meta property="og:url" content="{{ORIGIN}}/en/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fractal Engineering">
-<meta name="twitter:description" content="Don't decompose. Recurse. Agent hierarchies in non-integer dimensions.">
+<meta name="twitter:description" content="Divide, and let divide. AI-driven development finally abandons integer dimensions.">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
 <body>
 
 <header class="site-header">
-  <span class="venue">Preprint — Appendix B</span>
+  <span class="venue">Preprint — Companion paper</span>
   <nav class="lang-switch" aria-label="Language">
     <a href="/ja/fractal/" lang="ja" hreflang="ja">日本語</a> /
     <a href="/en/fractal/" aria-current="true">English</a>
@@ -42,63 +42,124 @@
 <main>
   <div class="hero">
     <h1>Fractal Engineering</h1>
-    <p class="catch" lang="en">“Don’t decompose. Recurse.”</p>
-    <p class="tagline">Appendix B: Agent hierarchies in non-integer dimensions</p>
+    <p class="catch" lang="en">“Divide, and let divide.”</p>
+    <p class="tagline">AI-driven development finally abandons integer dimensions.</p>
+    <p class="authors">The Torus Engineering Working Group<br>August 2026</p>
 
     <figure class="fig-fractal">
-      {{include:src/figures/fractal-en.svg}}
-      <figcaption><span class="fig-label">Fig. 1.</span> An agent organization practicing fractal engineering. Magnifying any subagent reveals a structure identical to the whole. The figure is truncated at stage 5 for typographical reasons, not organizational ones.</figcaption>
+      {{include:src/figures/fractal-zoom-en.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> Organizational chart (detail).</figcaption>
     </figure>
   </div>
 
-  <section id="secB1" aria-labelledby="h-secB1">
-    <h2 id="h-secB1"><span class="secno">§B.1</span>Definition</h2>
-
-    <div class="thmbox">
-      <p><span class="thm-head">Definition B.1 (Fractal engineering).</span> The practice of designing an agentic system so that observation at any scale reveals a structure similar to the whole — that is, as a <em>fractal</em> — is called <em>fractal engineering</em>.</p>
-    </div>
-
-    <p>Section 4 of the main text considered two extensions of the paradigm: raising the genus (the double torus) and abandoning orientability (the Klein bottle, Appendix A). Both, however, rested on one remaining assumption: <strong>that the dimension is an integer</strong>. In this appendix we abandon it.</p>
-    <p>An orchestrator delegates its task to subagents. Each subagent delegates its portion to still smaller subagents, and magnification at any depth reveals the same scene. This phenomenon has traditionally been called “runaway delegation” and treated as a failure mode, to be suppressed by a cap on the recursion depth. Fractal engineering inverts the interpretation. That the same structure appears at every scale is precisely the requirement of Definition B.1 — empirical confirmation that the system is operating, as designed, as a fractal. In other words, this belongs not in a bug report but in a results section. We therefore did not stop the recursion. We took a screenshot instead, and placed it at the head of this paper as Fig. 1.</p>
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>Updating the Genealogy</h2>
+    <p>As the <a href="/en/">main text</a> established, the genealogy of AI-driven development reads as a monotone increase in topological dimension: loop engineering is a one-dimensional circuit; torus engineering, a two-dimensional closed surface. The attentive reader will extrapolate — the 7th generation shall be three-dimensional, the 8th four-dimensional, and so on. We once extrapolated likewise.</p>
+    <p>The extrapolation is wrong. Raising the dimension from 2 to 3 is within anyone’s reach. The next move we propose is not to raise the dimension. <strong>It is to liberate it from the integers.</strong></p>
   </section>
 
-  <section id="secB2" aria-labelledby="h-secB2">
-    <h2 id="h-secB2"><span class="secno">§B.2</span>A Dimension Theorem</h2>
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>Definition</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.2.</span> When every agent delegates to three subagents at half its own scale, the resulting organization has Hausdorff dimension log 3 / log 2 ≈ 1.585.</p>
-      <p><span class="thm-head">Corollary B.3.</span> Such an agent hierarchy is therefore too large to fit into a one-dimensional context window (a linear sequence of tokens), and too small to fill a two-dimensional workflow diagram. That the workflow diagram cannot be drawn is not a failure of the diagramming tool. <strong>It is a shortage of dimensions.</strong><span class="qed">∎</span></p>
+      <p><span class="thm-head">Definition 2.1 (Fractal engineering).</span> The practice of designing an agentic system to be self-similar at every scale is called <em>fractal engineering</em>. That is, an agent at any level of the hierarchy obeys one and the same contract: <strong>receive context, decompose, delegate, verify, and report a summary.</strong></p>
     </div>
 
-    <p>When a subagent finishes its work, it reports back to its parent as a summary. That something is always missing from this summary is well known to practitioners, and has traditionally been attributed to the limits of the model’s summarization ability. Fractal engineering reinterprets it. Work of dimension 1.585 cannot be rendered faithfully in any one-dimensional sequence of tokens. The report is incomplete not through any negligence of the model, but because of the <strong>loss of measure</strong> that necessarily accompanies projection onto an integer dimension.</p>
+    <p>A CTO agent’s day and a leaf tool call’s second have, at the appropriate magnification, exactly the same shape. The execution of a quarterly plan is one revolution of receive–decompose–delegate–verify–report; so is the execution of a unit test. The two differ only in scale, and scale has been eliminated from the design by Definition 2.1.</p>
+    <p>There is exactly one design parameter: the <strong>fractal dimension <var>D</var></strong>. At <var>D</var> = 1.0, delegation degenerates into a single chain, and we are back to mere loop engineering. At <var>D</var> = 2.0, delegation saturates the graph, and every agent invokes every agent. The recommended value is <var>D</var> ≈ 1.585 (the Sierpinski dimension). For the justification of this value, see §6.</p>
   </section>
 
-  <section id="secB3" aria-labelledby="h-secB3">
-    <h2 id="h-secB3"><span class="secno">§B.3</span>An Application to Estimation</h2>
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>Theorems</h2>
+    <p>Fractal geometry gives, for the first time, a precise name to a phenomenon that has long tormented practitioners.</p>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem B.4 (Divergence of estimates).</span> The remaining work of a task with fractal boundary grows without bound as the measuring stick — that is, the granularity of the tasks delegated to subagents — is refined.</p>
+      <p><span class="thm-head">Theorem 3.1 (The coastline paradox).</span> The scope of a project increases as the unit of measurement is refined, and the total length of the backlog diverges. Hence, when your estimate fails, it is not your fault: the Hausdorff dimension of the task exceeds 1.<span class="qed">∎</span></p>
     </div>
 
-    <p>This is the natural translation, into agent operations, of the phenomenon known as the <em>coastline paradox</em>. Just as the coastline of Britain grows longer the shorter the ruler used to measure it, the remaining work of a task grows the more finely subagents are dispatched to survey it. That every survey of the repository makes the TODO list longer is neither a hallucination nor a planning failure. <strong>It is an empirical measurement of the boundary’s fractality.</strong> Should a finite estimate be strictly required, it suffices to use a sufficiently long ruler: launch no subagents at all, and let the orchestrator answer in a single line (“two weeks, probably”).</p>
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 3.2 (Mandelbrot’s corollary).</span> The area (the budget) is finite, but the length of the boundary (the remaining tasks) is infinite. The status report “almost done” is therefore topologically sound.<span class="qed">∎</span></p>
+    </div>
+
+    <p>Theorem 3.1 is the only result in this paper that requires no proof. The reader’s most recent project is the proof.</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>Applications — Jokes Aside</h2>
+
+    <p>Readers who have taken the foregoing as a joke are correct. It is nevertheless a fact that, the moment self-similarity is adopted as a design principle, several known hard problems of multi-agent design get solved — as a side effect of the joke. We record four of them.</p>
+
+    <dl class="props">
+      <dt>The scale-invariant contract</dt>
+      <dd>Conventional multi-agent design tends to invent a separate interface, and a separate verification scheme, for the orchestrator layer, the worker layer, and the tool layer. Put self-similarity first, and CLAUDE.md, Skills, and review gates are <strong>written once and hold at every level</strong>. One leaves the world in which each added level of hierarchy adds a volume of design documents, for the world in which the hierarchy deepens and the contract remains one. That engineering cost ceases to grow linearly in depth — this is the practical yield of scale invariance.</dd>
+
+      <dt>Renormalization = context compression</dt>
+      <dd>No level may lift the details of the level below verbatim; <strong>only a summarized context is passed upward.</strong> Formulated as “each scale retains only the information at its own resolution,” the familiar failure — piping a child’s raw logs into its parent until the context window drowns — is forbidden by structure rather than by operational discipline. Physicists tamed their infinities by renormalization; we tame our tokens the same way.</dd>
+
+      <dt>Fault locality</dt>
+      <dd>Because the same verification gate appears at every granularity, a failure is caught, repaired, and reported upward as one line of a summary, all within the subtree where it occurred. A single leaf tool call takes down the whole organization only when verification exists at one privileged level. A fractal has no privileged level.</dd>
+
+      <dt>Observational uniformity</dt>
+      <dd>Logs and traces have the same shape at every zoom level, so the supervising human may descend to any level and read it the same way. This is the depth-direction counterpart of the cavity through which human judgment passes — the hole of the torus of the main text (<a href="/en/#sec4">main text, §4</a>).</dd>
+    </dl>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>The Mandatory Discipline: A Resolution Cutoff</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Axiom 5.1 (The Planck length of tasks).</span> A fractal recurses without end. A minimum task length <var>ℓ</var><sub>min</sub> — below which an agent shall not delegate, but do the work itself — must therefore be fixed in advance. This is the sole mandatory discipline of fractal engineering.</p>
+    </div>
+
+    <p>A mathematical fractal can be descended forever. An API invoice cannot. Below the cutoff <var>ℓ</var><sub>min</sub>, two of the verbs of Definition 2.1 — <em>decompose</em> and <em>delegate</em> — expire, and the agent, retaining the rest, simply does the work. As physics gives up geometry below a smallest length, an agent gives up organizational theory below a smallest task.</p>
 
     <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> In systems that adopt this practice, opening the log of any subagent, at any depth, displays exactly the same prompt. That is the point.</p>
+      <p><span class="thm-head">Warning.</span> In an organization that fixes no <var>ℓ</var><sub>min</sub>, the meeting held to divide a meeting convenes a meeting to divide itself. And so on.</p>
     </div>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>Frequently Asked Questions</h2>
+
+    <dl class="faq">
+      <dt>How far should we divide?</dt>
+      <dd>Divide that question.</dd>
+
+      <dt>Should we adopt torus engineering or fractal engineering?</dt>
+      <dd>They are orthogonal. The torus is a meta-structure in the time direction (winding execution with improvement); the fractal, in the depth direction (nesting delegation within verification). The structure obtained by adopting both is currently under review.</dd>
+
+      <dt>What is the justification for <var>D</var> = 1.585?</dt>
+      <dd>Ask Sierpinski.</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>Concluding Remark</h2>
+    <p>As the torus wound execution, the fractal nests delegation. The dimension need not be an integer any longer.</p>
   </section>
 
   <p class="backlink">← <a href="/en/">Main text: Torus Engineering</a> · <a href="/en/klein/">Appendix A: Klein Bottle Engineering</a></p>
 </main>
 
 <footer class="site-footer">
+  <p class="cite-head">Cite this work</p>
+  <pre class="bibtex">@misc{fractal2026,
+  title        = {Fractal Engineering: Divide, and Let Divide.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/en/fractal/}},
+  note         = {AI-driven development finally abandons integer dimensions.}
+}</pre>
+
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDon%E2%80%99t%20decompose.%20Recurse.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20agent%20hierarchies%20in%20non-integer%20dimensions.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDivide%2C%20and%20let%20divide.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20AI-driven%20development%20finally%20abandons%20integer%20dimensions.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
     <nav class="lang-switch" aria-label="Language">
       <a href="/ja/fractal/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/fractal/" aria-current="true">English</a>
     </nav>
   </div>
 
   <div class="smallprint">
+    <p>Main text: <a href="/en/">Torus Engineering</a> · In practice: <a href="/en/guide/">The Engineer’s Guide</a> · Appendix: <a href="/en/klein/">Klein Bottle Engineering</a></p>
     <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
     <p>© 2026 The Torus Engineering Working Group</p>
   </div>
