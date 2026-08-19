@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>クラインの壺エンジニアリング — Klein Bottle Engineering</title>
+<meta name="description" content="トーラスの貼り合わせを1箇所だけ逆向きにした、向き付け不可能な閉曲面としてエージェントシステムを設計する。DevOpsの究極形。">
+<link rel="canonical" href="{{ORIGIN}}/ja/klein/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/klein/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/klein/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/klein/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="クラインの壺エンジニアリング — Klein Bottle Engineering">
+<meta property="og:description" content="内も外もない。DevもOpsもない。向き付け不可能な閉曲面としての開発組織論。">
+<meta property="og:url" content="{{ORIGIN}}/ja/klein/">
+<meta property="og:image" content="{{ORIGIN}}/og/klein.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="クラインの壺エンジニアリング — Klein Bottle Engineering">
+<meta name="twitter:description" content="内も外もない。DevもOpsもない。向き付け不可能な閉曲面としての開発組織論。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/klein.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — 付録 A</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/klein/" aria-current="true">日本語</a> /
+    <a href="/en/klein/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Klein Bottle Engineering</h1>
+    <p class="subtitle">クラインの壺エンジニアリング</p>
+    <p class="catch">「内も外もない。DevもOpsもない。」</p>
+    <p class="tagline">付録 A：向き付け不可能な閉曲面としての開発組織論</p>
+
+    <figure class="fig-klein">
+      {{include:src/figures/klein-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> クラインの壺。管は壺の側面を通り抜けて内部に達するが、これは 3 次元表示に伴うやむを得ない自己交差であり、本来の曲面（4 次元内）は自己交差しない。組織においても同様の言い訳が可能である。</figcaption>
+    </figure>
+  </div>
+
+  <section id="secA1" aria-labelledby="h-secA1">
+    <h2 id="h-secA1"><span class="secno">§A.1</span>定義</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition A.1（クラインの壺エンジニアリング）.</span> トーラスの貼り合わせを 1 箇所だけ逆向きにして得られる<em>向き付け不可能な閉曲面</em>として、エージェントシステムおよびそれを運用する組織を設計する実践を、クラインの壺エンジニアリングと呼ぶ。</p>
+    </div>
+
+    <p>クラインの壺には表と裏の区別が存在しない。壺の「外側」を辿っていくと、いつのまにか「内側」に到達する。これを開発組織に適用すると、次の帰結を得る。すなわち、<strong>開発 (Dev) と運用 (Ops) の区別が、定義域のレベルで消滅する</strong>。区別をなくす努力をするのではない。区別が<em>位相的に定義できない</em>のである。ゆえに本手法は DevOps の究極形である。</p>
+  </section>
+
+  <section id="secA2" aria-labelledby="h-secA2">
+    <h2 id="h-secA2"><span class="secno">§A.2</span>実装上の定理</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem A.2.</span> クラインの壺は 3 次元ユークリッド空間には自己交差なしに埋め込めない。埋め込みには 4 次元が必要である。</p>
+      <p><span class="thm-head">Corollary A.3.</span> ゆえに、現行の組織図（3 次元）でクラインの壺エンジニアリングを実装すると、必ず自己交差——すなわちコンフリクト——が生じる。<strong>これは仕様である。</strong><span class="qed">∎</span></p>
+    </div>
+
+    <p>コンフリクトの発生をもって導入の失敗と判断してはならない。自己交差は、4 次元の理想を 3 次元の現実に射影したときに必然的に生じる影にすぎない。障害対応チームと新機能チームが会議室で衝突しているとき、その会議室は埋め込みの特異点である。特異点の解消には会議室を 1 つ増やすのではなく、次元を 1 つ増やすことが推奨される。</p>
+
+    <div class="warnbox">
+      <p><span class="thm-head">Warning.</span> 本手法を導入した組織では、自分が障害対応をしているのか新機能開発をしているのか、誰にも分からなくなります。それが狙いです。</p>
+    </div>
+  </section>
+
+  <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%86%85%E3%82%82%E5%A4%96%E3%82%82%E3%81%AA%E3%81%84%E3%80%82Dev%E3%82%82Ops%E3%82%82%E3%81%AA%E3%81%84%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%82%AF%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E5%A3%BA%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9ADevOps%E3%81%AE%E7%A9%B6%E6%A5%B5%E5%BD%A2&amp;url={{ORIGIN_ENC}}%2Fja%2Fklein%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/klein/" aria-current="true">日本語</a> / <a href="/en/klein/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
