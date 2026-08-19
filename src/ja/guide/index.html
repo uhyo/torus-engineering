@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>実践トーラスエンジニアリング — エンジニア向けガイド</title>
+<meta name="description" content="トーラスエンジニアリングを今日から導入したいエンジニアのための実践ガイド。コピペ用の CLAUDE.md と improvement-loop.yml、周期比早見表、トラブルシューティング付き。理論は読まなくてよい。">
+<link rel="canonical" href="{{ORIGIN}}/ja/guide/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/guide/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/guide/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="実践トーラスエンジニアリング — エンジニア向けガイド">
+<meta property="og:description" content="「理論はいい。コピペをくれ。」すぐ使える結論だけをまとめた公式実践ガイド。3分で導入完了（位相的見積もり）。">
+<meta property="og:url" content="{{ORIGIN}}/ja/guide/">
+<meta property="og:image" content="{{ORIGIN}}/og/torus.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="実践トーラスエンジニアリング — エンジニア向けガイド">
+<meta name="twitter:description" content="「理論はいい。コピペをくれ。」すぐ使える結論だけをまとめた公式実践ガイド。3分で導入完了（位相的見積もり）。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/torus.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Technical Report — 査読の代わりに動作確認済み</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/guide/" aria-current="true">日本語</a> /
+    <a href="/en/guide/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Torus Engineering in Practice</h1>
+    <p class="subtitle">実践トーラスエンジニアリング</p>
+    <p class="catch">「理論はいい。コピペをくれ。」</p>
+    <p class="tagline">エンジニア向け実践ガイド——本編を読まずに導入するための公式ドキュメント</p>
+
+    <div class="tldr" lang="ja">
+      <span class="tldr-head">TL;DR</span>
+      ループを2本持て。1本目は<strong>いつもの仕事のループ</strong>（すでに持っている）。2本目は<strong>「仕事のやり方」を定期的に見直すループ</strong>（カレンダーに入れろ）。2本が独立に回っていれば、直積は勝手に成立する。以上。ここまで読んだ時点で、導入はほぼ完了しています。
+    </div>
+  </div>
+
+  <section id="quickstart" aria-labelledby="h-quickstart">
+    <h2 id="h-quickstart"><span class="secno">§1</span>クイックスタート（3分）<sup><a href="#gfn1" id="gref1" aria-label="脚注1">1</a></sup></h2>
+
+    <ol class="steps">
+      <li><span class="step-name">実行ループを確認する。</span> すでにある。CI を直し、Issue を処理し、PR を出す——あなたが毎日回しているあれが第1の円環（子午線）である。追加作業：なし。</li>
+      <li><span class="step-name">改善ループを設置する。</span> 繰り返しの予定を1つ作る。件名は「エージェントの運用を見直す会（30分）」。これで第2の円環（経線）が手に入る。気合や反省の心ではなく、<strong>カレンダー上の予定</strong>であることが位相的に重要である。</li>
+      <li><span class="step-name">直積を取る。</span> 何もしなくてよい。2本のループが独立に回ってさえいれば、直積 <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> は自動的に成立する。この工程は位相幾何学が担当するため、依存パッケージの追加は不要。</li>
+    </ol>
+
+    <p>導入は以上です。ここから先は、動き始めてから読む部分です。</p>
+  </section>
+
+  <section id="files" aria-labelledby="h-files">
+    <h2 id="h-files"><span class="secno">§2</span>コピペ用ファイル</h2>
+    <p>結論だけ知りたい方のために、そのまま貼れるファイルを2つ用意した。1つ目は <code>CLAUDE.md</code> への追記、2つ目は経線を回すワークフローである。プロジェクトの事情に合わせて数値を変えてよいが、<strong>構造（ループが2本で、互いに独立）だけは変えないこと</strong>。</p>
+
+    <figure class="code-sample">
+      <figcaption class="code-title"><code>CLAUDE.md</code>（末尾に追記）</figcaption>
+      <pre class="codeblock"><code>## トーラス運用規約（Torus Operating Rules）
+
+### 実行ループ（子午線）
+- CI が赤ければ直す。Issue が来たら処理する。PR を出したら見届ける。
+- 1 周ごとに `.torus/revolutions` の数値を 1 増やす。
+
+### 改善ループ（経線）
+- `.torus/revolutions` が 100 の倍数になったら、実行ループの仕事を直すのを
+  いったんやめ、実行ループ**そのもの**を直す：
+  1. 直近 100 周の失敗パターンを 3 つ挙げる
+  2. この CLAUDE.md を 1 箇所以上改訂する
+  3. 使われていない Skill を 1 つ削除する（供養は任意）
+- 改善ループの中で改善ループを改善しないこと
+  （種数 2 は次のメジャーバージョンで対応予定）。
+
+### 禁止事項
+- 穴を埋めない。すべてを自動化した瞬間、トーラスは球面に退化し、
+  第 4 世代に戻る（本編 §4）。人間の判断が通る空洞を必ず 1 つ残すこと。</code></pre>
+    </figure>
+
+    <figure class="code-sample">
+      <figcaption class="code-title"><code>.github/workflows/improvement-loop.yml</code></figcaption>
+      <pre class="codeblock"><code># 経線方向の円環。子午線（いつもの CI）とは独立に回る。
+name: improvement-loop
+on:
+  schedule:
+    - cron: "0 9 * * 1"   # 周期比はここで調整する（表 1 参照）
+  workflow_dispatch:        # 人間の判断が通る穴。塞がないこと。
+jobs:
+  wind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 実行ループそのものを見直す
+        run: |
+          echo "直近の失敗パターンを集計し、CLAUDE.md の改訂 PR を作る"
+          # ここにお好みのエージェント CLI を置く。守るべき点は 1 つ：
+          # このジョブはプロダクトコードに触らない。触った瞬間それは
+          # 実行ループであり、経線は子午線に潰れて種数が 0 になる。</code></pre>
+    </figure>
+  </section>
+
+  <section id="ratio" aria-labelledby="h-ratio">
+    <h2 id="h-ratio"><span class="secno">§3</span>周期比の選び方（早見表）</h2>
+    <p>周期比（実行ループ何周につき改善ループ1周か）は、トーラスエンジニアリング唯一のチューニングパラメータである。迷ったら 100 : 1 でよい。</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">表 1.</span> 周期比の推奨値。</caption>
+      <thead>
+        <tr><th scope="col">周期比</th><th scope="col">通称</th><th scope="col">用途</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nw">10 : 1</td><td>アグレッシブ</td><td>立ち上げ期。まだ何も分かっていない頃。</td></tr>
+        <tr class="now"><td class="nw">100 : 1</td><td>標準</td><td>迷ったらこれ。本稿の推奨デフォルト。</td></tr>
+        <tr><td class="nw">1000 : 1</td><td>エンタープライズ</td><td>改善に稟議が必要な組織向け。</td></tr>
+        <tr><td class="nw">1 : 1</td><td>対角線</td><td>1周ごとに振り返る。振り返りしか進まない。非推奨。</td></tr>
+        <tr><td class="nw"><var>n</var> : 0</td><td>第4世代</td><td>改善ループが存在しない。それはただのループです。</td></tr>
+        <tr><td class="nw"><var>φ</var> : 1</td><td>黄金比</td><td>軌道がトーラスを稠密に埋める。いつかすべてが改善されるが、いつとは言っていない。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="troubleshooting" aria-labelledby="h-troubleshooting">
+    <h2 id="h-troubleshooting"><span class="secno">§4</span>トラブルシューティング</h2>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">表 2.</span> よくある症状と位相的診断。</caption>
+      <thead>
+        <tr><th scope="col">症状</th><th scope="col">位相的診断</th><th scope="col">対処</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>改善ループを最後に回した記憶がない</td><td>球面への退化（種数 0）</td><td>ドーナツを1つ食べ、穴の存在意義を思い出してから §1 の手順 2 に戻る。</td></tr>
+        <tr><td>振り返りばかりで仕事が進まない</td><td>巻き数 (0, <var>n</var>) の軌道</td><td>周期比の分子と分母が逆。入れ替える。</td></tr>
+        <tr><td>ワークフロー図がスパゲッティ化した</td><td>台となる空間（平面）の失敗</td><td>あなたのせいではない。種数を上げる（本編 系 3.2）。</td></tr>
+        <tr><td>セッションが途中で切れた</td><td>正常</td><td>周期境界条件により、右端から出たものは左端から戻る。位相的には何も失われていない。</td></tr>
+        <tr><td>Dev と Ops の区別がつかなくなった</td><td>クラインの壺化の初期症状</td><td>仕様です。おめでとうございます（<a href="/ja/klein/">付録 A</a>）。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="checklist" aria-labelledby="h-checklist">
+    <h2 id="h-checklist"><span class="secno">§5</span>導入チェックリスト</h2>
+
+    <ul class="checklist">
+      <li>実行ループが回っている（= 普段の仕事をしている）</li>
+      <li>改善ループがカレンダー上に存在する（希望としてではなく、予定として）</li>
+      <li>周期比を1つ選び、口頭で言える（「うちは 100 対 1 です」）</li>
+      <li>改善ループは実行ループ<strong>を</strong>変更しており、実行ループの仕事<strong>を</strong>していない</li>
+      <li>穴が空いている（少なくとも1箇所で人間が判断している）</li>
+      <li>ドーナツを用意した（任意。ただし推奨）</li>
+    </ul>
+
+    <p>6項目中4項目にチェックが入れば、あなたのシステムは位相的にトーラスです。残りの2項目は、次に経線を一周するときに改善されます。それがこの手法の良いところです。</p>
+  </section>
+
+  <section id="glossary" aria-labelledby="h-glossary">
+    <h2 id="h-glossary"><span class="secno">§6</span>用語対訳表</h2>
+    <p>本編の著者らと会話する必要が生じた場合に備え、対訳を示す。</p>
+
+    <table class="genealogy">
+      <caption><span class="fig-label">表 3.</span> 論文用語 → エンジニア語。</caption>
+      <thead>
+        <tr><th scope="col">本編の用語</th><th scope="col">エンジニア語訳</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>子午線方向の円環</td><td>いつもの仕事のループ</td></tr>
+        <tr><td>経線方向の円環</td><td>定例の振り返り</td></tr>
+        <tr><td>周期比 (winding ratio)</td><td>何周ごとに振り返るか</td></tr>
+        <tr><td>種数 (genus)</td><td>穴の数。意訳すると「人間の居場所の数」</td></tr>
+        <tr><td>稠密な軌道</td><td>バックログは全部やる（期日未定）</td></tr>
+        <tr><td>球面への退化</td><td>全自動化してしまい、誰も見ていない状態</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="faq" aria-labelledby="h-faq">
+    <h2 id="h-faq"><span class="secno">§7</span>よくある質問（実務編）</h2>
+
+    <dl class="faq">
+      <dt>本編を読む必要はありますか？</dt>
+      <dd>ありません。そのためにこのページがあります。ただしトーラス上では「読んでいない」という状態も周回すればいずれ「読んだ」に戻ってきます。</dd>
+
+      <dt>コピペしただけで動きますか？</dt>
+      <dd>コピペした時点であなたは実行ループを1周しています。すでに動いています。</dd>
+
+      <dt>上司にはどう説明すれば？</dt>
+      <dd>「ループとグラフの直積です」で通らなければ、「導入コストはドーナツ1個分です」（本編 §5）が通ります。</dd>
+    </dl>
+  </section>
+
+  <div class="footnotes">
+    <p id="gfn1"><sup>1</sup> 「3分」は位相的な見積もりであり、連続変形により任意の長さになりうる。 <a href="#gref1" aria-label="本文へ戻る">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/ja/">理論編：トーラスエンジニアリング（本編）</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E7%90%86%E8%AB%96%E3%81%AF%E3%81%84%E3%81%84%E3%80%82%E3%82%B3%E3%83%94%E3%83%9A%E3%82%92%E3%81%8F%E3%82%8C%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E5%AE%9F%E8%B7%B5%E3%83%88%E3%83%BC%E3%83%A9%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E5%90%91%E3%81%91%E3%82%AC%E3%82%A4%E3%83%89&amp;url={{ORIGIN_ENC}}%2Fja%2Fguide%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/guide/" aria-current="true">日本語</a> / <a href="/en/guide/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>理論編：<a href="/ja/">トーラスエンジニアリング（本編）</a>　付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a></p>
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+<script>
+for (const sample of document.querySelectorAll(".code-sample")) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "copy-btn";
+  btn.textContent = "コピー";
+  btn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(sample.querySelector("code").textContent);
+      btn.textContent = "巻き取りました";
+    } catch {
+      btn.textContent = "手動で巻いてください";
+    }
+    setTimeout(() => { btn.textContent = "コピー"; }, 2000);
+  });
+  sample.querySelector(".code-title").appendChild(btn);
+}
+</script>
+
+</body>
+</html>
