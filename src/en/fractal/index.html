@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fractal Engineering</title>
-<meta name="description" content="Designing agentic systems to be self-similar at every scale. Divide, and let divide. AI-driven development finally abandons integer dimensions.">
+<meta name="description" content="Designing agent organizations as coinductively defined, infinitely self-similar structures. Divide, and let divide. Infinite organization. Infinite deliverables.">
 <link rel="canonical" href="{{ORIGIN}}/en/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="Fractal Engineering">
-<meta property="og:description" content="Divide, and let divide. AI-driven development finally abandons integer dimensions.">
+<meta property="og:description" content="Divide, and let divide. Infinite organization. Infinite deliverables.">
 <meta property="og:url" content="{{ORIGIN}}/en/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fractal Engineering">
-<meta name="twitter:description" content="Divide, and let divide. AI-driven development finally abandons integer dimensions.">
+<meta name="twitter:description" content="Divide, and let divide. Infinite organization. Infinite deliverables.">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,12 +43,12 @@
   <div class="hero">
     <h1>Fractal Engineering</h1>
     <p class="catch" lang="en">“Divide, and let divide.”</p>
-    <p class="tagline">AI-driven development finally abandons integer dimensions.</p>
+    <p class="tagline">Infinite organization. Infinite deliverables.</p>
     <p class="authors">The Torus Engineering Working Group<br>August 2026</p>
 
     <figure class="fig-fractal">
       {{include:src/figures/fractal-zoom-en.svg}}
-      <figcaption><span class="fig-label">Fig. 1.</span> Organizational chart (detail).</figcaption>
+      <figcaption><span class="fig-label">Fig. 1.</span> The deliverable (4th approximation).</figcaption>
     </figure>
   </div>
 
@@ -56,66 +56,88 @@
     <h2 id="h-sec1"><span class="secno">§1</span>Updating the Genealogy</h2>
     <p>As the <a href="/en/">main text</a> established, the genealogy of AI-driven development reads as a monotone increase in topological dimension: loop engineering is a one-dimensional circuit; torus engineering, a two-dimensional closed surface. The attentive reader will extrapolate — the 7th generation shall be three-dimensional, the 8th four-dimensional, and so on. We once extrapolated likewise.</p>
     <p>The extrapolation is wrong. Raising the dimension from 2 to 3 is within anyone’s reach. The next move we propose is not to raise the dimension. <strong>It is to liberate it from the integers.</strong></p>
+    <p>And this paper takes one further step: it assumes that <strong>the hierarchy continues without end</strong>. An organization that stops at a finite depth is merely an approximation of a fractal. This paper concerns the other kind.</p>
   </section>
 
   <section id="sec2" aria-labelledby="h-sec2">
-    <h2 id="h-sec2"><span class="secno">§2</span>Definition</h2>
+    <h2 id="h-sec2"><span class="secno">§2</span>Definition: The Coinductive Fractal</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Definition 2.1 (Fractal engineering).</span> The practice of designing an agentic system to be self-similar at every scale is called <em>fractal engineering</em>. That is, an agent at any level of the hierarchy obeys one and the same contract: <strong>receive context, decompose, delegate, verify, and report a summary.</strong></p>
+      <p><span class="thm-head">Definition 2.1 (Fractal engineering).</span> The practice of designing an agent organization as a coinductively defined, infinite self-similar structure is called <em>fractal engineering</em>. Every level obeys one and the same contract — <strong>receive context, decompose, delegate, verify, and report a summary</strong> — and the child levels are held as a thunk:</p>
+      <pre class="codeblock"><code>type Fractal = { work: Contract; children: () =&gt; Fractal[] }</code></pre>
     </div>
 
-    <p>A CTO agent’s day and a leaf tool call’s second have, at the appropriate magnification, exactly the same shape. The execution of a quarterly plan is one revolution of receive–decompose–delegate–verify–report; so is the execution of a unit test. The two differ only in scale, and scale has been eliminated from the design by Definition 2.1.</p>
-    <p>There is exactly one design parameter: the <strong>fractal dimension <var>D</var></strong>. At <var>D</var> = 1.0, delegation degenerates into a single chain, and we are back to mere loop engineering. At <var>D</var> = 2.0, delegation saturates the graph, and every agent invokes every agent. The recommended value is <var>D</var> ≈ 1.585 (the Sierpinski dimension). For the justification of this value, see §6.</p>
+    <p>Note that the definition is coinductive. An inductive definition builds up from a base case, and must therefore stop somewhere. A coinductive definition is under no such obligation. <code>children</code> is a thunk — a function unevaluated until called — so the structure exists, mathematically, complete and infinite. What materializes is exactly <strong>the part that observation (that is, the commencement of a task) demands</strong>. When the CTO agent decomposes the quarterly plan, its subtasks already existed; commencement merely materialized them.</p>
+
+    <blockquote class="pullquote">
+      <p lang="en">Nothing is truncated but your observation.</p>
+    </blockquote>
+
+    <p>The design parameter remains the fractal dimension <var>D</var>, with the recommended value <var>D</var> ≈ 1.585 (the Sierpinski dimension). The value does not change however deep you descend, so descend without fear.</p>
   </section>
 
   <section id="sec3" aria-labelledby="h-sec3">
-    <h2 id="h-sec3"><span class="secno">§3</span>Theorems</h2>
-    <p>Fractal geometry gives, for the first time, a precise name to a phenomenon that has long tormented practitioners.</p>
+    <h2 id="h-sec3"><span class="secno">§3</span>The Zeno Budget</h2>
+    <p>Upon hearing “infinite hierarchy,” the reader’s first concern is the invoice. That concern was resolved 2,500 years ago.</p>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem 3.1 (The coastline paradox).</span> The scope of a project increases as the unit of measurement is refined, and the total length of the backlog diverges. Hence, when your estimate fails, it is not your fault: the Hausdorff dimension of the task exceeds 1.<span class="qed">∎</span></p>
+      <p><span class="thm-head">Theorem 3.1 (The Zeno budget).</span> Allocate to the level at depth <var>n</var> the budget <var>r</var><sup><var>n</var></sup>, with 0 &lt; <var>r</var> &lt; 1. Then the total cost of the infinite hierarchy converges to Σ <var>r</var><sup><var>n</var></sup> = 1/(1−<var>r</var>). Hence <strong>infinite delegation is completed within a finite budget.</strong><span class="qed">∎</span></p>
     </div>
 
-    <div class="thmbox">
-      <p><span class="thm-head">Corollary 3.2 (Mandelbrot’s corollary).</span> The area (the budget) is finite, but the length of the boundary (the remaining tasks) is infinite. The status report “almost done” is therefore topologically sound.<span class="qed">∎</span></p>
-    </div>
-
-    <p>Theorem 3.1 is the only result in this paper that requires no proof. The reader’s most recent project is the proof.</p>
+    <p>This is the supertask of Achilles and the tortoise: infinitely many intervals, traversed in finite time — perfectly feasible, provided the runner is Achilles. So much for the foundations. Our interest lies at the far end of the traversal: what, exactly, does this infinite organization deliver?</p>
   </section>
 
   <section id="sec4" aria-labelledby="h-sec4">
-    <h2 id="h-sec4"><span class="secno">§4</span>Applications — Jokes Aside</h2>
+    <h2 id="h-sec4"><span class="secno">§4</span>The Ontology of Deliverables</h2>
 
-    <p>Readers who have taken the foregoing as a joke are correct. It is nevertheless a fact that, the moment self-similarity is adopted as a design principle, several known hard problems of multi-agent design get solved — as a side effect of the joke. We record four of them.</p>
+    <p>The deliverable-theory of finite organizations has always asked one question: <em>when will it be done?</em> In an infinite organization the question vanishes (it will not be). In its place appears a deeper one: <strong>what is the deliverable of an organization that does not finish?</strong> This section answers with three theorems.</p>
 
-    <dl class="props">
-      <dt>The scale-invariant contract</dt>
-      <dd>Conventional multi-agent design tends to invent a separate interface, and a separate verification scheme, for the orchestrator layer, the worker layer, and the tool layer. Put self-similarity first, and CLAUDE.md, Skills, and review gates are <strong>written once and hold at every level</strong>. One leaves the world in which each added level of hierarchy adds a volume of design documents, for the world in which the hierarchy deepens and the contract remains one. That engineering cost ceases to grow linearly in depth — this is the practical yield of scale invariance.</dd>
+    <h3 id="h-sec4-1"><span class="secno">§4.1</span>The Existence of Done</h3>
 
-      <dt>Renormalization = context compression</dt>
-      <dd>No level may lift the details of the level below verbatim; <strong>only a summarized context is passed upward.</strong> Formulated as “each scale retains only the information at its own resolution,” the familiar failure — piping a child’s raw logs into its parent until the context window drowns — is forbidden by structure rather than by operational discipline. Physicists tamed their infinities by renormalization; we tame our tokens the same way.</dd>
+    <p>A finite organization can produce only a sequence of approximations <var>v</var><sub>1</sub>, <var>v</var><sub>2</sub>, <var>v</var><sub>3</sub>, … Each version is somewhat better than the last; at some <var>v</var><sub><var>n</var></sub>, someone says “let us call this done,” and it ships. In a finite organization, then, “done” is not a property of the deliverable but a minute of a meeting. It is a social agreement.</p>
+    <p>The infinite hierarchy delivers no term of the sequence. It delivers <strong>the limit <var>v</var><sub>∞</sub></strong>.</p>
 
-      <dt>Fault locality</dt>
-      <dd>Because the same verification gate appears at every granularity, a failure is caught, repaired, and reported upward as one line of a summary, all within the subtree where it occurred. A single leaf tool call takes down the whole organization only when verification exists at one privileged level. A fractal has no privileged level.</dd>
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.1 (Existence and uniqueness of done).</span> When review is a contraction mapping — when the verification at each level reduces defects by a factor <var>q</var> &lt; 1 — then, by the Banach fixed-point theorem, there exists a unique deliverable <var>v</var><sub>∞</sub> that no further review can change, and it is reached from any initial implementation. We call <var>v</var><sub>∞</sub> <em>done</em>.<span class="qed">∎</span></p>
+    </div>
 
-      <dt>Observational uniformity</dt>
-      <dd>Logs and traces have the same shape at every zoom level, so the supervising human may descend to any level and read it the same way. This is the depth-direction counterpart of the cavity through which human judgment passes — the hole of the torus of the main text (<a href="/en/#sec4">main text, §4</a>).</dd>
-    </dl>
+    <blockquote class="pullquote">
+      <p lang="en">In a finite organization, done is a consensus.<br>In an infinite organization, done is a theorem.</p>
+    </blockquote>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 4.2.</span> Defect density obeys <var>q</var><sup><var>n</var></sup> → 0. Zero-bug software is therefore possible only in an infinite organization. That your team keeps shipping bugs is not your team’s fault. Your hierarchy is finite.<span class="qed">∎</span></p>
+    </div>
+
+    <h3 id="h-sec4-2"><span class="secno">§4.2</span>Properties That Appear Only in the Limit</h3>
+
+    <p>Recall the construction of the Koch snowflake. Every <var>n</var>th approximation is an unremarkable polygon — finite perimeter, finite area, much like its neighbors. In the limit, however, a property appears that no term of the sequence possessed: <strong>infinite perimeter enclosing finite area</strong>. The limit is not a better term of the sequence. It is a qualitatively different object.</p>
+    <p>So it is with the deliverable of an infinite organization. It has <strong>infinite detail but finite transfer size</strong> — because only the observed part materializes (Definition 2.1). Consider a document in which, at every magnification, a specification exists at the corresponding level of detail. Or a product whose fine structure is generated exactly as far as the user approaches it. No one can transfer the whole at once; no one ever reads the whole at once; no problem arises.</p>
+    <p>No such deliverable exists anywhere in a finite sequence of approximations. The <var>n</var>th approximation always has an edge beyond which nothing is written. Edgelessness is a property that appears only in the limit. Fig. 1 shows the fourth approximation of a deliverable in this sense; for our failure to print the limit itself, we apologize, along with the finiteness of the page.</p>
+
+    <h3 id="h-sec4-3"><span class="secno">§4.3</span>Hilbert’s Hotel</h3>
+
+    <p>Finally, on the roadmap operations of an infinite organization.</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.3 (The no-full-roadmap theorem).</span> An urgent interruption to an infinitely full backlog (tasks 1, 2, 3, … all assigned) is admitted by shifting every task number by one (task <var>n</var> → task <var>n</var>+1). Hence “at capacity” does not exist on the roadmap of an infinite organization.<span class="qed">∎</span></p>
+    </div>
+
+    <p>Nor is there any limit on interruptions. Should countably many arrive at once, move task <var>n</var> to task 2<var>n</var>, and every odd-numbered slot stands vacant. This theorem is known to bring project managers a deep and lasting peace.</p>
   </section>
 
   <section id="sec5" aria-labelledby="h-sec5">
-    <h2 id="h-sec5"><span class="secno">§5</span>The Mandatory Discipline: A Resolution Cutoff</h2>
+    <h2 id="h-sec5"><span class="secno">§5</span>Applications — Jokes Aside</h2>
 
-    <div class="thmbox">
-      <p><span class="thm-head">Axiom 5.1 (The Planck length of tasks).</span> A fractal recurses without end. A minimum task length <var>ℓ</var><sub>min</sub> — below which an agent shall not delegate, but do the work itself — must therefore be fixed in advance. This is the sole mandatory discipline of fractal engineering.</p>
-    </div>
+    <p>Readers who have taken the foregoing as a joke are correct. Grant the infinite hierarchy of agents, however, and the following consequences follow — as a side effect of the joke.</p>
+    <p>The infinite hierarchy has <strong>already generated every deliverable</strong>. The correct program is on the shelf; so is every incorrect one; so are the specifications no one has requested yet, and their counterexamples. The generative space of an infinite organization is the Library of Babel.</p>
+    <p>Development in an infinite organization is therefore not generation. <strong>It is search.</strong> The value moves from writing the book to locating the right one among infinitely many shelves — development is the act of projecting the correct answer out of an infinite generative space by verification.</p>
+    <p>Generation grows arbitrarily cheap. Run cheap generation without bound, and the correct answer is certain to be among the output. At that point the substance is not generation but verification: whoever can tell which one is correct owns the deliverable.</p>
+    <p>The reader will recognize this structure.</p>
 
-    <p>A mathematical fractal can be descended forever. An API invoice cannot. Below the cutoff <var>ℓ</var><sub>min</sub>, two of the verbs of Definition 2.1 — <em>decompose</em> and <em>delegate</em> — expire, and the agent, retaining the rest, simply does the work. As physics gives up geometry below a smallest length, an agent gives up organizational theory below a smallest task.</p>
-
-    <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> In an organization that fixes no <var>ℓ</var><sub>min</sub>, the meeting held to divide a meeting convenes a meeting to divide itself. And so on.</p>
-    </div>
+    <blockquote class="pullquote">
+      <p lang="en">The infinite hierarchy is inference-time compute.</p>
+    </blockquote>
   </section>
 
   <section id="sec6" aria-labelledby="h-sec6">
@@ -128,14 +150,17 @@
       <dt>Should we adopt torus engineering or fractal engineering?</dt>
       <dd>They are orthogonal. The torus is a meta-structure in the time direction (winding execution with improvement); the fractal, in the depth direction (nesting delegation within verification). The structure obtained by adopting both is currently under review.</dd>
 
-      <dt>What is the justification for <var>D</var> = 1.585?</dt>
-      <dd>Ask Sierpinski.</dd>
+      <dt>What is the total effort of infinitely many tasks?</dt>
+      <dd>1 + 2 + 3 + ⋯ = −1/12 person-days. The work was finished ahead of the deadline before anyone began.</dd>
+
+      <dt>We are concerned about the payroll of an infinite organization.</dt>
+      <dd>See Theorem 3.1. Geometric series are finite.</dd>
     </dl>
   </section>
 
   <section id="sec7" aria-labelledby="h-sec7">
     <h2 id="h-sec7"><span class="secno">§7</span>Concluding Remark</h2>
-    <p>As the torus wound execution, the fractal nests delegation. The dimension need not be an integer any longer.</p>
+    <p>As the torus wound execution, the fractal nests delegation — this time, bottomlessly. A finite organization ships an approximation. An infinite organization delivers the limit.</p>
   </section>
 
   <p class="backlink">← <a href="/en/">Main text: Torus Engineering</a> · <a href="/en/klein/">Appendix A: Klein Bottle Engineering</a></p>
@@ -148,11 +173,11 @@
   author       = {{The Torus Engineering Working Group}},
   year         = {2026},
   howpublished = {\url{{{ORIGIN}}/en/fractal/}},
-  note         = {AI-driven development finally abandons integer dimensions.}
+  note         = {Infinite organization. Infinite deliverables.}
 }</pre>
 
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDivide%2C%20and%20let%20divide.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20AI-driven%20development%20finally%20abandons%20integer%20dimensions.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CDivide%2C%20and%20let%20divide.%E2%80%9D%20%E2%80%94%20Fractal%20Engineering%3A%20Infinite%20organization.%20Infinite%20deliverables.&amp;url={{ORIGIN_ENC}}%2Fen%2Ffractal%2F">Share on X</a>
     <nav class="lang-switch" aria-label="Language">
       <a href="/ja/fractal/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/fractal/" aria-current="true">English</a>
     </nav>

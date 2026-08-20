@@ -211,7 +211,8 @@ h2 {
   margin: 0 0 1rem;
 }
 
-h2 .secno {
+h2 .secno,
+h3 .secno {
   margin-right: 0.6em;
 }
 
@@ -310,6 +311,33 @@ p {
   border-left-width: 4px;
   padding: 1rem 1.3rem;
   margin: 1.6rem 0;
+}
+
+.thmbox .codeblock {
+  margin: 0.7rem 0 0.2rem;
+}
+
+/* ---- pull quotes ---- */
+
+.pullquote {
+  margin: 2.2rem auto;
+  max-width: 32rem;
+  padding: 0;
+  border-top: 1px solid var(--rule-dark);
+  border-bottom: 1px solid var(--rule-dark);
+  text-align: center;
+}
+
+.pullquote p {
+  margin: 1.05rem 0.5rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.pullquote p:lang(en) {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .warnbox .thm-head {

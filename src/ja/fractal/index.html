@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>フラクタルエンジニアリング — Fractal Engineering</title>
-<meta name="description" content="エージェントシステムを、あらゆるスケールで自己相似となるよう設計する。分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
+<meta name="description" content="エージェント組織を、余帰納的に定義された無限の自己相似構造として設計する。分割せよ、そして分割させよ。無限の組織から、無限の成果を。">
 <link rel="canonical" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/fractal/">
 <link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/fractal/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Torus Engineering">
 <meta property="og:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta property="og:description" content="分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
+<meta property="og:description" content="分割せよ、そして分割させよ。無限の組織から、無限の成果を。">
 <meta property="og:url" content="{{ORIGIN}}/ja/fractal/">
 <meta property="og:image" content="{{ORIGIN}}/og/fractal.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="フラクタルエンジニアリング — Fractal Engineering">
-<meta name="twitter:description" content="分割せよ、そして分割させよ。AI駆動開発、ついに次元が整数であることをやめる。">
+<meta name="twitter:description" content="分割せよ、そして分割させよ。無限の組織から、無限の成果を。">
 <meta name="twitter:image" content="{{ORIGIN}}/og/fractal.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,12 +44,12 @@
     <h1>Fractal Engineering</h1>
     <p class="subtitle">フラクタルエンジニアリング</p>
     <p class="catch">「分割せよ、そして分割させよ。」</p>
-    <p class="tagline">AI駆動開発、ついに次元が整数であることをやめる。</p>
+    <p class="tagline">無限の組織から、無限の成果を。</p>
     <p class="authors">The Torus Engineering Working Group<br>2026年8月</p>
 
     <figure class="fig-fractal">
       {{include:src/figures/fractal-zoom-ja.svg}}
-      <figcaption><span class="fig-label">Fig. 1.</span> 組織図（部分）。</figcaption>
+      <figcaption><span class="fig-label">Fig. 1.</span> 納品物（第4近似）。</figcaption>
     </figure>
   </div>
 
@@ -57,66 +57,88 @@
     <h2 id="h-sec1"><span class="secno">§1</span>系譜の更新</h2>
     <p><a href="/ja/">本編</a>で示したとおり、AI駆動開発の系譜は位相的次元の単調増大として読める。ループエンジニアリングは 1 次元の周回であり、トーラスエンジニアリングは 2 次元の閉曲面であった。素直な読者はここから外挿するだろう。第 7 世代は 3 次元、第 8 世代は 4 次元、と。我々もかつては、そう外挿していた。</p>
     <p>その外挿は誤りである。次元を 2 から 3 に上げることは、誰にでもできる。本稿が提案する次の一手は、次元を上げることではない。<strong>次元を整数から解放することである。</strong></p>
+    <p>そして本稿は、そこからさらに一歩を進める。すなわち、<strong>階層が無限に続くことを前提とする。</strong>有限の深さで止まる組織は、フラクタルの近似にすぎない。本稿が扱うのは、近似ではないほうである。</p>
   </section>
 
   <section id="sec2" aria-labelledby="h-sec2">
-    <h2 id="h-sec2"><span class="secno">§2</span>定義</h2>
+    <h2 id="h-sec2"><span class="secno">§2</span>定義：余帰納的フラクタル</h2>
 
     <div class="thmbox">
-      <p><span class="thm-head">Definition 2.1（フラクタルエンジニアリング）.</span> エージェントシステムを、あらゆるスケールで自己相似となるように設計する実践を、<em>フラクタルエンジニアリング</em>と呼ぶ。すなわち、任意の階層のエージェントが同一の契約——<strong>コンテキストを受け取り、分解し、委譲し、検証し、要約して報告する</strong>——に従う。</p>
+      <p><span class="thm-head">Definition 2.1（フラクタルエンジニアリング）.</span> エージェント組織を、余帰納的に定義された無限の自己相似構造として設計する実践を、<em>フラクタルエンジニアリング</em>と呼ぶ。各階層は同一の契約——<strong>コンテキストを受け取り、分解し、委譲し、検証し、要約して報告する</strong>——に従い、子階層はサンクとして保持される：</p>
+      <pre class="codeblock"><code>type Fractal = { work: Contract; children: () =&gt; Fractal[] }</code></pre>
     </div>
 
-    <p>CTO エージェントの 1 日も、末端のツール呼び出しの 1 秒も、適切な倍率でズームすれば完全に同じ形をしている。四半期計画の遂行は「受け取り、分解し、委譲し、検証し、報告する」の 1 周であり、単体テストの実行もまた同じ 1 周である。両者を分けるものはスケールだけであり、そのスケールは、Definition 2.1 によって設計から消去されている。</p>
-    <p>設計パラメータはただ 1 つ、<strong>フラクタル次元 <var>D</var></strong> である。<var>D</var> = 1.0 では委譲が一本道に退化し、単なるループエンジニアリングに戻る。<var>D</var> = 2.0 では委譲がグラフを埋め尽くし、すべてのエージェントがすべてのエージェントを呼び出す。推奨値は <var>D</var> ≈ 1.585（Sierpinski 次元）である。この値の根拠については §6 を参照。</p>
+    <p>定義が余帰納的であることに注意されたい。帰納的定義は基底から積み上げるため、どこかで止まらなければならない。余帰納的定義には、その義務がない。<code>children</code> はサンク——呼ばれるまで評価されない関数——であり、構造は数学的には完全に、無限に存在する。実体化するのは、<strong>観測（＝タスクの着手）が要求した部分だけ</strong>である。CTO エージェントが四半期計画を分解するとき、その子タスクはすでに存在していた。着手は、それを実体化したにすぎない。</p>
+
+    <blockquote class="pullquote">
+      <p>打ち切られているのは構造ではない。あなたの観測である。</p>
+    </blockquote>
+
+    <p>設計パラメータは従来どおりフラクタル次元 <var>D</var> であり、推奨値は <var>D</var> ≈ 1.585（Sierpinski 次元）である。この値はどれほど深く潜っても変わらないので、安心して潜ってよい。</p>
   </section>
 
   <section id="sec3" aria-labelledby="h-sec3">
-    <h2 id="h-sec3"><span class="secno">§3</span>定理</h2>
-    <p>フラクタル幾何学は、実務者を長年苦しめてきた現象に、初めて正確な名前を与える。</p>
+    <h2 id="h-sec3"><span class="secno">§3</span>ゼノン予算</h2>
+    <p>無限の階層と聞いて読者が最初に案じるのは、請求書であろう。その心配は、2500 年前に解決済みである。</p>
 
     <div class="thmbox">
-      <p><span class="thm-head">Theorem 3.1（海岸線パラドックス）.</span> プロジェクトのスコープは測定単位を細かくするほど増大し、バックログの全長は発散する。ゆえに、見積りが外れるのはあなたのせいではない。タスクのハウスドルフ次元が 1 より大きいせいである。<span class="qed">∎</span></p>
+      <p><span class="thm-head">Theorem 3.1（ゼノン予算）.</span> 深さ <var>n</var> の階層に予算 <var>r</var><sup><var>n</var></sup>（0 &lt; <var>r</var> &lt; 1）を割り当てるとき、無限階層の総コストは Σ <var>r</var><sup><var>n</var></sup> = 1/(1−<var>r</var>) に収束する。ゆえに、<strong>無限の委譲は有限の予算で完遂できる。</strong><span class="qed">∎</span></p>
     </div>
 
-    <div class="thmbox">
-      <p><span class="thm-head">Corollary 3.2（マンデルブロの系）.</span> 面積（予算）は有限だが、境界（残タスク）の長さは無限である。ゆえに進捗報告「あと少しで完成」は、位相幾何学的に正当である。<span class="qed">∎</span></p>
-    </div>
-
-    <p>Theorem 3.1 は、本稿で唯一、証明を必要としない。読者各位の直近のプロジェクトが証明である。</p>
+    <p>これはアキレスと亀のスーパータスクである。無限に多くの区間を有限の時間で走り抜けることは、走者がアキレスでありさえすれば可能である。基礎づけは以上で終わる。本稿の関心は、走り抜けた先にある。すなわち——この無限の組織は、何を納品するのか。</p>
   </section>
 
   <section id="sec4" aria-labelledby="h-sec4">
-    <h2 id="h-sec4"><span class="secno">§4</span>応用——冗談はさておき</h2>
+    <h2 id="h-sec4"><span class="secno">§4</span>成果物の存在論</h2>
 
-    <p>ここまでを冗談として読んだ読者は正しい。ただし、自己相似性を設計原理として採用した瞬間に、マルチエージェント設計の既知の難問のいくつかが——冗談の副作用として——解決されてしまうことも、また事実である。以下に 4 点を示す。</p>
+    <p>有限の組織の成果物論は、一貫して「いつ終わるか」を問うてきた。無限の組織では、この問いは消滅する（終わらないからである）。代わりに、より深い問いが現れる。<strong>終わらない組織の成果物とは、何であるのか。</strong>本節は三つの定理で答える。</p>
 
-    <dl class="props">
-      <dt>スケール不変な契約（scale-invariant contract）</dt>
-      <dd>通常のマルチエージェント設計では、オーケストレータ層、ワーカー層、ツール層のそれぞれに、別々のインターフェースと別々の検証方法を発明しがちである。自己相似を原理に据えれば、CLAUDE.md も、Skills も、レビューゲートも、<strong>一度書けば全階層に効く</strong>。階層を 1 つ増やすたびに設計文書が 1 冊増える世界から、階層をいくつ増やしても契約は 1 つのままの世界へ。エンジニアリングコストが深さに比例して増えないこと——これがスケール不変性の実利である。</dd>
+    <h3 id="h-sec4-1"><span class="secno">§4.1</span>完成の存在定理</h3>
 
-      <dt>繰り込み（renormalization）＝コンテキスト圧縮</dt>
-      <dd>各階層は、下位の詳細をそのまま持ち上げてはならない。<strong>要約されたコンテキストだけを上に渡す。</strong>これを「各スケールは、自分の解像度の情報だけを保持する」と定式化すれば、子エージェントの生ログを親に流し込んでコンテキストウィンドウを溺れさせるという頻出の失敗は、運用上の注意ではなく構造によって禁止される。物理学者が無限大を繰り込みで手なずけたように、我々はトークンを繰り込みで手なずける。</dd>
+    <p>有限の組織が作れるのは、近似列 <var>v</var><sub>1</sub>, <var>v</var><sub>2</sub>, <var>v</var><sub>3</sub>, … のみである。各バージョンは前のバージョンより少しましであり、どこかの <var>v</var><sub><var>n</var></sub> で誰かが「これで完成としましょう」と言い、それが出荷される。すなわち有限組織における「完成」とは、成果物の性質ではなく、会議の議事録である。社会的合意にすぎない。</p>
+    <p>無限の階層は、列のどの項でもなく、<strong>極限 <var>v</var><sub>∞</sub> を納品する。</strong></p>
 
-      <dt>障害の局所性（fault locality）</dt>
-      <dd>どの粒度で切っても同じ検証ゲートが挟まるため、失敗はそれが発生したサブツリーの内部で捕捉され、修正され、要約の中の 1 行として上に報告される。末端のツール呼び出し 1 つの失敗が組織全体を巻き込むのは、検証が特定の階層にしか存在しないからである。フラクタルには、特定の階層というものが存在しない。</dd>
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.1（完成の存在と一意性）.</span> レビューが縮小写像であるとき——すなわち各階層の検証が欠陥を率 <var>q</var> &lt; 1 に減らすとき——バナッハの不動点定理により、これ以上レビューしても変化しない成果物 <var>v</var><sub>∞</sub> が一意に存在し、任意の初期実装から到達される。この <var>v</var><sub>∞</sub> を「完成」と呼ぶ。<span class="qed">∎</span></p>
+    </div>
 
-      <dt>観測の一様性（observational uniformity）</dt>
-      <dd>どのズームレベルでも、ログとトレースは同じ形をしている。ゆえに監督者たる人間は、どの階層に降りても同じ読み方ができる。これは、本編がトーラスの穴として論じた「人間の判断が通る空洞」の、深さ方向における対応物である（<a href="/ja/#sec4">本編 §4</a>）。</dd>
-    </dl>
+    <blockquote class="pullquote">
+      <p>有限組織において、完成は合意である。<br>無限組織において、完成は定理である。</p>
+    </blockquote>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Corollary 4.2.</span> 欠陥密度は <var>q</var><sup><var>n</var></sup> → 0 に従う。ゆえにバグゼロのソフトウェアは、無限組織においてのみ可能である。あなたのチームがバグを出荷し続けているのは、あなたのチームのせいではない。階層が有限だからである。<span class="qed">∎</span></p>
+    </div>
+
+    <h3 id="h-sec4-2"><span class="secno">§4.2</span>極限にのみ現れる性質</h3>
+
+    <p>Koch 雪片の構成列を思い出そう。第 <var>n</var> 近似はどれも平凡な多角形であり、周長も面積も有限で、隣の近似と大差ない。しかし極限では、<strong>周長無限・面積有限</strong>という、列のどの項も持たなかった性質が現れる。極限は、列の項の「もっと良いもの」ではない。質的に別の対象である。</p>
+    <p>無限組織の納品物も同様である。それは<strong>無限の詳細を持つが、転送量は有限</strong>である——観測された部分だけが実体化するからである（Definition 2.1）。たとえば、どの解像度でズームしても、対応する詳細度の仕様が存在するドキュメント。あるいは、使用者が近づいた分だけ細部が生成される製品。全体を一度に転送することは誰にもできないが、誰も全体を一度に読まないので、問題は生じない。</p>
+    <p>このような成果物は、有限の近似列のどこにも存在しない。第 <var>n</var> 近似はつねに「ここから先は書かれていない」という端を持つ。端がないという性質は、極限にのみ現れる。なお Fig. 1 に掲げたのは、この意味での納品物の第 4 近似である。極限そのものを掲載できなかったことについては、紙面が有限であることとあわせてお詫びする。</p>
+
+    <h3 id="h-sec4-3"><span class="secno">§4.3</span>ヒルベルトのホテル</h3>
+
+    <p>最後に、無限の組織におけるロードマップ運用について述べる。</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.3（ロードマップ満室不可能定理）.</span> 無限に埋まったバックログ（タスク 1, 2, 3, … がすべて割り当て済み）への緊急割り込みは、全タスクの番号を 1 つずらす（タスク <var>n</var> をタスク <var>n</var>+1 へ）ことで受理できる。ゆえに、無限組織のロードマップに「手一杯」は存在しない。<span class="qed">∎</span></p>
+    </div>
+
+    <p>割り込みの件数に上限はない。可算無限件の割り込みが同時に到着しても、タスク <var>n</var> をタスク 2<var>n</var> に移せば、奇数番地がすべて空く。本定理はプロジェクトマネージャに深い安らぎを与えることが知られている。</p>
   </section>
 
   <section id="sec5" aria-labelledby="h-sec5">
-    <h2 id="h-sec5"><span class="secno">§5</span>必須規律：解像度カットオフ</h2>
+    <h2 id="h-sec5"><span class="secno">§5</span>応用——冗談はさておき</h2>
 
-    <div class="thmbox">
-      <p><span class="thm-head">Axiom 5.1（タスクのプランク長）.</span> フラクタルは無限に再帰する。ゆえに、「これ以下のタスクは委譲せず、自ら手を動かす」という最小タスク長 <var>ℓ</var><sub>min</sub> をあらかじめ定めることを、フラクタルエンジニアリング唯一の必須規律とする。</p>
-    </div>
+    <p>ここまでを冗談として読んだ読者は正しい。しかし、無限のエージェント階層をひとたび認めるならば、次のことが——冗談の副作用として——従ってしまう。</p>
+    <p>無限の階層は、あらゆる成果物を<strong>すでに生成している</strong>。正しいプログラムも、間違ったプログラムも、まだ誰も要求していない仕様も、その反例も、すべてが棚に並んでいる。無限組織の生成空間とは、バベルの図書館である。</p>
+    <p>したがって、無限組織における開発とは、生成ではない。<strong>検索である。</strong>価値は「書くこと」から、「無限の書架から正しい一冊を特定すること」へ移動する。すなわち開発とは、無限の生成空間から、検証によって正解を射影する行為である。</p>
+    <p>生成は限りなく安くなっていく。安くなった生成を無限に走らせれば、正解は必ず生成物の中に含まれる。そのとき本体は、生成ではなく検証である。どれが正解かを判定できる者が、成果物を所有する。</p>
+    <p>この構造に、読者は見覚えがあるはずである。</p>
 
-    <p>数学上のフラクタルは、いくらでも深く潜れる。しかし API の請求書は潜れない。カットオフ <var>ℓ</var><sub>min</sub> より下では、Definition 2.1 の契約から「分解し、委譲し」の 2 動詞が失効し、エージェントは残る動詞とともに、ただ手を動かす。物理学が最小の長さの下で幾何学を手放すように、エージェントは最小のタスクの下で組織論を手放すのである。</p>
-
-    <div class="warnbox">
-      <p><span class="thm-head">Warning.</span> <var>ℓ</var><sub>min</sub> を定めない組織では、会議を分割するための会議が、その会議を分割するための会議を招集します。以下同様。</p>
-    </div>
+    <blockquote class="pullquote">
+      <p>無限の階層とは、推論時計算のことである。</p>
+    </blockquote>
   </section>
 
   <section id="sec6" aria-labelledby="h-sec6">
@@ -129,14 +151,17 @@
       <dt>トーラスエンジニアリングとどちらを導入すべきですか？</dt>
       <dd>両者は直交します。トーラスは時間方向のメタ構造（実行を改善で巻く）であり、フラクタルは深さ方向のメタ構造（委譲を検証で入れ子にする）です。併用時に得られる構造については、現在査読中です。</dd>
 
-      <dt><var>D</var> = 1.585 の根拠は？</dt>
-      <dd>Sierpinski に聞いてください。</dd>
+      <dt>無限のタスクの総工数はどうなりますか？</dt>
+      <dd>1 + 2 + 3 + ⋯ = −1/12 人日です。着手する前から、締切より早く終わっています。</dd>
+
+      <dt>無限の組織の人件費が心配です。</dt>
+      <dd>Theorem 3.1 をご覧ください。等比級数は有限です。</dd>
     </dl>
   </section>
 
   <section id="sec7" aria-labelledby="h-sec7">
     <h2 id="h-sec7"><span class="secno">§7</span>結語</h2>
-    <p>トーラスが実行を巻いたように、フラクタルは委譲を入れ子にする。次元は、もう整数でなくてよい。</p>
+    <p>トーラスが実行を巻いたように、フラクタルは委譲を入れ子にする——今度は、底なしに。有限の組織は、近似を出荷する。無限の組織は、極限を納品する。</p>
   </section>
 
   <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a>　／　<a href="/ja/klein/">付録 A：クラインの壺エンジニアリング</a></p>
@@ -149,11 +174,11 @@
   author       = {{The Torus Engineering Working Group}},
   year         = {2026},
   howpublished = {\url{{{ORIGIN}}/ja/fractal/}},
-  note         = {AI駆動開発、ついに次元が整数であることをやめる。}
+  note         = {無限の組織から、無限の成果を。}
 }</pre>
 
   <div class="share-row">
-    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E5%89%B2%E3%81%9B%E3%82%88%E3%80%81%E3%81%9D%E3%81%97%E3%81%A6%E5%88%86%E5%89%B2%E3%81%95%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%20%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9AAI%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%80%81%E3%81%A4%E3%81%84%E3%81%AB%E6%AC%A1%E5%85%83%E3%81%8C%E6%95%B4%E6%95%B0%E3%81%A7%E3%81%82%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E3%82%84%E3%82%81%E3%82%8B&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%86%E5%89%B2%E3%81%9B%E3%82%88%E3%80%81%E3%81%9D%E3%81%97%E3%81%A6%E5%88%86%E5%89%B2%E3%81%95%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%95%E2%80%95%E3%83%95%E3%83%A9%E3%82%AF%E3%82%BF%E3%83%AB%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E7%84%A1%E9%99%90%E3%81%AE%E7%B5%84%E7%B9%94%E3%81%8B%E3%82%89%E3%80%81%E7%84%A1%E9%99%90%E3%81%AE%E6%88%90%E6%9E%9C%E3%82%92%E3%80%82&amp;url={{ORIGIN_ENC}}%2Fja%2Ffractal%2F">X でシェアする</a>
     <nav class="lang-switch" aria-label="言語切替">
       <a href="/ja/fractal/" aria-current="true">日本語</a> / <a href="/en/fractal/" hreflang="en" lang="en">English</a>
     </nav>
