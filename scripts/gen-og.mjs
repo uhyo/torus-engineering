@@ -1,4 +1,5 @@
-// Renders the 1200x630 OGP images (src/og/torus.png, klein.png, fractal.png)
+// Renders the 1200x630 OGP images (src/og/torus.png, klein.png, fractal.png,
+// topological.png)
 // from the generated SVG figures, using headless Chromium.
 // Usage: CHROME=/path/to/chrome node scripts/gen-og.mjs
 import { execFileSync } from "node:child_process";
@@ -26,7 +27,7 @@ const fontCss = `
   @font-face { font-family: "STIX Two Text"; src: url("file://${fontsDir}/stix-italic.ttf"); font-weight: 400; font-style: italic; }
 `;
 
-function card({ figure, figureWidth, title, titleSize, catchline, sub }) {
+function card({ figure, figureWidth, title, titleSize, catchline, sub, stacked = false }) {
   return `<!doctype html>
 <html><head><meta charset="utf-8"><style>
 ${fontCss}
@@ -42,6 +43,12 @@ h1 { font-size: ${titleSize}px; font-weight: 600; line-height: 1.1; letter-spaci
 .rule { width: 120px; border-top: 2px solid #111; margin: 26px 0; }
 .catch { font-size: 33px; font-style: italic; line-height: 1.35; }
 .sub { font-size: 21px; color: #555; margin-top: 22px; line-height: 1.4; }
+${stacked ? `
+.inner { flex-direction: column; justify-content: center; gap: 18px; padding: 10px 60px 36px; }
+.fig { flex: 0 0 auto; }
+.text { flex: 0 0 auto; padding: 0; text-align: center; }
+.rule { margin: 18px auto; }
+` : ""}
 .wg { position: absolute; bottom: 44px; right: 62px; font-size: 17px; color: #666;
       font-variant: small-caps; letter-spacing: 1.5px; }
 </style></head>
@@ -53,7 +60,7 @@ h1 { font-size: ${titleSize}px; font-weight: 600; line-height: 1.1; letter-spaci
       <h1>${title}</h1>
       <div class="rule"></div>
       <div class="catch">${catchline}</div>
-      <div class="sub">${sub}</div>
+      ${sub ? `<div class="sub">${sub}</div>` : ""}
     </div>
   </div>
   <div class="wg">The Torus Engineering Working Group</div>
@@ -63,6 +70,7 @@ h1 { font-size: ${titleSize}px; font-weight: 600; line-height: 1.1; letter-spaci
 const torusSvg = readFileSync(join(root, "src/figures/torus-bare.svg"), "utf8");
 const kleinSvg = readFileSync(join(root, "src/figures/klein-bare.svg"), "utf8");
 const fractalSvg = readFileSync(join(root, "src/figures/fractal-bare.svg"), "utf8");
+const topoSvg = readFileSync(join(root, "src/figures/topo-surfaces-bare.svg"), "utf8");
 
 const jobs = [
   {
@@ -98,9 +106,23 @@ const jobs = [
       sub: "AI-driven development finally<br>abandons integer dimensions.",
     }),
   },
+  {
+    out: "topological.png",
+    html: card({
+      figure: topoSvg,
+      figureWidth: 860,
+      title: "Topological Engineering",
+      titleSize: 58,
+      catchline: "&ldquo;Never tear. Never glue. Deform.&rdquo;",
+      sub: "",
+      stacked: true,
+    }),
+  },
 ];
 
+const only = process.argv.slice(2);
 for (const job of jobs) {
+  if (only.length && !only.includes(job.out)) continue;
   const tmp = join(tmpdir(), `og-${job.out}.html`);
   writeFileSync(tmp, job.html);
   execFileSync(chrome, [

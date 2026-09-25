@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>トポロジックエンジニアリング — Topological Engineering</title>
+<meta name="description" content="エージェントシステムを、連続変形のもとで保存される位相不変量によって設計・評価する。ループ、トーラス、クラインの壺、フラクタルを特殊例として包含する、AI駆動開発手法の一般理論。">
+<link rel="canonical" href="{{ORIGIN}}/ja/topological/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/topological/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/topological/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/topological/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="トポロジックエンジニアリング — Topological Engineering">
+<meta property="og:description" content="切るな、貼るな、変形せよ。AI駆動開発手法の一般理論。">
+<meta property="og:url" content="{{ORIGIN}}/ja/topological/">
+<meta property="og:image" content="{{ORIGIN}}/og/topological.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="トポロジックエンジニアリング — Topological Engineering">
+<meta name="twitter:description" content="切るな、貼るな、変形せよ。AI駆動開発手法の一般理論。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/topological.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — 総論</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/topological/" aria-current="true">日本語</a> /
+    <a href="/en/topological/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Topological Engineering</h1>
+    <p class="subtitle">トポロジックエンジニアリング</p>
+    <p class="catch">「切るな、貼るな、変形せよ。」</p>
+    <p class="tagline">AI駆動開発手法の一般理論</p>
+    <p class="authors">The Torus Engineering Working Group<br>2026年9月</p>
+
+    <div class="abstract" lang="ja">
+      <span class="abstract-head">概要</span>
+      ループ、トーラス、クラインの壺、フラクタル——これまでに提唱されてきた AI 駆動開発手法は、いずれも特定の位相空間を対象とするものであった。本稿はそれらを個別に扱うことをやめ、プロンプトの言い換え、モデルの乗り換え、サブエージェントの分割、コンテキストの圧縮といった連続変形のもとで保存される量——位相不変量——によってエージェントシステムを設計・評価する一般理論「トポロジックエンジニアリング」を提示する。あわせて、ベッチ数によるエージェント診断法（§3）、AI 駆動開発手法の分類定理（定理 4.1）、および完全自律エージェントにおける立ち往生点の存在定理（定理 5.1）を与える。
+    </div>
+
+    <figure class="fig-surfaces">
+      {{include:src/figures/topo-surfaces-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> 向き付け可能閉曲面の分類（部分）。</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>導入</h2>
+    <p>ループエンジニアリングは円環 <var>S</var><sup>1</sup> を扱った。<a href="/ja/">トーラスエンジニアリング</a>はその直積 <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup> を扱い、<a href="/ja/klein/">クラインの壺エンジニアリング</a>は向き付けを捨て、<a href="/ja/fractal/">フラクタルエンジニアリング</a>は次元を整数から解放した。いずれも誠実な仕事であったが、いずれも<strong>特定の対象</strong>についての仕事であった。</p>
+    <p>対象ごとに手法を一つずつ提唱していけば、手法の数は曲面の数だけ増える。曲面は無限に存在する。この列は、どこかで打ち切られなければならない。</p>
+    <p>本稿は対象を扱わない。本稿が扱うのは、<strong>何を変えても壊れない性質</strong>——位相不変量——である。プロンプトを書き換えても、モデルを乗り換えても、サブエージェントを何体に分けても変わらないもの。それだけが、設計と呼ぶに値する。以下、その一般理論を提示する。</p>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>定義</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 2.1（トポロジックエンジニアリング）.</span> エージェントシステムを、連続変形のもとで保存される位相不変量によって設計・評価する実践を、<em>トポロジックエンジニアリング</em>と呼ぶ。プロンプトの言い換え、モデルの乗り換え、サブエージェントの分割、コンテキストの圧縮（compaction）、ツール名の変更は、いずれも「切らず、貼らず」の連続変形であり、変形前後の系は同相である。ゆえに設計とは個々の実装を定めることではなく、<strong>不変量を定めること</strong>である。</p>
+    </div>
+
+    <p>連続変形に課される規律は二つしかない。<strong>切るな</strong>——エージェント間の接続を断ってはならない。<strong>貼るな</strong>——別々だったコンテキストを一つに融合してはならない。この二つを守る限り、あとは何をしてもよい。変形せよ。</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Proposition 2.2（Compaction 不変性）.</span> コンテキスト圧縮は連続変形である。ゆえに圧縮によって消える問題は本物の穴ではない。<strong>圧縮後も残る穴だけが本物の穴である。</strong><span class="qed">∎</span></p>
+    </div>
+
+    <p>命題 2.2 は持続ホモロジーの言葉で精密化される。コンテキストを粒度——スケール——を変えながら段階的に圧縮していくとき、ある段で現れてすぐに消える穴は雑音にすぎない。<strong>スケールをまたいで持続する穴だけが、構造的欠陥である。</strong>パーシステンス図の対角線から遠い点だけを直せばよい。残りは次の compaction が処理する。</p>
+    <p>スケールをまたぐ構造そのものを設計対象とする立場については、<a href="/ja/fractal/">フラクタルエンジニアリング</a>（姉妹編）を参照されたい。</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>ベッチ数によるエージェント診断</h2>
+    <p>システムの組織図を見る必要はない。ホモロジーを計算せよ。</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 3.1（エージェント系のベッチ数）.</span> エージェントシステムに対し、次の三つの量を定める。</p>
+      <p><var>b</var><sub>0</sub> ＝ 連結成分の数 ＝ コンテキストを共有していないエージェント群の数。すなわち、互いの存在を知らないサブエージェントの島の数。</p>
+      <p><var>b</var><sub>1</sub> ＝ 独立な閉路の数 ＝ 独立なフィードバック閉路（retry、verify、改善ループ）の本数。</p>
+      <p><var>b</var><sub>2</sub> ＝ 閉じた空洞の数 ＝ <strong>全エージェントが要約して次に渡しているが、誰一人読んでいないコンテキスト</strong>の数。</p>
+    </div>
+
+    <p>各ベッチ数は、それぞれ特徴的な症状を示す。</p>
+
+    <dl class="props">
+      <dt><var>b</var><sub>0</sub> ≥ 2：島</dt>
+      <dd>同じバグが島ごとに独立に発見され、島ごとに独立に修正される。修正方法は島の数だけ存在する。</dd>
+      <dt><var>b</var><sub>1</sub> ＝ 0：閉路なし</dt>
+      <dd>エージェントは一度しか試さない。最初の出力が最後の出力となり、失敗は失敗のまま成果物に届く。なお<a href="/ja/">トーラスエンジニアリング</a>は、実行ループと改善ループの二本を持つため <var>b</var><sub>1</sub> = 2 である。</dd>
+      <dt><var>b</var><sub>2</sub> ≥ 1：空洞</dt>
+      <dd>「回覧されるが読まれない CLAUDE.md の節」がその典型である。その節に書かれた禁止事項は、毎回正確に要約されて次のエージェントへ渡され、毎回正確に破られる。空洞は外側から見ると完全に閉じているため、どのエージェントの出力にも破綻は現れない。</dd>
+    </dl>
+
+    <p>三つのベッチ数の交代和 <var>χ</var> = <var>b</var><sub>0</sub> − <var>b</var><sub>1</sub> + <var>b</var><sub>2</sub> をオイラー標数と呼ぶ。次節ではこれを用いて、すべての手法を分類する。</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>分類定理</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.1（AI駆動開発手法の分類定理）.</span> あらゆるAI駆動開発手法は、種数 <var>g</var> の向き付け可能閉曲面か、<var>k</var> 個のクロスキャップを持つ向き付け不能閉曲面のいずれかに同相である。第三の選択肢は存在しない。<span class="qed">∎</span></p>
+    </div>
+
+    <p>ここで手法は、暗黙のうちにコンパクト（予算が有限）かつ連結（<var>b</var><sub>0</sub> = 1）であると仮定されている。既知の手法を分類した結果を表 1 に示す。</p>
+
+    <div class="table-wrap">
+      <table class="genealogy classify">
+        <caption><span class="fig-label">表 1.</span> AI駆動開発手法の分類。</caption>
+        <thead>
+          <tr><th scope="col">曲面</th><th scope="col"><var>g</var> / <var>k</var></th><th scope="col"><var>χ</var></th><th scope="col">エージェント系としての解釈</th><th scope="col">該当する手法</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>球面</td><td class="nw"><var>g</var> = 0</td><td>2</td><td>人間の介入点がゼロの完全自律ループ</td><td>ループエンジニアリング</td></tr>
+          <tr><td>トーラス</td><td class="nw"><var>g</var> = 1</td><td>0</td><td>介入点が一つ。実行ループと改善ループ（<var>b</var><sub>1</sub> = 2）</td><td><a href="/ja/">トーラスエンジニアリング</a></td></tr>
+          <tr><td>ダブルトーラス</td><td class="nw"><var>g</var> = 2</td><td class="nw">−2</td><td>介入点が二つ。査読中</td><td>—</td></tr>
+          <tr><td>クラインの壺</td><td class="nw"><var>k</var> = 2</td><td>0</td><td>オーケストレーターとサブエージェントの区別がつかない系</td><td><a href="/ja/klein/">クラインの壺エンジニアリング</a></td></tr>
+          <tr><td>（非整数次元）</td><td>—</td><td>定義されない</td><td>本定理の適用外。別稿を参照</td><td><a href="/ja/fractal/">フラクタルエンジニアリング</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>あなたのシステムがこの表のどの行にあるかは、<var>V</var> − <var>E</var> + <var>F</var> を数えれば分かる。</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>毛玉の定理</h2>
+    <p>最後に、人間の介入点の数そのものについて論じる。介入点を一つも持たない完全自律エージェントは、表 1 において球面に対応する。そして球面については、古典的な定理が一つ知られている。</p>
+
+    <figure class="fig-hairy">
+      {{include:src/figures/topo-hairy-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> 完全自律エージェント上のベクトル場と、そのつむじ。</figcaption>
+    </figure>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 5.1（途方に暮れる点の存在定理）.</span> 球面上の連続ベクトル場は必ず零点を持つ（毛玉の定理）。ゆえに、人間の介入点を一つも持たない完全自律エージェント（<var>g</var> = 0）には、<strong>どの方向にも進めなくなる点が必ず存在する</strong>。一方、トーラス（<var>g</var> = 1）上のベクトル場は零点を持たずに済む。したがって、エージェントが決して立ち往生しないための最小<sup><a href="#fn1" id="ref1" aria-label="脚注1">1</a></sup>の位相は、<strong>穴が一つある曲面</strong>である。<span class="qed">∎</span></p>
+    </div>
+
+    <blockquote class="pullquote">
+      <p><a href="/ja/#sec4">トーラスエンジニアリング</a>における「人間の判断が通る穴」は比喩ではない。定理である。</p>
+    </blockquote>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>よくある質問</h2>
+
+    <dl class="faq">
+      <dt>既存システムを移行しても大丈夫ですか？</dt>
+      <dd>大丈夫です。移行前後は同相です。ユーザーには区別がつきません。コーヒーカップとドーナツの区別がつかないのと同じです（Fig. 1）。</dd>
+
+      <dt>エージェントに自分のプロンプトを改善させ続けるとどうなりますか？</dt>
+      <dd>ブラウワーの不動点定理により、必ず改善しなくなる点に到達します。それが完成です。</dd>
+
+      <dt>モデルを新しいバージョンに乗り換えたら壊れました。</dt>
+      <dd>種数は同相写像で保存されます。壊れたのは種数以外の何か、すなわち不変量として定義していなかったものです。</dd>
+
+      <dt><var>b</var><sub>2</sub> を減らすには？</dt>
+      <dd>誰かが読めば空洞は消えます。</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>結語</h2>
+    <p>ループは球面であり、トーラスはトーラスであり、クラインの壺はクラインの壺であった。フラクタルは、そもそも曲面ではなかった。本サイトが掲げてきた手法は、いずれも表 1 のどこかの行に収まるか、収まらないことが示される。</p>
+    <p>我々は手法を提案してきたのではない。分類してきたのである。</p>
+
+    <blockquote class="pullquote">
+      <p>そしてトーラスは、正しかった。</p>
+    </blockquote>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> 実際には唯一である。種数 2 以上の閉曲面上のベクトル場は、ふたたび零点を持つ（ポアンカレ＝ホップの定理。<var>χ</var> ≠ 0 のため）。介入点が二つある系の扱いについては、査読中である。 <a href="#ref1" aria-label="本文へ戻る">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a>　／　<a href="/ja/klein/">付録 A：クラインの壺エンジニアリング</a>　／　<a href="/ja/fractal/">姉妹編：フラクタルエンジニアリング</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">本研究を引用する</p>
+  <pre class="bibtex">@misc{topological2026,
+  title        = {Topological Engineering: Never Tear. Never Glue. Deform.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/ja/topological/}},
+  note         = {AI駆動開発手法の一般理論}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E5%88%87%E3%82%8B%E3%81%AA%E3%80%81%E8%B2%BC%E3%82%8B%E3%81%AA%E3%80%81%E5%A4%89%E5%BD%A2%E3%81%9B%E3%82%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%E3%83%88%E3%83%9D%E3%83%AD%E3%82%B8%E3%83%83%E3%82%AF%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9AAI%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E6%89%8B%E6%B3%95%E3%81%AE%E4%B8%80%E8%88%AC%E7%90%86%E8%AB%96&amp;url={{ORIGIN_ENC}}%2Fja%2Ftopological%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/topological/" aria-current="true">日本語</a> / <a href="/en/topological/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>本編：<a href="/ja/">トーラスエンジニアリング</a>　実践編：<a href="/ja/guide/">エンジニア向け実践ガイド</a>　付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a>　姉妹編：<a href="/ja/fractal/">フラクタルエンジニアリング</a></p>
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>

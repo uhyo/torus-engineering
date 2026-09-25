@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topological Engineering</title>
+<meta name="description" content="Designing and evaluating agentic systems by the topological invariants preserved under continuous deformation. A general theory of AI-driven development methods, containing loops, tori, Klein bottles and fractals as special cases.">
+<link rel="canonical" href="{{ORIGIN}}/en/topological/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/topological/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/topological/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/topological/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="Topological Engineering">
+<meta property="og:description" content="Never tear. Never glue. Deform. A general theory of AI-driven development methods.">
+<meta property="og:url" content="{{ORIGIN}}/en/topological/">
+<meta property="og:image" content="{{ORIGIN}}/og/topological.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Topological Engineering">
+<meta name="twitter:description" content="Never tear. Never glue. Deform. A general theory of AI-driven development methods.">
+<meta name="twitter:image" content="{{ORIGIN}}/og/topological.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — General theory</span>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/ja/topological/" lang="ja" hreflang="ja">日本語</a> /
+    <a href="/en/topological/" aria-current="true">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Topological Engineering</h1>
+    <p class="catch" lang="en">“Never tear. Never glue. Deform.”</p>
+    <p class="tagline">A general theory of AI-driven development methods.</p>
+    <p class="authors">The Torus Engineering Working Group<br>September 2026</p>
+
+    <div class="abstract">
+      <span class="abstract-head">Abstract</span>
+      Loops, tori, Klein bottles, fractals — every AI-driven development method proposed to date has taken a particular topological space as its object. We cease to treat them one at a time. Instead we present <em>topological engineering</em>, a general theory in which agentic systems are designed and evaluated by the quantities preserved under continuous deformation — rewording a prompt, switching models, splitting subagents, compacting context — that is, by their topological invariants. We further give a diagnostic of agentic systems by Betti numbers (§3), a classification theorem for AI-driven development methods (Theorem 4.1), and an existence theorem for stuck points of fully autonomous agents (Theorem 5.1).
+    </div>
+
+    <figure class="fig-surfaces">
+      {{include:src/figures/topo-surfaces-en.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> Classification of orientable closed surfaces (detail).</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>Introduction</h2>
+    <p>Loop engineering studied the circle <var>S</var><sup>1</sup>. <a href="/en/">Torus engineering</a> studied its product <var>S</var><sup>1</sup> × <var>S</var><sup>1</sup>; <a href="/en/klein/">Klein bottle engineering</a> abandoned orientability; <a href="/en/fractal/">fractal engineering</a> liberated the dimension from the integers. Each was honest work, and each was work on a <strong>particular object</strong>.</p>
+    <p>Were we to propose one method per object, the number of methods would grow with the number of surfaces, and there are infinitely many surfaces. The sequence must be truncated somewhere.</p>
+    <p>This paper does not study objects. It studies <strong>the properties that survive whatever one changes</strong> — the topological invariants. What is unchanged when the prompt is rewritten, when the model is replaced, when the work is split across any number of subagents: that alone deserves to be called design. We now present its general theory.</p>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>Definitions</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 2.1 (Topological engineering).</span> The practice of designing and evaluating an agentic system by the topological invariants preserved under continuous deformation is called <em>topological engineering</em>. Rewording a prompt, switching models, splitting subagents, compacting context, and renaming tools are all continuous deformations — nothing is torn and nothing is glued — and the system before a deformation is homeomorphic to the system after it. It follows that design consists not in fixing particular implementations but in <strong>fixing invariants</strong>.</p>
+    </div>
+
+    <p>A continuous deformation is subject to exactly two rules. <strong>Never tear</strong>: no connection between agents may be severed. <strong>Never glue</strong>: no two contexts that were separate may be fused into one. Within these rules, anything is permitted. Deform.</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Proposition 2.2 (Compaction invariance).</span> Context compaction is a continuous deformation. Hence a problem that disappears under compaction was never a genuine hole. <strong>Only the holes that survive compaction are genuine.</strong><span class="qed">∎</span></p>
+    </div>
+
+    <p>Proposition 2.2 is made precise in the language of persistent homology. As context is compacted in stages, at successively coarser granularity — that is, across scales — a hole that is born at one stage and dies at the next is mere noise. <strong>Only holes that persist across scales are structural defects.</strong> One need repair only the points far from the diagonal of the persistence diagram; the rest will be handled by the next compaction.</p>
+    <p>For a position that takes cross-scale structure itself as the object of design, see <a href="/en/fractal/">fractal engineering</a> (companion paper).</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>Diagnosing Agents by Betti Numbers</h2>
+    <p>There is no need to inspect the system’s org chart. Compute its homology.</p>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Definition 3.1 (Betti numbers of an agentic system).</span> To an agentic system we associate the following three quantities.</p>
+      <p><var>b</var><sub>0</sub> = the number of connected components = the number of groups of agents that share no context: islands of subagents unaware of one another’s existence.</p>
+      <p><var>b</var><sub>1</sub> = the number of independent cycles = the number of independent feedback loops (retry, verify, improvement).</p>
+      <p><var>b</var><sub>2</sub> = the number of enclosed cavities = the number of <strong>contexts that every agent summarizes and passes along, and that no agent ever reads</strong>.</p>
+    </div>
+
+    <p>Each Betti number presents a characteristic symptom.</p>
+
+    <dl class="props">
+      <dt><var>b</var><sub>0</sub> ≥ 2: islands</dt>
+      <dd>The same bug is discovered independently on each island and fixed independently on each island. There are as many fixes as there are islands.</dd>
+      <dt><var>b</var><sub>1</sub> = 0: no cycles</dt>
+      <dd>The agent tries exactly once. Its first output is its last, and a failure reaches the deliverable intact. <a href="/en/">Torus engineering</a>, with its execution loop and its improvement loop, has <var>b</var><sub>1</sub> = 2.</dd>
+      <dt><var>b</var><sub>2</sub> ≥ 1: cavities</dt>
+      <dd>The canonical example is the section of CLAUDE.md that is circulated but never read. The prohibitions written there are faithfully summarized and handed to the next agent every time, and faithfully violated every time. Seen from outside, a cavity is perfectly closed, so no agent’s output ever shows a crack.</dd>
+    </dl>
+
+    <p>The alternating sum <var>χ</var> = <var>b</var><sub>0</sub> − <var>b</var><sub>1</sub> + <var>b</var><sub>2</sub> is called the Euler characteristic. In the next section we use it to classify every method there is.</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>The Classification Theorem</h2>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 4.1 (Classification of AI-driven development methods).</span> Every AI-driven development method is homeomorphic either to an orientable closed surface of genus <var>g</var> or to a non-orientable closed surface with <var>k</var> crosscaps. There is no third option.<span class="qed">∎</span></p>
+    </div>
+
+    <p>Methods are tacitly assumed here to be compact (the budget is finite) and connected (<var>b</var><sub>0</sub> = 1). The classification of known methods is given in Table 1.</p>
+
+    <div class="table-wrap">
+      <table class="genealogy classify">
+        <caption><span class="fig-label">Table 1.</span> Classification of AI-driven development methods.</caption>
+        <thead>
+          <tr><th scope="col">Surface</th><th scope="col"><var>g</var> / <var>k</var></th><th scope="col"><var>χ</var></th><th scope="col">As an agentic system</th><th scope="col">Method</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sphere</td><td class="nw"><var>g</var> = 0</td><td>2</td><td>A fully autonomous loop with no point of human intervention</td><td>Loop engineering</td></tr>
+          <tr><td>Torus</td><td class="nw"><var>g</var> = 1</td><td>0</td><td>One point of intervention; an execution loop and an improvement loop (<var>b</var><sub>1</sub> = 2)</td><td><a href="/en/">Torus engineering</a></td></tr>
+          <tr><td>Double torus</td><td class="nw"><var>g</var> = 2</td><td class="nw">−2</td><td>Two points of intervention. Under review</td><td>—</td></tr>
+          <tr><td>Klein bottle</td><td class="nw"><var>k</var> = 2</td><td>0</td><td>A system in which the orchestrator cannot be told apart from its subagents</td><td><a href="/en/klein/">Klein bottle engineering</a></td></tr>
+          <tr><td>(Non-integer dimension)</td><td>—</td><td>Undefined</td><td>Outside the scope of this theorem; see the companion paper</td><td><a href="/en/fractal/">Fractal engineering</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Which row of this table your system occupies may be determined by counting <var>V</var> − <var>E</var> + <var>F</var>.</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>The Hairy Ball Theorem</h2>
+    <p>We turn finally to the number of points of human intervention itself. A fully autonomous agent, with no point of intervention at all, corresponds in Table 1 to the sphere. And about the sphere, one classical theorem is known.</p>
+
+    <figure class="fig-hairy">
+      {{include:src/figures/topo-hairy-en.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> A vector field on a fully autonomous agent, and its cowlick.</figcaption>
+    </figure>
+
+    <div class="thmbox">
+      <p><span class="thm-head">Theorem 5.1 (Existence of a point of bewilderment).</span> Every continuous tangent vector field on the sphere has a zero (the hairy ball theorem). Hence a fully autonomous agent with no point of human intervention (<var>g</var> = 0) <strong>necessarily has a point from which it can proceed in no direction</strong>. A vector field on the torus (<var>g</var> = 1), on the other hand, can do without zeros. It follows that the minimal<sup><a href="#fn1" id="ref1" aria-label="Footnote 1">1</a></sup> topology on which an agent never gets stuck is <strong>a surface with one hole</strong>.<span class="qed">∎</span></p>
+    </div>
+
+    <blockquote class="pullquote">
+      <p>The hole through which human judgment passes is not a metaphor. It is a theorem.</p>
+    </blockquote>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>Frequently Asked Questions</h2>
+
+    <dl class="faq">
+      <dt>Is it safe to migrate our existing system?</dt>
+      <dd>It is. The system before migration is homeomorphic to the system after it. Your users will not be able to tell the difference, just as no one can tell a coffee mug from a doughnut (Fig. 1).</dd>
+
+      <dt>What happens if an agent keeps improving its own prompt?</dt>
+      <dd>By the Brouwer fixed-point theorem, it necessarily reaches a point at which it no longer improves. That point is called completion.</dd>
+
+      <dt>We switched to a new model version, and everything broke.</dt>
+      <dd>Genus is preserved by homeomorphisms. What broke was something other than the genus — namely, whatever you had not defined as an invariant.</dd>
+
+      <dt>How do we reduce <var>b</var><sub>2</sub>?</dt>
+      <dd>The cavity vanishes as soon as someone reads it.</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>Concluding Remarks</h2>
+    <p>The loop was a sphere; the torus was a torus; the Klein bottle was a Klein bottle. The fractal was never a surface at all. Every method this site has put forward either occupies some row of Table 1 or is shown to occupy none.</p>
+    <p>We have not been proposing methods. We have been classifying them.</p>
+
+    <blockquote class="pullquote">
+      <p>And the torus was right.</p>
+    </blockquote>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> In fact, unique. A vector field on a closed orientable surface of genus 2 or more once again has a zero (the Poincaré–Hopf theorem, since <var>χ</var> ≠ 0). The treatment of systems with two points of intervention is under review. <a href="#ref1" aria-label="Back to text">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/en/">Main text: Torus Engineering</a> · <a href="/en/klein/">Appendix A: Klein Bottle Engineering</a> · <a href="/en/fractal/">Companion: Fractal Engineering</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">Cite this work</p>
+  <pre class="bibtex">@misc{topological2026,
+  title        = {Topological Engineering: Never Tear. Never Glue. Deform.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/en/topological/}},
+  note         = {A general theory of AI-driven development methods.}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CNever%20tear.%20Never%20glue.%20Deform.%E2%80%9D%20%E2%80%94%20Topological%20Engineering%2C%20a%20general%20theory%20of%20AI-driven%20development%20methods.&amp;url={{ORIGIN_ENC}}%2Fen%2Ftopological%2F">Share on X</a>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="/ja/topological/" hreflang="ja" lang="ja">日本語</a> / <a href="/en/topological/" aria-current="true">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>Main text: <a href="/en/">Torus Engineering</a> · In practice: <a href="/en/guide/">The Engineer’s Guide</a> · Appendix: <a href="/en/klein/">Klein Bottle Engineering</a> · Companion: <a href="/en/fractal/">Fractal Engineering</a></p>
+    <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
