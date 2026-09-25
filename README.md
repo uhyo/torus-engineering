@@ -11,6 +11,7 @@
 | `/ja/klein/` `/en/klein/` | 付録A：クラインの壺エンジニアリング（日英） |
 | `/ja/fractal/` `/en/fractal/` | 姉妹編：フラクタルエンジニアリング（日英） |
 | `/ja/topological/` `/en/topological/` | 総論：トポロジックエンジニアリング（日英） |
+| `/ja/holographic/` `/en/holographic/` | 物理編：ホログラフィックエンジニアリング（日英） |
 
 ## リポジトリ構成
 
@@ -37,7 +38,7 @@ npm run preview      # ビルドして wrangler dev（http://localhost:8787）
 図を作り直す場合:
 
 ```sh
-npm run figures            # トーラス・クラインの壺・フラクタル・トポロジックの SVG を再生成
+npm run figures            # トーラス・クラインの壺・フラクタル・トポロジック・ホログラフィックの SVG を再生成
 node scripts/gen-og.mjs    # OGP画像（1200×630 PNG）を再生成（要 Chromium。CHROME=/path で指定可。
                            # ファイル名を渡すとその画像だけ: node scripts/gen-og.mjs topological.png）
 ```

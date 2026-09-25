@@ -190,6 +190,16 @@ figure.fig-surfaces svg {
   max-width: 100%;
 }
 
+figure.fig-bulk svg {
+  max-width: 38rem;
+}
+
+figure.fig-blackhole svg {
+  display: block;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
 figure.fig-hairy svg {
   display: block;
   max-width: 24rem;
@@ -297,6 +307,8 @@ p {
 }
 
 /* ---- theorem / definition boxes ---- */
+/* Principle and Conjecture boxes (holographic page) share this rule on
+   purpose: only the label tells them apart. */
 
 .thmbox {
   border: 1px solid var(--rule-dark);
@@ -338,6 +350,63 @@ p {
 
 .thmbox .codeblock {
   margin: 0.7rem 0 0.2rem;
+}
+
+/* ---- displayed equations (holographic page) ---- */
+
+.eq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 1.4rem 0;
+  padding: 0 3.2rem;
+  font-size: 1.12rem;
+}
+
+.eq-body {
+  font-family: "STIX Two Text", "Times New Roman", serif;
+  white-space: nowrap;
+}
+
+.eq-no {
+  position: absolute;
+  right: 0;
+  font-size: 1rem;
+}
+
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.15em;
+  line-height: 1.25;
+}
+
+.frac > span:first-child {
+  border-bottom: 1px solid var(--ink);
+  padding: 0 0.3em;
+  align-self: stretch;
+  text-align: center;
+}
+
+.ss {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: 0.45em;
+  font-size: 0.66em;
+  line-height: 1;
+  margin-left: 0.05em;
+}
+
+.abstract .pacs {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 /* ---- pull quotes ---- */

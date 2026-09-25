@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ホログラフィックエンジニアリング — Holographic Engineering</title>
+<meta name="description" content="エージェント内部（バルク）の情報は、その境界——PR、レポート、コンテキストウィンドウ、eval 結果——に完全に記録されている。ホログラフィック原理に基づく AI 駆動開発の方法論と、その実験手順。">
+<link rel="canonical" href="{{ORIGIN}}/ja/holographic/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/holographic/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/holographic/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/holographic/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="ホログラフィックエンジニアリング — Holographic Engineering">
+<meta property="og:description" content="中を見るな、面を読め。エージェントの内部は、境界に書かれている。">
+<meta property="og:url" content="{{ORIGIN}}/ja/holographic/">
+<meta property="og:image" content="{{ORIGIN}}/og/holographic.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ホログラフィックエンジニアリング — Holographic Engineering">
+<meta name="twitter:description" content="中を見るな、面を読め。エージェントの内部は、境界に書かれている。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/holographic.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — 物理編</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/holographic/" aria-current="true">日本語</a> /
+    <a href="/en/holographic/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Holographic Engineering</h1>
+    <p class="subtitle">ホログラフィックエンジニアリング</p>
+    <p class="catch">「中を見るな、面を読め。」</p>
+    <p class="tagline">エージェントの内部は、境界に書かれている。</p>
+    <p class="authors">The Torus Engineering Working Group<br>2026年9月</p>
+
+    <div class="abstract" lang="ja">
+      <span class="abstract-head">概要</span>
+      サブエージェントの木、推論トレース、ツール呼び出し——エージェントシステムの設計とは、これまで一貫して内部の設計であった。本稿はホログラフィック原理に基づき、その必要がないことを論じる。エージェント内部（バルク）の情報は、その境界——PR、レポート、コンテキストウィンドウ、eval 結果——に完全に記録されている。あわせて、エージェントシステムの情報容量に関するベッケンシュタイン限界（定理 2.1）、マルチエージェント系と単一プロンプトの間のオーケストレーション双対性（予想 3.1）、およびブラックホール化したサブエージェントの検出を含む実験手順（§5）を与える。
+      <span class="pacs">PACS: 04.70.Dy, 11.25.Tq, 89.20.Ff</span>
+    </div>
+
+    <figure class="fig-bulk">
+      {{include:src/figures/holo-bulk-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> バルク（エージェント内部）と、その境界への符号化。</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>原理</h2>
+    <p>エージェントが何をしたかを知りたいとき、我々はこれまで内部を覗いてきた。トレースを開き、サブエージェント同士のやりとりを遡り、ツール呼び出しの引数を一つずつ検める。内部が大きくなるほど、覗く作業は長くなる。</p>
+    <p>物理学は、この作業を必要としない理論をすでに持っている。</p>
+
+    <div class="thmbox principle" id="principle-1-1">
+      <p><span class="thm-head">Principle 1.1（ホログラフィック原理）.</span> ある領域の内部（バルク）に含まれる情報は、その領域の境界（面）に完全に記録されている。</p>
+    </div>
+
+    <p>エージェントシステムにおいて、バルクと境界はそれぞれ次のものに対応する。</p>
+
+    <dl class="props">
+      <dt>バルク＝エージェントの内部</dt>
+      <dd>サブエージェントの木、推論トレース、ツール呼び出し、中間状態のすべて。体積を持ち、実行のたびに増大し、その全体を見た者はいない。</dd>
+      <dt>境界＝エージェントのインターフェース</dt>
+      <dd>PR、レポート、コンテキストウィンドウ、eval 結果、出力スキーマ。面であり、有限であり、人間が実際に読むのはこちらである。</dd>
+    </dl>
+
+    <p>Fig. 1 はこの対応を図示したものである。球の内部で木が一段成長するたびに、表面の記号が同じだけ増える。表面を読む者は、木を見る必要がない。原理 1.1 から、ただちに次が従う。</p>
+
+    <blockquote class="pullquote">
+      <p>エージェント内部で何が起きたかは、境界だけから完全に復元できる。<br>ゆえに、ログを読む必要はない。</p>
+    </blockquote>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>容量限界</h2>
+    <p>境界にすべてが書かれているのであれば、次に問うべきは、境界に<strong>どれだけ</strong>書けるかである。</p>
+
+    <div class="thmbox" id="thm-2-1">
+      <p><span class="thm-head">Theorem 2.1（ベッケンシュタイン限界）.</span> エージェントシステムが出力しうる情報量は、内部のサブエージェント数ではなく、<strong>境界の面積</strong>——コンテキストウィンドウの長さ、出力トークン予算、出力スキーマの項目数——に比例して上限づけられる。<span class="qed">∎</span></p>
+    </div>
+
+    <p>定量的には、次のように書かれる。</p>
+
+    <div class="eq" id="eq-2-1">
+      <span class="eq-body" role="math" aria-label="I は A 割る 4 エル P の 2 乗 以下"><var>I</var> ≤ <span class="frac"><span><var>A</var></span><span>4<var>ℓ</var><span class="ss"><span>2</span><span>P</span></span></span></span></span>
+      <span class="eq-no">(2.1)</span>
+    </div>
+
+    <p>ここで <var>I</var> はシステムが出力しうる情報量、<var>A</var> は境界の面積、<var>ℓ</var><sub>P</sub> はプランク長である。エージェント系におけるプランク長は 1 トークンであり、これより短い長さは意味を持たない。係数 1/4 の由来については諸説あるが、実務上は、境界の 4 分の 3 が定型文（「承知しました」「以下に概要を示します」等）に消費されるという観測事実と整合的である。</p>
+    <p>式 (2.1) の右辺に、サブエージェント数 <var>N</var> が現れないことに注意されたい。</p>
+
+    <div class="thmbox" id="cor-2-2">
+      <p><span class="thm-head">Corollary 2.2.</span> サブエージェントを増やしても、成果の情報量は増えない。<strong>増やすべきは境界の面積である。</strong><span class="qed">∎</span></p>
+    </div>
+
+    <p>サブエージェントを 10 倍に増やしても、レポートの欄が 3 行であれば、外に出てくるのは 3 行である。</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>双対性</h2>
+    <p>定理 2.1 は、内部の情報が境界の容量を超えられないことを述べた。では、内部と境界は同じものなのか。これについては、証明はないが、強い予想がある。</p>
+
+    <div class="thmbox conjecture" id="conj-3-1">
+      <p><span class="thm-head">Conjecture 3.1（オーケストレーション双対性）.</span> 階層構造（重力）を持つ任意のマルチエージェントシステムは、階層を持たない<strong>一次元低い単一プロンプト</strong>の境界理論と双対である。</p>
+    </div>
+
+    <p><em>注意.</em> 本予想は AdS/CFT 対応（マルダセナ予想）の類推である。その証明は、物理学においてそうであるのと同様に、未完である。</p>
+
+    <p>バルク側の理論は重力を含む。エージェント系において重力に相当するのは、階層——オーケストレーターがサブエージェントを引き寄せ、束ね、ときに押し潰す力——である。境界側の理論は重力を含まず、次元が一つ低い。すなわち、階層を持たない一枚のプロンプトである。</p>
+    <p>この予想のもとでは、マルチエージェント派とロングコンテキスト派の論争は解消する。両者は、同じ理論を異なる次元から記述しているにすぎない。どちらも正しく、どちらも他方の言い換えである。</p>
+    <p>予想 3.1 は、姉妹編の懸案にも答える。<a href="/ja/fractal/">フラクタルエンジニアリング</a>は、サブエージェントの階層が無限に続く組織を扱った。無限の階層は無限の体積を持つ。しかし双対性のもとでは、バルクの体積は問題にならない。</p>
+
+    <blockquote class="pullquote">
+      <p>フラクタルエンジニアリングにおける無限の階層は、双対性により、有限の境界にすべて書き込まれる。</p>
+    </blockquote>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>ブラックホール</h2>
+    <p>内部の情報が境界の容量を超えたとき、系は崩壊する。サブエージェントが膨大な作業を抱え込み、それを式 (2.1) の上限を超えて境界に押し込もうとするとき、境界はもはや内部を表現しない。外に出てくるのは「<strong>完了しました。</strong>」の一行のみである。</p>
+
+    <figure class="fig-blackhole">
+      {{include:src/figures/holo-blackhole-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> 崩壊したサブエージェントとそのホーキング放射。</figcaption>
+    </figure>
+
+    <p>このときエントロピーは、体積ではなく表面積に比例する。内部で何が起きたかは、誰にも分からない。</p>
+    <p>ただし、ブラックホールは完全には黒くない。情報はホーキング放射——すなわちログ——として、ゆっくりと外へ漏れ出る。情報は<strong>失われてはいない。しかし、読める形ではない。</strong></p>
+    <p>検出と対処については §5 の手順 5 を参照されたい。</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>実験手順</h2>
+    <p>以下に、ホログラフィックエンジニアリングを既存のエージェントシステムに適用する手順を示す。各手順は独立に実施できるが、番号順に実施することを推奨する。</p>
+
+    <ol class="steps procedure">
+      <li><span class="step-name">バルクを設計する前に、境界の面積を測れ。</span> オーケストレーターのコンテキスト長、出力トークン予算、レポートのスキーマの項目数を合計したものが、あなたのシステムの表面積である。この数値を知らずにサブエージェントを追加してはならない（<a href="#thm-2-1">定理 2.1</a>）。</li>
+      <li><span class="step-name">内部を書く前に、境界を書け。</span> 成果物のフォーマット——PR テンプレート、レポートのスキーマ、eval の項目——を先に確定せよ。双対性により、内部はそこから一意に定まる。内部の設計図は書かなくてよい。書いても境界の言い換えにすぎない。</li>
+      <li><span class="step-name">サブエージェントを 1 体追加したくなったら、代わりに境界を 1 項目広げよ。</span> 情報量の上限は面積で決まる。内部を増やしても、外に出てくる情報は増えない。レポートに列を一つ足すほうが、エージェントを一体足すより情報量が増える（<a href="#cor-2-2">系 2.2</a>）。</li>
+      <li><span class="step-name">レビューでは、面を読め。中を読むな。</span> トレースではなく成果物でレビューせよ。成果物から復元できない事実があったなら、それはエージェントの欠陥ではなく<strong>境界の欠陥</strong>である。修正すべきはプロンプトではなくスキーマである。</li>
+      <li><span class="step-name">ブラックホールを検出せよ。</span> 「完了しました。」だけを返すサブエージェントは崩壊している。出力が表面積に見合わない要約になったら、その場で境界を拡張して再実行せよ。ホーキング放射（ログ）を後から読もうとしてはならない。情報はあるが、読める形ではない（§4）。</li>
+      <li><span class="step-name">可能なら、次元を一つ下げよ。</span> 重力（オーケストレーション）はコストである。あなたのマルチエージェントが単一の境界理論で書けるなら、そう書け。同じ理論を、管理すべき重力なしで得られる（<a href="#conj-3-1">予想 3.1</a>）。</li>
+      <li><span class="step-name">穴の縁に、面積を配分せよ。</span> <a href="/ja/#sec4">トーラス</a>系（人間の介入点を持つ系）において、情報が記録される境界は穴の縁である。ゆえに、人間が見る画面にこそ最大の面積を割り当てよ。人間に「完了しました。」だけを見せる系は、穴の縁でブラックホール化している。</li>
+    </ol>
+
+    <p>本手順の遵守により、内部を一度も見ずにシステムを運用できる。</p>
+
+    <blockquote class="pullquote">
+      <p>内部を見たくなったら、それは境界が狭い証拠である。</p>
+    </blockquote>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>よくある質問</h2>
+
+    <dl class="faq">
+      <dt>ブラックホール化したエージェントの作業内容は失われましたか？</dt>
+      <dd>失われていません。ログにすべて含まれています。ただし、読める形では含まれていません。</dd>
+
+      <dt>トーラスは閉曲面で、境界がありません。情報はどこに記録されるのですか？</dt>
+      <dd>穴の縁です。</dd>
+
+      <dt>ログを読むのが好きなのですが。</dt>
+      <dd>趣味としては構いません。手順としては境界の欠陥です。</dd>
+
+      <dt>境界を広げすぎるとどうなりますか？</dt>
+      <dd>面積が体積を超えたとき、系は一次元低い理論になります。それが単一プロンプトです。</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>結語</h2>
+    <p>何体のサブエージェントを置くか。どの順に呼ぶか。誰が誰に報告するか。我々はそれらを設計と呼び、図に描き、レビューしてきた。本稿が示したのは、それらがすべて、境界にすでに書かれていたということである。</p>
+
+    <blockquote class="pullquote">
+      <p>我々は内部を設計してきた。<br>だが内部は、境界の影にすぎなかった。</p>
+    </blockquote>
+  </section>
+
+  <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a>　／　<a href="/ja/klein/">付録 A：クラインの壺エンジニアリング</a>　／　<a href="/ja/fractal/">姉妹編：フラクタルエンジニアリング</a>　／　<a href="/ja/topological/">総論：トポロジックエンジニアリング</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">本研究を引用する</p>
+  <pre class="bibtex">@misc{holographic2026,
+  title        = {Holographic Engineering: Never Look Inside. Read the Boundary.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/ja/holographic/}},
+  note         = {エージェントの内部は、境界に書かれている。}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E4%B8%AD%E3%82%92%E8%A6%8B%E3%82%8B%E3%81%AA%E3%80%81%E9%9D%A2%E3%82%92%E8%AA%AD%E3%82%81%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%E3%83%9B%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E5%86%85%E9%83%A8%E3%81%AF%E3%80%81%E5%A2%83%E7%95%8C%E3%81%AB%E6%9B%B8%E3%81%8B%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82&amp;url={{ORIGIN_ENC}}%2Fja%2Fholographic%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/holographic/" aria-current="true">日本語</a> / <a href="/en/holographic/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>本編：<a href="/ja/">トーラスエンジニアリング</a>　実践編：<a href="/ja/guide/">エンジニア向け実践ガイド</a>　付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a>　姉妹編：<a href="/ja/fractal/">フラクタルエンジニアリング</a>　総論：<a href="/ja/topological/">トポロジックエンジニアリング</a></p>
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
