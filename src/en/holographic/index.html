@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holographic Engineering</title>
+<meta name="description" content="The information contained in an agent’s interior (the bulk) is completely recorded on its boundary — its PRs, reports, context window and eval results. A methodology for AI-driven development based on the holographic principle, with experimental procedure.">
+<link rel="canonical" href="{{ORIGIN}}/en/holographic/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/holographic/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/holographic/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/holographic/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="Holographic Engineering">
+<meta property="og:description" content="Never look inside. Read the boundary. The inside of an agent is written on its surface.">
+<meta property="og:url" content="{{ORIGIN}}/en/holographic/">
+<meta property="og:image" content="{{ORIGIN}}/og/holographic.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Holographic Engineering">
+<meta name="twitter:description" content="Never look inside. Read the boundary. The inside of an agent is written on its surface.">
+<meta name="twitter:image" content="{{ORIGIN}}/og/holographic.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — Physics volume</span>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/ja/holographic/" lang="ja" hreflang="ja">日本語</a> /
+    <a href="/en/holographic/" aria-current="true">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Holographic Engineering</h1>
+    <p class="catch" lang="en">“Never look inside. Read the boundary.”</p>
+    <p class="tagline">The inside of an agent is written on its surface.</p>
+    <p class="authors">The Torus Engineering Working Group<br>September 2026</p>
+
+    <div class="abstract">
+      <span class="abstract-head">Abstract</span>
+      Trees of subagents, reasoning traces, tool calls — the design of agentic systems has so far been, without exception, the design of their interiors. On the basis of the holographic principle, we argue that this is unnecessary: the information in an agent’s interior (the bulk) is completely recorded on its boundary — its PRs, reports, context window and eval results. We further give a Bekenstein bound on the information capacity of agentic systems (Theorem 2.1), an orchestration duality between multi-agent systems and single prompts (Conjecture 3.1), and an experimental procedure (§5) that includes the detection of collapsed subagents.
+      <span class="pacs">PACS: 04.70.Dy, 11.25.Tq, 89.20.Ff</span>
+    </div>
+
+    <figure class="fig-bulk">
+      {{include:src/figures/holo-bulk-en.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> The bulk (agent interior) and its encoding on the boundary.</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>The Principle</h2>
+    <p>Whenever we have wished to know what an agent did, we have looked inside it. We open the trace, follow the exchanges between subagents backward, and inspect the arguments of each tool call in turn. The larger the interior grows, the longer the looking takes.</p>
+    <p>Physics already possesses a theory in which this labour is unnecessary.</p>
+
+    <div class="thmbox principle" id="principle-1-1">
+      <p><span class="thm-head">Principle 1.1 (The holographic principle).</span> The information contained in the interior (the bulk) of a region is completely recorded on the boundary (the surface) of that region.</p>
+    </div>
+
+    <p>In an agentic system, the bulk and the boundary correspond to the following.</p>
+
+    <dl class="props">
+      <dt>The bulk = the interior of the agent</dt>
+      <dd>The tree of subagents, the reasoning traces, the tool calls, and every intermediate state. It has volume, it grows with every run, and no one has ever seen the whole of it.</dd>
+      <dt>The boundary = the interface of the agent</dt>
+      <dd>PRs, reports, the context window, eval results, the output schema. It is a surface, it is finite, and it is what humans actually read.</dd>
+    </dl>
+
+    <p>Fig. 1 illustrates the correspondence. Each time the tree inside the sphere grows by one node, the marks on its surface increase accordingly. Whoever reads the surface has no need to see the tree. From Principle 1.1 it follows at once that</p>
+
+    <blockquote class="pullquote">
+      <p>Everything that happened inside an agent can be reconstructed from its boundary alone. Hence there is no need to read the logs.</p>
+    </blockquote>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>The Capacity Bound</h2>
+    <p>If everything is written on the boundary, the next question is <strong>how much</strong> can be written there.</p>
+
+    <div class="thmbox" id="thm-2-1">
+      <p><span class="thm-head">Theorem 2.1 (The Bekenstein bound).</span> The amount of information an agentic system can output is bounded not by the number of subagents inside it but in proportion to the <strong>area of its boundary</strong> — the length of the context window, the output token budget, and the number of fields in the output schema.<span class="qed">∎</span></p>
+    </div>
+
+    <p>Quantitatively,</p>
+
+    <div class="eq" id="eq-2-1">
+      <span class="eq-body" role="math" aria-label="I is at most A over 4 l P squared"><var>I</var> ≤ <span class="frac"><span><var>A</var></span><span>4<var>ℓ</var><span class="ss"><span>2</span><span>P</span></span></span></span></span>
+      <span class="eq-no">(2.1)</span>
+    </div>
+
+    <p>where <var>I</var> is the information the system can output, <var>A</var> is the area of its boundary, and <var>ℓ</var><sub>P</sub> is the Planck length. In an agentic system the Planck length is one token; no shorter length has meaning. The origin of the factor 1/4 is disputed, but in practice it agrees with the observed fact that three quarters of any boundary are consumed by boilerplate (“Certainly!”, “Here is a summary of the changes:”, and the like).</p>
+    <p>We draw the reader’s attention to the absence of the number of subagents <var>N</var> from the right-hand side of (2.1).</p>
+
+    <div class="thmbox" id="cor-2-2">
+      <p><span class="thm-head">Corollary 2.2.</span> Adding subagents does not increase the information in the result. <strong>What must be increased is the area of the boundary.</strong><span class="qed">∎</span></p>
+    </div>
+
+    <p>Multiply your subagents tenfold; if the report has three lines, three lines are what come out.</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>Duality</h2>
+    <p>Theorem 2.1 states that the information inside cannot exceed the capacity of the boundary. Are the inside and the boundary, then, the same thing? On this question there is no proof, but there is a strong conjecture.</p>
+
+    <div class="thmbox conjecture" id="conj-3-1">
+      <p><span class="thm-head">Conjecture 3.1 (Orchestration duality).</span> Every multi-agent system with hierarchical structure (gravity) is dual to a boundary theory without hierarchy: <strong>a single prompt, one dimension lower</strong>.</p>
+    </div>
+
+    <p><em>Remark.</em> The conjecture is an analogue of the AdS/CFT correspondence (the Maldacena conjecture). Its proof, as in physics, remains incomplete.</p>
+
+    <p>The theory in the bulk contains gravity. In an agentic system, the role of gravity is played by hierarchy — the force with which an orchestrator attracts its subagents, binds them together, and on occasion crushes them. The theory on the boundary contains no gravity and has one dimension fewer: it is a single prompt, without hierarchy.</p>
+    <p>Under this conjecture, the dispute between the multi-agent school and the long-context school dissolves. The two describe the same theory from different dimensions. Both are right, and each is a rephrasing of the other.</p>
+    <p>Conjecture 3.1 also settles an open problem of the companion paper. <a href="/en/fractal/">Fractal engineering</a> studied organizations whose hierarchy of subagents continues without end. An infinite hierarchy has infinite volume. Under duality, however, the volume of the bulk is of no consequence.</p>
+
+    <blockquote class="pullquote">
+      <p>The infinite hierarchy of fractal engineering is, by duality, written in its entirety on a finite boundary.</p>
+    </blockquote>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>Black Holes</h2>
+    <p>When the information inside exceeds the capacity of the boundary, the system collapses. When a subagent takes on an enormous amount of work and tries to force it through a boundary beyond the bound (2.1), the boundary ceases to represent the interior. All that comes out is a single line: “<strong>Done.</strong>”</p>
+
+    <figure class="fig-blackhole">
+      {{include:src/figures/holo-blackhole-en.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> A collapsed subagent and its Hawking radiation.</figcaption>
+    </figure>
+
+    <p>Its entropy is then proportional not to its volume but to its surface area. What happened inside, no one can tell.</p>
+    <p>A black hole is not, however, entirely black. Information leaks slowly outward as Hawking radiation — that is, as logs. The information <strong>is not lost. But it is not in a readable form.</strong></p>
+    <p>For detection and treatment, see step 5 of §5.</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>Experimental Procedure</h2>
+    <p>We now give the procedure for applying holographic engineering to an existing agentic system. Each step may be carried out independently, but the steps are best carried out in order.</p>
+
+    <ol class="steps procedure">
+      <li><span class="step-name">Before designing the bulk, measure the area of the boundary.</span> The sum of the orchestrator’s context length, the output token budget, and the number of fields in the report schema is the surface area of your system. Do not add a single subagent without knowing this number (<a href="#thm-2-1">Theorem 2.1</a>).</li>
+      <li><span class="step-name">Before writing the inside, write the boundary.</span> Fix the format of the deliverables first — the PR template, the report schema, the eval criteria. By duality, the interior is then uniquely determined. You need not draw up a design for the interior; if you do, it will be a rephrasing of the boundary.</li>
+      <li><span class="step-name">When you want to add one subagent, widen the boundary by one field instead.</span> The upper bound on information is set by area. Enlarging the interior does not increase what comes out. Adding one column to the report increases the information more than adding one agent does (<a href="#cor-2-2">Corollary 2.2</a>).</li>
+      <li><span class="step-name">In review, read the surface. Do not read the inside.</span> Review deliverables, not traces. If some fact cannot be reconstructed from the deliverable, that is a defect not of the agent but of the <strong>boundary</strong>. What needs fixing is not the prompt but the schema.</li>
+      <li><span class="step-name">Detect black holes.</span> A subagent that returns only “Done.” has collapsed. Whenever an output shrinks to a summary out of proportion to the surface area, widen the boundary on the spot and run again. Do not attempt to read the Hawking radiation (the logs) afterward: the information is there, but not in a readable form (§4).</li>
+      <li><span class="step-name">Where possible, lower the dimension by one.</span> Gravity (orchestration) is a cost. If your multi-agent system can be written as a single boundary theory, write it so. You obtain the same theory without the gravity to manage (<a href="#conj-3-1">Conjecture 3.1</a>).</li>
+      <li><span class="step-name">Allocate area to the rim of the hole.</span> In a <a href="/en/#sec4">toroidal</a> system — one with a point of human intervention — the boundary on which information is recorded is the rim of the hole. Allocate the greatest area, therefore, to the screen a human looks at. A system that shows its human only “Done.” has collapsed into a black hole at the rim of the hole.</li>
+    </ol>
+
+    <p>By following this procedure, one can operate a system without ever once looking inside it.</p>
+
+    <blockquote class="pullquote">
+      <p>If you feel the urge to look inside, your boundary is too small.</p>
+    </blockquote>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>Frequently Asked Questions</h2>
+
+    <dl class="faq">
+      <dt>Has the work of an agent that collapsed into a black hole been lost?</dt>
+      <dd>It has not. It is all contained in the logs. It is not, however, contained in a readable form.</dd>
+
+      <dt>A torus is a closed surface; it has no boundary. Where is the information recorded?</dt>
+      <dd>On the rim of the hole.</dd>
+
+      <dt>But I enjoy reading logs.</dt>
+      <dd>As a hobby, that is quite all right. As a procedure, it is a defect of the boundary.</dd>
+
+      <dt>What happens if the boundary is widened too far?</dt>
+      <dd>When the area exceeds the volume, the system becomes a theory one dimension lower. That is called a single prompt.</dd>
+    </dl>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>Concluding Remarks</h2>
+    <p>How many subagents to deploy; in what order to call them; who reports to whom. We have called these things design, drawn them in diagrams, and reviewed them. What this paper has shown is that all of them were already written on the boundary.</p>
+
+    <blockquote class="pullquote">
+      <p>We have been designing the inside. But the inside was only a shadow of the boundary.</p>
+    </blockquote>
+  </section>
+
+  <p class="backlink">← <a href="/en/">Main text: Torus Engineering</a> · <a href="/en/klein/">Appendix A: Klein Bottle Engineering</a> · <a href="/en/fractal/">Companion: Fractal Engineering</a> · <a href="/en/topological/">General theory: Topological Engineering</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">Cite this work</p>
+  <pre class="bibtex">@misc{holographic2026,
+  title        = {Holographic Engineering: Never Look Inside. Read the Boundary.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/en/holographic/}},
+  note         = {The inside of an agent is written on its surface.}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CNever%20look%20inside.%20Read%20the%20boundary.%E2%80%9D%20%E2%80%94%20Holographic%20Engineering%3A%20the%20inside%20of%20an%20agent%20is%20written%20on%20its%20surface.&amp;url={{ORIGIN_ENC}}%2Fen%2Fholographic%2F">Share on X</a>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="/ja/holographic/" lang="ja" hreflang="ja">日本語</a> / <a href="/en/holographic/" aria-current="true">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>Main text: <a href="/en/">Torus Engineering</a> · In practice: <a href="/en/guide/">The Engineer’s Guide</a> · Appendix: <a href="/en/klein/">Klein Bottle Engineering</a> · Companion: <a href="/en/fractal/">Fractal Engineering</a> · General theory: <a href="/en/topological/">Topological Engineering</a></p>
+    <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
