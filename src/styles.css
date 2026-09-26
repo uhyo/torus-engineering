@@ -206,6 +206,22 @@ figure.fig-hairy svg {
   margin: 0 auto;
 }
 
+figure.fig-modes svg {
+  max-width: 36rem;
+}
+
+figure.fig-branes svg {
+  display: block;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+figure.fig-cy svg {
+  display: block;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
 figcaption {
   font-size: 0.88rem;
   color: var(--ink-soft);
@@ -352,7 +368,7 @@ p {
   margin: 0.7rem 0 0.2rem;
 }
 
-/* ---- displayed equations (holographic page) ---- */
+/* ---- displayed equations (holographic and superstring pages) ---- */
 
 .eq {
   display: flex;
@@ -607,6 +623,21 @@ code {
 
 .steps .step-name {
   font-weight: 600;
+}
+
+/* ---- predictions (superstring page) ---- */
+/* The budget line closes each prediction in the footnote style. */
+
+.predictions .budget {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--ink-faint);
+}
+
+.props dd > p:first-child {
+  margin-top: 0;
 }
 
 .code-sample {

@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "figures": "node scripts/gen-torus.mjs && node scripts/gen-klein.mjs && node scripts/gen-fractal.mjs && node scripts/gen-topological.mjs && node scripts/gen-holographic.mjs",
+    "figures": "node scripts/gen-torus.mjs && node scripts/gen-klein.mjs && node scripts/gen-fractal.mjs && node scripts/gen-topological.mjs && node scripts/gen-holographic.mjs && node scripts/gen-superstring.mjs",
     "build": "node build.mjs",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"

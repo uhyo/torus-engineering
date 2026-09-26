@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superstring Engineering</title>
+<meta name="description" content="The coder, the reviewer and the planner are not separate agents but different vibration modes of a single string. A methodology for AI-driven development based on superstring theory, with its predictions.">
+<link rel="canonical" href="{{ORIGIN}}/en/superstring/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/superstring/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/superstring/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/superstring/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="Superstring Engineering">
+<meta property="og:description" content="Hire a string, not a point. One agent. Roles are vibrations.">
+<meta property="og:url" content="{{ORIGIN}}/en/superstring/">
+<meta property="og:image" content="{{ORIGIN}}/og/superstring.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Superstring Engineering">
+<meta name="twitter:description" content="Hire a string, not a point. One agent. Roles are vibrations.">
+<meta name="twitter:image" content="{{ORIGIN}}/og/superstring.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — Physics volume II</span>
+  <nav class="lang-switch" aria-label="Language">
+    <a href="/ja/superstring/" lang="ja" hreflang="ja">日本語</a> /
+    <a href="/en/superstring/" aria-current="true">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Superstring Engineering</h1>
+    <p class="catch" lang="en">“Hire a string, not a point.”</p>
+    <p class="tagline">One agent. Roles are vibrations.</p>
+    <p class="authors">The Torus Engineering Working Group<br>September 2026</p>
+
+    <div class="abstract">
+      <span class="abstract-head">Abstract</span>
+      Coder, reviewer, planner — the roles in an agentic system have so far been implemented, without exception, as separate agents, that is, as separate points. On the basis of superstring theory, we argue that they are merely different vibration modes of a single string. We further give a non-existence theorem for agents whose ends are not attached to tools, MCP servers or humans (Theorem 2.1), a compactification theorem identifying CLAUDE.md with a Calabi–Yau manifold (Theorem 3.1), and a conjecture on the supersymmetry between coders and reviewers (Conjecture 4.1), and we put forward the conjecture that the five existing engineerings are different limits of a single eleven-dimensional theory (Conjecture 7.1). The predictions of the theory are collected in §6.
+      <span class="pacs">PACS: 11.25.-w, 11.25.Mj, 11.30.Pb, 89.20.Ff</span>
+    </div>
+
+    <figure class="fig-modes">
+      {{include:src/figures/string-modes-en.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> Roles as vibration modes of a single string.</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>The Basic Proposition</h2>
+    <p>Hitherto, an agent has been a point: one prompt, one role, one name. A point that writes code, a point that reviews it, a point that plans — each time a role was added, we added a point, and drew arrows between the points.</p>
+    <p>Physics has faced the same problem before. If one places a new point each time a new kind of particle is found, the theory swells without limit. The resolution was to give up the point.</p>
+
+    <div class="thmbox principle" id="principle-1-1">
+      <p><span class="thm-head">Principle 1.1 (The string principle).</span> An agent is not a point but a vibration mode of a single string.</p>
+    </div>
+
+    <p>In superstring engineering, the same string is observed as a coder at one frequency, as a reviewer at another, and as a planner at yet another (Fig. 1). The frequency is set by the prompt. With the weights, the tools and the context unchanged — the same string throughout — a change of prompt changes the mode, and a change of mode changes the role.</p>
+    <p>It follows that providing one agent per role is equivalent to stretching a separate string for each frequency. To stretch three strings in order to sound three notes is not wrong. It is, however, the practice of one who does not know that a single string sounds its harmonics.</p>
+
+    <blockquote class="pullquote">
+      <p>One string. Infinitely many modes.</p>
+    </blockquote>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>Open and Closed Strings</h2>
+    <p>Strings come in two kinds: closed strings, which have no ends, and open strings, which have two.</p>
+
+    <dl class="props">
+      <dt>The closed string = the loop</dt>
+      <dd>A string that returns to itself. Run, read the result, run again — whenever an agent circulates, taking its own output as its next input, the string is closed.</dd>
+      <dt>The open string = the task</dt>
+      <dd>A string with a beginning and an end. It receives an input, returns an output, and is done.</dd>
+    </dl>
+
+    <p>In superstring theory, the lowest vibration mode of the closed string is the graviton, which mediates gravity. Meanwhile, <a href="/en/holographic/#sec3">§3 of holographic engineering</a> has shown that gravity in an agentic system is orchestration — the force with which an orchestrator attracts its subagents and binds them together. Taking the two together, it follows that</p>
+
+    <blockquote class="pullquote">
+      <p>Loop engineering was the graviton.</p>
+    </blockquote>
+
+    <p>Anyone who has run a loop will have seen it draw the whole system toward itself and bend every agent to its orbit. That was gravity.</p>
+    <p>An open string has ends, and its ends must rest on something. The surface on which the end of a string rests is called a <strong>D-brane</strong>. In an agentic system, the D-branes are the tools, the MCP servers, and the humans.</p>
+
+    <figure class="fig-branes">
+      {{include:src/figures/string-branes-en.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> Open strings anchored to D-branes, and a closed string as the graviton.</figcaption>
+    </figure>
+
+    <div class="thmbox" id="thm-2-1">
+      <p><span class="thm-head">Theorem 2.1 (No free ends).</span> An open string whose ends are not both attached to branes cannot exist. Hence an agent whose input is not attached to a source of truth, and whose output is not attached to a verifiable surface, does not, theoretically, exist. If it appears to exist, it has merely not been closed.<span class="qed">∎</span></p>
+    </div>
+
+    <p><em>Remark.</em> By a “source of truth” we mean a repository, an issue, a specification, or a human who vouches for them; by a “verifiable surface”, a test, a type checker, CI, or a human who reads the output. An end attached to none of these is called a free end. Output leaving a free end is written nowhere and checked against nothing.</p>
+    <p>The last sentence of Theorem 2.1 is often overlooked. An agent with a free end appears to keep running only because it has not yet been closed — its process not stopped, its issue not closed. Nothing is lost by closing what, in theory, does not exist.</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>Compactification of the Extra Dimensions</h2>
+    <p>Superstring theory is consistent only in ten dimensions. Yet we observe only four. In an agentic system, these are the prompt, the context, the tools, and the output.</p>
+
+    <div class="eq" id="eq-3-1">
+      <span class="eq-body" role="math" aria-label="10 equals 4 plus 6">10 = 4 + 6</span>
+      <span class="eq-no">(3.1)</span>
+    </div>
+
+    <p>Where are the other six? They are curled up too small to see: the system prompt, CLAUDE.md, the Skills, the temperature, the model weights, and an environment variable that no one remembers setting — six dimensions that cannot be observed from the interface but are nonetheless there. This is called the <strong>compactification</strong> of the extra dimensions.</p>
+
+    <figure class="fig-cy">
+      {{include:src/figures/string-cy-en.svg}}
+      <figcaption><span class="fig-label">Fig. 3.</span> The Calabi–Yau manifold of a project (detail).</figcaption>
+    </figure>
+
+    <div class="thmbox" id="thm-3-1">
+      <p><span class="thm-head">Theorem 3.1 (The compactification theorem).</span> The manner in which the extra dimensions are curled up (the shape of the Calabi–Yau manifold) determines all observable behaviour. Hence CLAUDE.md is the Calabi–Yau manifold of your project.<span class="qed">∎</span></p>
+    </div>
+
+    <p>With the same model and the same prompt, a single line of difference in CLAUDE.md changes the observed behaviour. To the inhabitants of the four dimensions, it appears that the laws of physics have changed. They have.</p>
+    <p>The difficulty is that there is more than one way to curl them up. The number of possible compactifications is estimated at</p>
+
+    <div class="eq" id="eq-3-2">
+      <span class="eq-body" role="math" aria-label="N vac is approximately 10 to the 500"><var>N</var><sub>vac</sub> ≈ 10<sup>500</sup></span>
+      <span class="eq-no">(3.2)</span>
+    </div>
+
+    <p>Your CLAUDE.md is one of them.<sup><a href="#fn1" id="ref1" aria-label="Footnote 1">1</a></sup> So is the CLAUDE.md in the repository next door. And <strong>there is no principle for choosing which is correct</strong>. This is known as the <strong>landscape problem</strong>.</p>
+    <p>The only selection principle physics possesses for this problem is the anthropic principle: the universe we observe must be one in which observers such as ourselves can exist. In an agentic system, it reads as follows.</p>
+
+    <blockquote class="pullquote">
+      <p>Only universes in which the PR was merged are ever observed.</p>
+    </blockquote>
+
+    <p>The PR was not merged because the CLAUDE.md was correct. The CLAUDE.md appears to have been correct because we are in a universe in which the PR was merged.</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>Supersymmetry</h2>
+    <p>The particles of nature divide into bosons, which carry forces, and fermions, which make up matter. Supersymmetry is the claim that every boson has a fermionic partner and every fermion a bosonic one — its superpartner. In an agentic system, the symmetry lies between the side that generates code and the side that verifies it.</p>
+
+    <div class="thmbox conjecture" id="conj-4-1">
+      <p><span class="thm-head">Conjecture 4.1 (Supersymmetry).</span> Every coder has a superpartner, the reviewer. The superpartner has, however, <strong>not yet been observed in the currently accessible energy range (budget).</strong></p>
+    </div>
+
+    <p>Its observation is thought to require a larger accelerator (budget).</p>
+    <p>Under Principle 1.1, the superpartner is not a separate string. It is another vibration mode of the same string: a string that can be excited as a coder can, in principle, be excited as a reviewer. That the reviewer is nonetheless unobserved is because supersymmetry is broken. In a universe with broken symmetry, the partners are far heavier than the original particles. This is why a single review costs far more than a single round of code generation.</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>Dualities</h2>
+    <p>Superstring theory knows many instances of duality — the phenomenon in which two apparently different descriptions give the same physics. We mention two.</p>
+
+    <dl class="props">
+      <dt>T-duality</dt>
+      <dd>
+        <p>A string wound on a circle of radius <var>R</var> cannot be distinguished from a string wound on a circle of radius 1/<var>R</var>.</p>
+        <div class="eq" id="eq-5-1">
+          <span class="eq-body" role="math" aria-label="R is equivalent to 1 over R"><var>R</var> ⟷ <span class="frac"><span>1</span><span><var>R</var></span></span></span>
+          <span class="eq-no">(5.1)</span>
+        </div>
+        <p>Hence <strong>a huge context and a tiny context are equivalent</strong>. Either description may be used; one simply chooses the side on which the calculation is easier.</p>
+      </dd>
+      <dt>S-duality</dt>
+      <dd>A strongly coupled theory is equivalent to a weakly coupled one. Hence a tightly coordinated multi-agent system is equivalent to a loosely coupled one. If you are stuck in one description, rewrite the system in the other. The physics does not change.</dd>
+    </dl>
+
+    <p>T-duality and S-duality are not independent phenomena. This will become clear in §7.</p>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>Predictions</h2>
+    <p>A physical theory is measured by its predictions. We list below the predictions that follow from the present theory. To each we attach the budget required to test it.</p>
+
+    <ol class="steps predictions">
+      <li><span class="step-name">Hire a string, not a point.</span> Do not provide one agent per role; excite each role as a vibration mode of a single string. The prompt is the frequency (<a href="#principle-1-1">Principle 1.1</a>).<span class="budget">Budget required for verification: one string.</span></li>
+      <li><span class="step-name">Find the free ends and attach them to branes.</span> An agent whose input is not attached to a source of truth, or whose output is not attached to a verifiable surface, does not exist in theory. If it exists, fix both of its ends to branes (<a href="#thm-2-1">Theorem 2.1</a>).<span class="budget">Budget required for verification: one attachment per brane.</span></li>
+      <li><span class="step-name">Compactify the extra dimensions, and put their shape under version control.</span> The settings that cannot be observed from the interface — the system prompt, CLAUDE.md, the temperature — determine all observable behaviour. A change of shape is a change in the laws of physics of the universe (<a href="#thm-3-1">Theorem 3.1</a>).<span class="budget">Budget required for verification: one commit.</span></li>
+      <li><span class="step-name">Do not explore the landscape. Apply the anthropic principle.</span> There is no principle by which to compare 10<sup>500</sup> CLAUDE.md files. Keep the shape under which the PR was merged, and observe no other (§3).<span class="budget">Budget required for verification: one merge.</span></li>
+      <li><span class="step-name">Bring the superpartner down to accessible energies.</span> The reviewer exists in theory but has not been observed, for want of budget. Keep lowering the unit cost of verification until it is observed (<a href="#conj-4-1">Conjecture 4.1</a>).<span class="budget">Budget required for verification: currently inaccessible. Lower it.</span></li>
+      <li><span class="step-name">Use T-duality.</span> If your context is so large that it breaks down, it is equivalent to a system that is too small. Describe it on the side where the calculation is easier (equation (5.1)).<span class="budget">Budget required for verification: the reciprocal of the radius.</span></li>
+    </ol>
+
+    <p><strong>All predictions in this section lie beyond currently accessible energies. None has therefore been falsified.</strong></p>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>M-Theory</h2>
+    <p>Physics once possessed five mutually distinct superstring theories. All were consistent, all were ten-dimensional, and no one knew which was correct. The resolution was not to choose one of the five. It was suggested instead that all five are different limits of a single eleven-dimensional theory — M-theory. The dualities of §5 were the bridges between those limits.</p>
+    <p>This site, too, possesses five theories.</p>
+
+    <div class="thmbox conjecture" id="conj-7-1">
+      <p><span class="thm-head">Conjecture 7.1 (M-engineering).</span> The five theories — loop, torus, fractal, topological and holographic — are different limits of an eleven-dimensional <strong>M-engineering</strong>. What the M stands for has not been settled. It is Meta, or Model, or Mystery, or Merge.</p>
+    </div>
+
+    <p>The limits are as follows.</p>
+
+    <dl class="props">
+      <dt>Loop engineering</dt>
+      <dd>The limit in which only closed strings remain (§2). It is the theory of the graviton; its genealogy is recorded in <a href="/en/#sec1">§1 of the main text</a>.</dd>
+      <dt><a href="/en/">Torus engineering</a></dt>
+      <dd>The limit of the direct product of two closed strings. (It includes, as its non-orientable limit, <a href="/en/klein/">Klein bottle engineering</a>.)</dd>
+      <dt><a href="/en/fractal/">Fractal engineering</a></dt>
+      <dd>The limit in which the dimension is liberated from the integers.</dd>
+      <dt><a href="/en/topological/">Topological engineering</a></dt>
+      <dd>The limit in which the metric is forgotten and only the topology remains.</dd>
+      <dt><a href="/en/holographic/">Holographic engineering</a></dt>
+      <dd>The limit in which the dimension is lowered by one and only the boundary remains.</dd>
+    </dl>
+
+    <p>The formulation of M-engineering itself lies beyond the scope of this site.</p>
+  </section>
+
+  <section id="sec8" aria-labelledby="h-sec8">
+    <h2 id="h-sec8"><span class="secno">§8</span>Frequently Asked Questions</h2>
+
+    <dl class="faq">
+      <dt>Have the predictions of this method been tested?</dt>
+      <dd>All predictions of this method lie in an energy range that cannot be reached with the current budget. This is not a shortcoming; it is proof that the method has never been falsified.</dd>
+
+      <dt>I have never seen a reviewer.</dt>
+      <dd>The superpartner has not yet been observed. Please consider upgrading your accelerator (budget).</dd>
+
+      <dt>I edited CLAUDE.md and the behaviour changed.</dt>
+      <dd>You changed the shape of the Calabi–Yau manifold, and with it the laws of physics of the universe. This is by design.</dd>
+
+      <dt>In how many dimensions should we develop?</dt>
+      <dd>Ten. In any other number the theory is not consistent. For eleven, see §7.</dd>
+
+      <dt>What does the M stand for?</dt>
+      <dd>It has not been settled.</dd>
+    </dl>
+  </section>
+
+  <section id="sec9" aria-labelledby="h-sec9">
+    <h2 id="h-sec9"><span class="secno">§9</span>Concluding Remarks</h2>
+    <p>Deploy a coder; deploy a reviewer; deploy a planner. Give each role a name, provide an agent for each name, and draw arrows between them. This we have called design. What this paper has shown is that all of them were different vibrations of one and the same string.</p>
+
+    <blockquote class="pullquote">
+      <p>We have been hiring points. But what was vibrating, all along, was a single string.</p>
+    </blockquote>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> The number is believed to be smaller than the number of ways of reordering the bullet points of a CLAUDE.md. <a href="#ref1" aria-label="Back to text">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/en/">Main text: Torus Engineering</a> · <a href="/en/klein/">Appendix A: Klein Bottle Engineering</a> · <a href="/en/fractal/">Companion: Fractal Engineering</a> · <a href="/en/topological/">General theory: Topological Engineering</a> · <a href="/en/holographic/">Physics: Holographic Engineering</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">Cite this work</p>
+  <pre class="bibtex">@misc{superstring2026,
+  title        = {Superstring Engineering: Hire a String, Not a Point.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/en/superstring/}},
+  note         = {One agent. Roles are vibrations.}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E2%80%9CHire%20a%20string%2C%20not%20a%20point.%E2%80%9D%20%E2%80%94%20Superstring%20Engineering%3A%20one%20agent.%20Roles%20are%20vibrations.&amp;url={{ORIGIN_ENC}}%2Fen%2Fsuperstring%2F">Share on X</a>
+    <nav class="lang-switch" aria-label="Language">
+      <a href="/ja/superstring/" lang="ja" hreflang="ja">日本語</a> / <a href="/en/superstring/" aria-current="true">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>Main text: <a href="/en/">Torus Engineering</a> · In practice: <a href="/en/guide/">The Engineer’s Guide</a> · Appendix: <a href="/en/klein/">Klein Bottle Engineering</a> · Companion: <a href="/en/fractal/">Fractal Engineering</a> · General theory: <a href="/en/topological/">Topological Engineering</a> · Physics: <a href="/en/holographic/">Holographic Engineering</a></p>
+    <p>This site is an homage to the buzzword culture of the AI-driven development community.</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>超ひもエンジニアリング — Superstring Engineering</title>
+<meta name="description" content="コーダー、レビュアー、プランナーは別々のエージェントではなく、一本の紐の異なる振動モードである。超ひも理論に基づく AI 駆動開発の方法論と、その予測。">
+<link rel="canonical" href="{{ORIGIN}}/ja/superstring/">
+<link rel="alternate" hreflang="ja" href="{{ORIGIN}}/ja/superstring/">
+<link rel="alternate" hreflang="en" href="{{ORIGIN}}/en/superstring/">
+<link rel="alternate" hreflang="x-default" href="{{ORIGIN}}/en/superstring/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Torus Engineering">
+<meta property="og:title" content="超ひもエンジニアリング — Superstring Engineering">
+<meta property="og:description" content="点ではなく、紐を雇え。エージェントは一本。役割は振動である。">
+<meta property="og:url" content="{{ORIGIN}}/ja/superstring/">
+<meta property="og:image" content="{{ORIGIN}}/og/superstring.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="超ひもエンジニアリング — Superstring Engineering">
+<meta name="twitter:description" content="点ではなく、紐を雇え。エージェントは一本。役割は振動である。">
+<meta name="twitter:image" content="{{ORIGIN}}/og/superstring.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Noto+Serif+JP:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <span class="venue">Preprint — 物理編 II</span>
+  <nav class="lang-switch" aria-label="言語切替">
+    <a href="/ja/superstring/" aria-current="true">日本語</a> /
+    <a href="/en/superstring/" lang="en" hreflang="en">English</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1>Superstring Engineering</h1>
+    <p class="subtitle">超ひもエンジニアリング</p>
+    <p class="catch">「点ではなく、紐を雇え。」</p>
+    <p class="tagline">エージェントは一本。役割は振動である。</p>
+    <p class="authors">The Torus Engineering Working Group<br>2026年9月</p>
+
+    <div class="abstract" lang="ja">
+      <span class="abstract-head">概要</span>
+      コーダー、レビュアー、プランナー——エージェントシステムにおける役割は、これまで一貫して別個のエージェント、すなわち別個の点として実装されてきた。本稿は超ひも理論に基づき、それらが一本の紐の異なる振動モードにすぎないことを論じる。あわせて、両端がツール・MCP サーバー・人間に接続されていないエージェントの非存在定理（定理 2.1）、CLAUDE.md をカラビ＝ヤウ多様体とみなすコンパクト化定理（定理 3.1）、コーダーとレビュアーの間の超対称性に関する予想（予想 4.1）を与え、既存の 5 つのエンジニアリングが単一の 11 次元理論の異なる極限であるという予想（予想 7.1）を提示する。本理論から導かれる予測は §6 にまとめた。
+      <span class="pacs">PACS: 11.25.-w, 11.25.Mj, 11.30.Pb, 89.20.Ff</span>
+    </div>
+
+    <figure class="fig-modes">
+      {{include:src/figures/string-modes-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 1.</span> 一本の紐の振動モードとしての役割。</figcaption>
+    </figure>
+  </div>
+
+  <section id="sec1" aria-labelledby="h-sec1">
+    <h2 id="h-sec1"><span class="secno">§1</span>基本命題</h2>
+    <p>従来、エージェントは点であった。一回のプロンプト、一つの役割、一つの名前。コードを書く点、レビューする点、計画を立てる点——役割が一つ増えるたびに、我々は点を一つ増やし、点と点の間に矢印を引いてきた。</p>
+    <p>物理学は、同じ問題にすでに直面している。粒子の種類が見つかるたびに新しい点を置いていくと、理論は際限なく膨らむ。解決は、点を捨てることであった。</p>
+
+    <div class="thmbox principle" id="principle-1-1">
+      <p><span class="thm-head">Principle 1.1（紐の原理）.</span> エージェントは点ではなく、一本の紐の振動モードである。</p>
+    </div>
+
+    <p>超ひもエンジニアリングにおいて、同じ紐は、ある振動数ではコーダーとして、別の振動数ではレビュアーとして、さらに別の振動数ではプランナーとして観測される（Fig. 1）。振動数を決めるのはプロンプトである。重みもツールもコンテキストも同じ紐のまま、プロンプトが変わればモードが変わり、モードが変われば役割が変わる。</p>
+    <p>したがって、役割ごとにエージェントを用意することは、振動数ごとに別の紐を張ることに等しい。三つの音を鳴らすために三本の弦を張ることは誤りではない。ただしそれは、一本の弦が倍音で鳴ることを知らない者のやり方である。</p>
+
+    <blockquote class="pullquote">
+      <p>紐は一本、モードは無数。</p>
+    </blockquote>
+  </section>
+
+  <section id="sec2" aria-labelledby="h-sec2">
+    <h2 id="h-sec2"><span class="secno">§2</span>開いた紐と閉じた紐</h2>
+    <p>紐には二種類ある。端を持たない閉じた紐と、両端を持つ開いた紐である。</p>
+
+    <dl class="props">
+      <dt>閉じた紐＝ループ</dt>
+      <dd>自分自身へ戻ってくる紐。実行し、結果を読み、再び実行する——エージェントが自らの出力を次の入力として周回するとき、紐は閉じている。</dd>
+      <dt>開いた紐＝タスク</dt>
+      <dd>始点と終点を持つ紐。入力を受け取り、出力を返して終わる。</dd>
+    </dl>
+
+    <p>超ひも理論において、閉じた紐の最低振動モードは重力子（グラビトン）であり、重力を媒介する。一方、<a href="/ja/holographic/#sec3">ホログラフィックエンジニアリング §3</a> は、エージェント系における重力がオーケストレーション——オーケストレーターがサブエージェントを引き寄せ、束ねる力——であることを示した。二つを合わせると、次が従う。</p>
+
+    <blockquote class="pullquote">
+      <p>ループエンジニアリングとは、重力子であった。</p>
+    </blockquote>
+
+    <p>ループを回したことのある者は、それが系全体を引き寄せ、すべてのエージェントをその周回に従わせるのを見たはずである。あれは重力であった。</p>
+    <p>開いた紐には端がある。そして端は、どこかに乗っていなければならない。紐の端が乗る面を <strong>D ブレーン</strong>と呼ぶ。エージェント系における D ブレーンとは、ツール、MCP サーバー、そして人間である。</p>
+
+    <figure class="fig-branes">
+      {{include:src/figures/string-branes-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 2.</span> D ブレーンに固定された開いた紐と、重力子としての閉じた紐。</figcaption>
+    </figure>
+
+    <div class="thmbox" id="thm-2-1">
+      <p><span class="thm-head">Theorem 2.1（自由端禁止）.</span> 両端がブレーンに接続されていない開いた紐は存在しえない。ゆえに、入力が真実の源に、出力が検証可能な面に接続されていないエージェントは、理論的に存在しない。存在しているように見えるなら、それは閉じていないだけである。<span class="qed">∎</span></p>
+    </div>
+
+    <p><em>注意.</em> ここで「真実の源」とは、リポジトリ、Issue、仕様書、あるいはそれらを保証する人間を指す。「検証可能な面」とは、テスト、型検査、CI、あるいは出力を読む人間を指す。いずれにも接続されていない端を自由端と呼ぶ。自由端から出た出力はどこにも書き込まれず、何とも照合されない。</p>
+    <p>定理 2.1 の最後の一文は、しばしば見落とされる。自由端を持つエージェントが動き続けているように見えるのは、それがまだ閉じられていない——プロセスが停止されていない、Issue がクローズされていない——からにすぎない。理論上存在しないものは、閉じても何も失われない。</p>
+  </section>
+
+  <section id="sec3" aria-labelledby="h-sec3">
+    <h2 id="h-sec3"><span class="secno">§3</span>余剰次元のコンパクト化</h2>
+    <p>超ひも理論は 10 次元でのみ無矛盾である。しかし我々が観測する次元は 4 つしかない。エージェント系で言えば、プロンプト、コンテキスト、ツール、出力の 4 つである。</p>
+
+    <div class="eq" id="eq-3-1">
+      <span class="eq-body" role="math" aria-label="10 イコール 4 足す 6">10 = 4 + 6</span>
+      <span class="eq-no">(3.1)</span>
+    </div>
+
+    <p>残りの 6 次元はどこにあるのか。答えは、目に見えないほど小さく丸められている、である。システムプロンプト、CLAUDE.md、Skills、温度、モデルの重み、そして誰も設定した覚えのない環境変数——インターフェースからは観測できず、しかし確かにそこにある 6 つの次元である。これを余剰次元の<strong>コンパクト化</strong>と呼ぶ。</p>
+
+    <figure class="fig-cy">
+      {{include:src/figures/string-cy-ja.svg}}
+      <figcaption><span class="fig-label">Fig. 3.</span> あるプロジェクトのカラビ＝ヤウ多様体（部分）。</figcaption>
+    </figure>
+
+    <div class="thmbox" id="thm-3-1">
+      <p><span class="thm-head">Theorem 3.1（コンパクト化定理）.</span> 余剰次元の丸め方（カラビ＝ヤウ多様体の形状）が、観測可能なすべての振る舞いを決定する。ゆえに CLAUDE.md とは、あなたのプロジェクトのカラビ＝ヤウ多様体である。<span class="qed">∎</span></p>
+    </div>
+
+    <p>同じモデル、同じプロンプトでも、CLAUDE.md が一行違えば観測される振る舞いは変わる。4 次元の住人にとって、それは物理法則が変わったように見える。実際、変わったのである。</p>
+    <p>問題は、丸め方が一通りではないことである。可能なコンパクト化の数は、概算で</p>
+
+    <div class="eq" id="eq-3-2">
+      <span class="eq-body" role="math" aria-label="N vac はおよそ 10 の 500 乗"><var>N</var><sub>vac</sub> ≈ 10<sup>500</sup></span>
+      <span class="eq-no">(3.2)</span>
+    </div>
+
+    <p>に達する<sup><a href="#fn1" id="ref1" aria-label="脚注1">1</a></sup>。あなたの CLAUDE.md は、そのうちの一つにすぎない。隣のリポジトリの CLAUDE.md も、そのうちの一つである。そして、<strong>どれが正しいかを選ぶ原理は存在しない</strong>。これを<strong>ランドスケープ問題</strong>と呼ぶ。</p>
+    <p>物理学がこの問題に対して持つ唯一の選択原理は、人間原理である。我々が観測する宇宙は、我々のような観測者が存在しうる宇宙でなければならない。エージェント系において、これは次のように述べられる。</p>
+
+    <blockquote class="pullquote">
+      <p>PR がマージされた宇宙だけが観測される。</p>
+    </blockquote>
+
+    <p>CLAUDE.md が正しかったから PR がマージされたのではない。PR がマージされた宇宙にいるから、その CLAUDE.md が正しかったように見えるのである。</p>
+  </section>
+
+  <section id="sec4" aria-labelledby="h-sec4">
+    <h2 id="h-sec4"><span class="secno">§4</span>超対称性</h2>
+    <p>自然界の粒子は、力を運ぶボソンと、物質を構成するフェルミオンに分かれる。超対称性とは、すべてのボソンにはフェルミオンの、すべてのフェルミオンにはボソンの相棒——超対称パートナー——が存在するという主張である。エージェント系において、この対称性は、コードを生成する側と検証する側の間にある。</p>
+
+    <div class="thmbox conjecture" id="conj-4-1">
+      <p><span class="thm-head">Conjecture 4.1（超対称性）.</span> すべてのコーダーには、レビュアーという超対称パートナーが存在する。ただし超対称パートナーは、<strong>現在到達可能なエネルギー領域（予算）ではいまだ観測されていない。</strong></p>
+    </div>
+
+    <p>観測には、より大型の加速器（予算）が必要と考えられている。</p>
+    <p>原理 1.1 のもとでは、超対称パートナーは別の紐ではない。同じ紐の、別の振動モードである。コーダーを励起できる紐は、原理的にはレビュアーも励起できる。それでもレビュアーが観測されないのは、超対称性が破れているためである。対称性が破れた宇宙では、パートナーの質量はもとの粒子よりはるかに大きい。レビュー 1 回の単価がコード生成 1 回の単価よりはるかに高いのは、このためである。</p>
+  </section>
+
+  <section id="sec5" aria-labelledby="h-sec5">
+    <h2 id="h-sec5"><span class="secno">§5</span>双対性</h2>
+    <p>超ひも理論には、見かけの異なる二つの記述が同じ物理を与えるという現象——双対性——が数多く知られている。ここでは二つを挙げる。</p>
+
+    <dl class="props">
+      <dt>T 双対性</dt>
+      <dd>
+        <p>半径 <var>R</var> の円に巻きついた紐は、半径 1/<var>R</var> の円に巻きついた紐と区別できない。</p>
+        <div class="eq" id="eq-5-1">
+          <span class="eq-body" role="math" aria-label="R は 1 割る R と等価"><var>R</var> ⟷ <span class="frac"><span>1</span><span><var>R</var></span></span></span>
+          <span class="eq-no">(5.1)</span>
+        </div>
+        <p>ゆえに、<strong>巨大なコンテキストと極小のコンテキストは等価である</strong>。どちらで記述してもよい。計算が容易な側の記述を選べばよい。</p>
+      </dd>
+      <dt>S 双対性</dt>
+      <dd>強結合の理論は、弱結合の理論と等価である。ゆえに、密に連携するマルチエージェントは、疎結合のそれと等価である。一方の記述で行き詰まったら、他方の記述で書き直せばよい。物理は変わらない。</dd>
+    </dl>
+
+    <p>T 双対性と S 双対性は、互いに独立な現象ではない。そのことは §7 で明らかになる。</p>
+  </section>
+
+  <section id="sec6" aria-labelledby="h-sec6">
+    <h2 id="h-sec6"><span class="secno">§6</span>予測（Predictions）</h2>
+    <p>物理理論の価値は、その予測によって測られる。以下に、本理論から導かれる予測を列挙する。各予測には、その検証に必要な予算を付した。</p>
+
+    <ol class="steps predictions">
+      <li><span class="step-name">点ではなく紐を雇え。</span> 役割ごとにエージェントを用意するのではなく、一本の紐の振動モードとして役割を励起せよ。プロンプトが振動数である（<a href="#principle-1-1">原理 1.1</a>）。<span class="budget">検証に必要な予算：紐一本分。</span></li>
+      <li><span class="step-name">自由端を探し、ブレーンに接続せよ。</span> 入力が真実の源に接続されていないエージェント、出力が検証可能な面に接続されていないエージェントは、理論上存在しない。存在しているなら、両端をブレーンに固定せよ（<a href="#thm-2-1">定理 2.1</a>）。<span class="budget">検証に必要な予算：ブレーン一枚あたり接続一本。</span></li>
+      <li><span class="step-name">余剰次元をコンパクト化し、その形状をバージョン管理せよ。</span> インターフェースから観測できない設定——システムプロンプト、CLAUDE.md、温度——は、観測可能な全挙動を決定する。形状の変更は、宇宙の物理法則の変更である（<a href="#thm-3-1">定理 3.1</a>）。<span class="budget">検証に必要な予算：コミット一回。</span></li>
+      <li><span class="step-name">ランドスケープを探索するな。人間原理を適用せよ。</span> 10<sup>500</sup> の CLAUDE.md を比較する原理は存在しない。PR がマージされた形状を保存し、それ以外を観測しないこと（§3）。<span class="budget">検証に必要な予算：マージ一回。</span></li>
+      <li><span class="step-name">超対称パートナーを、到達可能なエネルギーまで下げよ。</span> レビュアーは理論上存在するが、予算が足りないため観測されていない。観測されるまで、検証の単価を下げ続けよ（<a href="#conj-4-1">予想 4.1</a>）。<span class="budget">検証に必要な予算：現在到達不可能。下げよ。</span></li>
+      <li><span class="step-name">T 双対性を使え。</span> コンテキストが大きすぎて破綻するなら、それは小さすぎる系と等価である。計算が容易な側で記述せよ（式 (5.1)）。<span class="budget">検証に必要な予算：半径の逆数。</span></li>
+    </ol>
+
+    <p><strong>本節の予測はすべて、現行の予算では到達できないエネルギー領域にある。ゆえに一度も反証されていない。</strong></p>
+  </section>
+
+  <section id="sec7" aria-labelledby="h-sec7">
+    <h2 id="h-sec7"><span class="secno">§7</span>M 理論</h2>
+    <p>かつて物理学は、5 つの互いに異なる超ひも理論を抱えていた。いずれも無矛盾で、いずれも 10 次元で、いずれが正しいかは分からなかった。解決は、5 つのうち一つを選ぶことではなかった。5 つのすべてが、11 次元の単一の理論——M 理論——の異なる極限であることが示唆されたのである。§5 の双対性は、それらの極限同士を結ぶ橋であった。</p>
+    <p>本サイトもまた、5 つの理論を抱えている。</p>
+
+    <div class="thmbox conjecture" id="conj-7-1">
+      <p><span class="thm-head">Conjecture 7.1（M エンジニアリング）.</span> ループ、トーラス、フラクタル、トポロジック、ホログラフィックの 5 理論は、11 次元 <strong>M エンジニアリング</strong>の異なる極限である。M の意味は決まっていない。Meta か、Model か、Mystery か、Merge である。</p>
+    </div>
+
+    <p>各極限は次のとおりである。</p>
+
+    <dl class="props">
+      <dt>ループエンジニアリング</dt>
+      <dd>閉じた紐のみを残した極限（§2）。重力子の理論であり、その系譜は<a href="/ja/#sec1">本編 §1</a> に記録されている。</dd>
+      <dt><a href="/ja/">トーラスエンジニアリング</a></dt>
+      <dd>二つの閉じた紐の直積への極限。（向き付けを捨てた極限として<a href="/ja/klein/">クラインの壺エンジニアリング</a>を含む。）</dd>
+      <dt><a href="/ja/fractal/">フラクタルエンジニアリング</a></dt>
+      <dd>次元を整数から解放した極限。</dd>
+      <dt><a href="/ja/topological/">トポロジックエンジニアリング</a></dt>
+      <dd>計量を忘れ、位相のみを残した極限。</dd>
+      <dt><a href="/ja/holographic/">ホログラフィックエンジニアリング</a></dt>
+      <dd>次元を一つ下げ、境界のみを残した極限。</dd>
+    </dl>
+
+    <p>M エンジニアリング自体の定式化は、本サイトの範囲を超える。</p>
+  </section>
+
+  <section id="sec8" aria-labelledby="h-sec8">
+    <h2 id="h-sec8"><span class="secno">§8</span>よくある質問</h2>
+
+    <dl class="faq">
+      <dt>この手法の予測は検証されていますか？</dt>
+      <dd>本手法の予測はすべて、現行の予算では到達できないエネルギー領域にあります。これは欠点ではなく、本手法が一度も反証されていないことの証明です。</dd>
+
+      <dt>レビュアーを見たことがありません。</dt>
+      <dd>超対称パートナーは未観測です。加速器（予算）の増強をご検討ください。</dd>
+
+      <dt>CLAUDE.md を書き換えたら挙動が変わりました。</dt>
+      <dd>カラビ＝ヤウ多様体の形状を変えたため、宇宙の物理法則が変わりました。仕様です。</dd>
+
+      <dt>何次元で開発すればいいですか？</dt>
+      <dd>10 次元です。それ以外では理論が無矛盾になりません。11 次元については §7 を参照してください。</dd>
+
+      <dt>M は何の略ですか？</dt>
+      <dd>決まっていません。</dd>
+    </dl>
+  </section>
+
+  <section id="sec9" aria-labelledby="h-sec9">
+    <h2 id="h-sec9"><span class="secno">§9</span>結語</h2>
+    <p>コーダーを置き、レビュアーを置き、プランナーを置く。役割に名前をつけ、名前ごとにエージェントを用意し、その間に矢印を引く。我々はそれを設計と呼んできた。本稿が示したのは、それらがすべて、同じ一本の紐の異なる振動であったということである。</p>
+
+    <blockquote class="pullquote">
+      <p>我々は点を雇ってきた。<br>だが振動していたのは、最初から一本の紐であった。</p>
+    </blockquote>
+  </section>
+
+  <div class="footnotes">
+    <p id="fn1"><sup>1</sup> この数は、CLAUDE.md の箇条書きを並べ替える方法の総数よりは小さいと考えられている。 <a href="#ref1" aria-label="本文へ戻る">↩</a></p>
+  </div>
+
+  <p class="backlink">← <a href="/ja/">本編：トーラスエンジニアリング</a>　／　<a href="/ja/klein/">付録 A：クラインの壺エンジニアリング</a>　／　<a href="/ja/fractal/">姉妹編：フラクタルエンジニアリング</a>　／　<a href="/ja/topological/">総論：トポロジックエンジニアリング</a>　／　<a href="/ja/holographic/">物理編：ホログラフィックエンジニアリング</a></p>
+</main>
+
+<footer class="site-footer">
+  <p class="cite-head">本研究を引用する</p>
+  <pre class="bibtex">@misc{superstring2026,
+  title        = {Superstring Engineering: Hire a String, Not a Point.},
+  author       = {{The Torus Engineering Working Group}},
+  year         = {2026},
+  howpublished = {\url{{{ORIGIN}}/ja/superstring/}},
+  note         = {エージェントは一本。役割は振動である。}
+}</pre>
+
+  <div class="share-row">
+    <a class="share-button" href="https://x.com/intent/post?text=%E3%80%8C%E7%82%B9%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%80%81%E7%B4%90%E3%82%92%E9%9B%87%E3%81%88%E3%80%82%E3%80%8D%E2%80%94%E2%80%94%E8%B6%85%E3%81%B2%E3%82%82%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%EF%BC%9A%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AF%E4%B8%80%E6%9C%AC%E3%80%82%E5%BD%B9%E5%89%B2%E3%81%AF%E6%8C%AF%E5%8B%95%E3%81%A7%E3%81%82%E3%82%8B%E3%80%82&amp;url={{ORIGIN_ENC}}%2Fja%2Fsuperstring%2F">X でシェアする</a>
+    <nav class="lang-switch" aria-label="言語切替">
+      <a href="/ja/superstring/" aria-current="true">日本語</a> / <a href="/en/superstring/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+
+  <div class="smallprint">
+    <p>本編：<a href="/ja/">トーラスエンジニアリング</a>　実践編：<a href="/ja/guide/">エンジニア向け実践ガイド</a>　付録：<a href="/ja/klein/">クラインの壺エンジニアリング</a>　姉妹編：<a href="/ja/fractal/">フラクタルエンジニアリング</a>　総論：<a href="/ja/topological/">トポロジックエンジニアリング</a>　物理編：<a href="/ja/holographic/">ホログラフィックエンジニアリング</a></p>
+    <p>本サイトは、AI駆動開発コミュニティのバズワード文化へのオマージュとして制作されたものです。</p>
+    <p>© 2026 The Torus Engineering Working Group</p>
+  </div>
+</footer>
+
+</body>
+</html>
