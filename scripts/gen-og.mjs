@@ -1,5 +1,5 @@
 // Renders the 1200x630 OGP images (src/og/torus.png, klein.png, fractal.png,
-// topological.png, holographic.png)
+// topological.png, holographic.png, superstring.png)
 // from the generated SVG figures, using headless Chromium.
 // Usage: CHROME=/path/to/chrome node scripts/gen-og.mjs
 import { execFileSync } from "node:child_process";
@@ -72,6 +72,7 @@ const kleinSvg = readFileSync(join(root, "src/figures/klein-bare.svg"), "utf8");
 const fractalSvg = readFileSync(join(root, "src/figures/fractal-bare.svg"), "utf8");
 const topoSvg = readFileSync(join(root, "src/figures/topo-surfaces-bare.svg"), "utf8");
 const holoSvg = readFileSync(join(root, "src/figures/holo-bulk-bare.svg"), "utf8");
+const stringSvg = readFileSync(join(root, "src/figures/string-modes-bare.svg"), "utf8");
 
 const jobs = [
   {
@@ -128,6 +129,18 @@ const jobs = [
       titleSize: 56,
       catchline: "&ldquo;Never look inside.<br>Read the boundary.&rdquo;",
       sub: "The inside of an agent<br>is written on its surface.",
+    }),
+  },
+  {
+    out: "superstring.png",
+    html: card({
+      figure: stringSvg,
+      figureWidth: 780,
+      title: "Superstring Engineering",
+      titleSize: 58,
+      catchline: "&ldquo;Hire a string, not a point.&rdquo;",
+      sub: "",
+      stacked: true,
     }),
   },
 ];
